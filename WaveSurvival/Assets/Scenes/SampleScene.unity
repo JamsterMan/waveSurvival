@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 646536133}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,8 @@ GameObject:
   - component: {fileID: 992184594}
   - component: {fileID: 992184592}
   - component: {fileID: 992184593}
-  m_Layer: 0
+  - component: {fileID: 992184595}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +275,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &992184590
 SpriteRenderer:
@@ -369,12 +370,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c9bd11f724d88428df797b01097570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 5
-  attackRange: 0.5
   attackPoint: {fileID: 646536133}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  attackDamage: 5
+  attackRange: 0.5
+  attackRate: 2
 --- !u!61 &992184594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -401,6 +403,49 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3385065, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &992184595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992184588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ce192062ba63040ba51977a41b4633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IframeRate: 1
+--- !u!1 &1857741942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1857741943}
+  m_Layer: 8
+  m_Name: AttackPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1857741943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857741942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2061255510}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2061255507
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,9 +456,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2061255510}
   - component: {fileID: 2061255509}
-  - component: {fileID: 2061255508}
   - component: {fileID: 2061255511}
   - component: {fileID: 2061255512}
+  - component: {fileID: 2061255508}
+  - component: {fileID: 2061255513}
+  - component: {fileID: 2061255514}
   m_Layer: 8
   m_Name: TempEnemy
   m_TagString: Untagged
@@ -494,7 +541,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.1604204, y: -0.043338105, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1857741943}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -545,3 +593,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3549228, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &2061255513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061255507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf46bf506abed5b4f904097497fc9a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 1857741943}
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  attackDamage: 5
+  attackRange: 0.4
+--- !u!114 &2061255514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061255507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6432a28634ba4040b748dca5fbcc9de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  rb: {fileID: 2061255511}
+  player: {fileID: 992184591}
+  playerH: {fileID: 992184595}
+  isAttacking: 0
