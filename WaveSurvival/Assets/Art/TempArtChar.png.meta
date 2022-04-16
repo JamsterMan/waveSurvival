@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 28f776e14a915774ea987b772fdadea5
+guid: 4a026d5159901e64f8475280c23d78b9
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 6779944455437435657
-    second: Templayer
+    second: TempPlayer
   - first:
       213: 4879686145108042967
     second: TempEnemy
+  - first:
+      213: -7246712835596841276
+    second: TempDamageR
+  - first:
+      213: -26947489423941907
+    second: TempDamageW
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,7 +111,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Templayer
+      name: TempPlayer
       rect:
         serializedVersion: 2
         x: 0
@@ -142,6 +148,48 @@ TextureImporter:
       bones: []
       spriteID: 7d46f8ef1b028b340800000000000000
       internalID: 4879686145108042967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TempDamageR
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ce8cfc12118e6b90800000000000000
+      internalID: -7246712835596841276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TempDamageW
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dee1c41b66340aff0800000000000000
+      internalID: -26947489423941907
       vertices: []
       indices: 
       edges: []

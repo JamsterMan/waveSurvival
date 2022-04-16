@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public readonly int maxHealth = 20;
     private int currentHealth;
+    public Animator animator;
 
     public float IframeRate = 2f;
     float nextDamageTime = 0f;
@@ -21,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (Time.time > nextDamageTime)
         {
+            animator.SetBool("PlayerHit", true);
+
             currentHealth -= dmg;
             Debug.Log("player health: " + currentHealth);
             nextDamageTime = Time.time + IframeRate;
@@ -35,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
     {
         //play animation
         Debug.Log("Game Over");
-        Time.timeScale = 0;
+        Time.timeScale = 0;//temp player death
     }
 
     public bool isDamageable()

@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public readonly int maxHealth = 10;
     private int currentHealth;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,8 @@ public class Enemy : MonoBehaviour
 
     public void DealDamage(int dmg)
     {
+        animator.SetBool("EnemyHit", true);
+
         currentHealth -= dmg;
         Debug.Log("enemy health: " + currentHealth);
         if(currentHealth <= 0)
