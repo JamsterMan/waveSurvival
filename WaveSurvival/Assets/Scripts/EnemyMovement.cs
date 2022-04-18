@@ -7,8 +7,9 @@ public class EnemyMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
 
-    public Transform player;
-    public PlayerHealth playerH;
+    private GameObject playerObject;
+    private Transform player;
+    private PlayerHealth playerH;
     private EnemyAttack attack;
 
     Vector2 movement;
@@ -18,6 +19,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        playerObject = GameObject.Find("Player");
+        Debug.Log(playerObject.name);
+        player = playerObject.transform;
+        playerH = playerObject.GetComponent<PlayerHealth>();
+
         attack = GetComponent<EnemyAttack>();
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
