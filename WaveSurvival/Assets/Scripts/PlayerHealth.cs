@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,10 +12,15 @@ public class PlayerHealth : MonoBehaviour
     public float IframeRate = 2f;
     float nextDamageTime = 0f;
 
+    private Slider healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar = GameObject.Find("PlayerHealth").GetComponent<Slider>();
+        healthBar.maxValue = maxHealth;
+        UpdateUIHealth();
         Debug.Log("player health: " + currentHealth);
     }
 
@@ -25,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
             animator.SetBool("PlayerHit", true);
 
             currentHealth -= dmg;
+            UpdateUIHealth();
             Debug.Log("player health: " + currentHealth);
             nextDamageTime = Time.time + IframeRate;
             if (currentHealth <= 0)
@@ -44,5 +51,10 @@ public class PlayerHealth : MonoBehaviour
     public bool isDamageable()
     {
         return Time.time > nextDamageTime;
+    }
+
+    private void UpdateUIHealth()
+    {
+        healthBar.value = currentHealth;
     }
 }
