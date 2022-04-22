@@ -15,7 +15,9 @@ public class WaveController : MonoBehaviour
     private int count = 0;
     private float nextWaveTime = 2f;
 
-    private bool inWave = false;
+    private int enemiesDefeated = 0;
+
+    private bool inWave = true;
 
     // Update is called once per frame
     void Update()
@@ -36,12 +38,6 @@ public class WaveController : MonoBehaviour
                     count = 0;
                 }
             }
-            else
-            {
-                inWave = false;
-                nextWaveTime = Time.time + waveBreakTime;
-                Debug.Log("Wave ended");
-            }
         }
         else
         {
@@ -52,6 +48,20 @@ public class WaveController : MonoBehaviour
                 inWave = true;
                 Debug.Log("New wave start");
             }
+        }
+    }
+
+    public void EnemyDied()
+    {
+        enemiesDefeated++;
+        if(enemiesDefeated == maxEnemiesSpawn)
+        {
+            //wave ended
+            inWave = false;
+            nextWaveTime = Time.time + waveBreakTime;
+            Debug.Log("Wave ended");
+
+            //enable wave start button
         }
     }
 

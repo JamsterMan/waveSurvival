@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public GameObject enemyPrefab;
 
     /*public int maxEnemiesSpawn = 5;
     public float spawnRate = 0.5f;
@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     {
         //decide enemy to spawn
 
-        Instantiate(enemy, transform.position, Quaternion.identity);
+        /*GameObject enemy = */Instantiate(enemyPrefab, transform.position, Quaternion.identity);
 
         //update enemy health based of wave number
     }
