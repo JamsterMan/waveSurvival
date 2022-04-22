@@ -6,14 +6,14 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemy;
 
-    public int maxEnemiesSpawn = 5;
+    /*public int maxEnemiesSpawn = 5;
     public float spawnRate = 0.5f;
 
     private int spawnedEnemyCount = 0;
-    private float nextSpawnTime = 0f;
+    private float nextSpawnTime = 0f;*/
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (spawnedEnemyCount < maxEnemiesSpawn)
         {
@@ -24,5 +24,14 @@ public class EnemySpawner : MonoBehaviour
                 spawnedEnemyCount++;
             }
         }
+    }*/
+
+    public void SpawnEnemy()
+    {
+        //decide enemy to spawn
+
+        Instantiate(enemy, transform.position, Quaternion.identity);
+
+        //update enemy health based of wave number
     }
 }

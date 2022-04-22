@@ -21,7 +21,6 @@ public class PlayerHealth : MonoBehaviour
         healthBar = GameObject.Find("PlayerHealth").GetComponent<Slider>();
         healthBar.maxValue = maxHealth;
         UpdateUIHealth();
-        Debug.Log("player health: " + currentHealth);
     }
 
     public void DealDamage(int dmg)
@@ -32,7 +31,6 @@ public class PlayerHealth : MonoBehaviour
 
             currentHealth -= dmg;
             UpdateUIHealth();
-            Debug.Log("player health: " + currentHealth);
             nextDamageTime = Time.time + IframeRate;
             if (currentHealth <= 0)
             {
@@ -48,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
         Time.timeScale = 0;//temp player death
     }
 
-    public bool isDamageable()
+    public bool IsDamageable()
     {
         return Time.time > nextDamageTime;
     }

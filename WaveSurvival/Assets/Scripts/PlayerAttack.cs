@@ -20,7 +20,6 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.Log("player attacks");
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
@@ -36,7 +35,6 @@ public class PlayerAttack : MonoBehaviour
 
         foreach(Collider2D hitEnemy in hitEnemies)
         {
-            Debug.Log("enemy hit: " + hitEnemy.name);
             hitEnemy.GetComponent<Enemy>().DealDamage(attackDamage);
         }
     }

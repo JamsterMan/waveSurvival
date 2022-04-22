@@ -20,7 +20,6 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         playerObject = GameObject.Find("Player");
-        Debug.Log(playerObject.name);
         player = playerObject.transform;
         playerH = playerObject.GetComponent<PlayerHealth>();
 
@@ -43,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (isAttacking)
         {
-            if (playerH.isDamageable())
+            if (playerH.IsDamageable())
                 attack.Attack();
 
             if (lookDirection.magnitude > attack.attackRange)

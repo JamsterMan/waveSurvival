@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        Debug.Log("enemy health: " + currentHealth);
     }
 
     public void DealDamage(int dmg)
@@ -20,7 +19,6 @@ public class Enemy : MonoBehaviour
         animator.SetBool("EnemyHit", true);
 
         currentHealth -= dmg;
-        Debug.Log("enemy health: " + currentHealth);
         if(currentHealth <= 0)
         {
             Die();
@@ -30,7 +28,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         //play animation
-        Debug.Log("enemy Died");
+        //Debug.Log("enemy Died");
         Destroy(this.gameObject);
     }
 }
