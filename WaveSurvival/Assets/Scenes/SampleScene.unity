@@ -246,13 +246,15 @@ GameObject:
   m_Component:
   - component: {fileID: 172719937}
   - component: {fileID: 172719938}
+  - component: {fileID: 172719939}
+  - component: {fileID: 172719940}
   m_Layer: 0
   m_Name: WaveStartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &172719937
 Transform:
   m_ObjectHideFlags: 0
@@ -318,6 +320,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &172719939
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172719936}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2147636, y: 1.2147636}
+  m_EdgeRadius: 0
+--- !u!114 &172719940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172719936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd8c424a43e85f4787b89095163612b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveController: {fileID: 1700725460}
 --- !u!1 &196860642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1222,7 @@ MonoBehaviour:
   animator: {fileID: 1245247490}
   attackDamage: 10
   attackRange: 0.6
-  attackRate: 2
+  attackRate: 3
 --- !u!61 &992184594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1751,7 +1792,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 0
 --- !u!222 &1424789245
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1870,9 +1911,11 @@ MonoBehaviour:
   - {fileID: 1399839222}
   - {fileID: 1956641267}
   - {fileID: 838386657}
+  waveStart: {fileID: 172719936}
+  waveCountText: {fileID: 1424789244}
   maxEnemiesSpawn: 20
   spawnRate: 1
-  waveBreakTime: 10
+  waveBreakTime: 0.5
 --- !u!1 &1715564767
 GameObject:
   m_ObjectHideFlags: 0
