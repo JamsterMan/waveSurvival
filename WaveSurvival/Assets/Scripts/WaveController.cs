@@ -34,7 +34,7 @@ public class WaveController : MonoBehaviour
                 {
                     foreach (EnemySpawner spawn in spawners)
                     {
-                        spawn.SpawnEnemy();
+                        spawn.SpawnEnemy(waveCount);
                         count++;
                     }
                     nextSpawnTime = Time.time + (1f / spawnRate);
@@ -63,6 +63,7 @@ public class WaveController : MonoBehaviour
     public void WaveStart()
     {
         spawnedEnemyCount = 0;
+        enemiesDefeated = 0;
 
         inWave = true;
         Debug.Log("new wave started");
@@ -73,6 +74,11 @@ public class WaveController : MonoBehaviour
         //update wave count UI
         waveCountText.text = "" + waveCount;
 
+    }
+
+    public int GetWaveCount()
+    {
+        return waveCount;
     }
 
 }

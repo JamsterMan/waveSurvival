@@ -1913,7 +1913,7 @@ MonoBehaviour:
   - {fileID: 838386657}
   waveStart: {fileID: 172719936}
   waveCountText: {fileID: 1424789244}
-  maxEnemiesSpawn: 20
+  maxEnemiesSpawn: 4
   spawnRate: 1
   waveBreakTime: 0.5
 --- !u!1 &1715564767

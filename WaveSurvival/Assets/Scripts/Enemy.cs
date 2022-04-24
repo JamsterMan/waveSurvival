@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public readonly int maxHealth = 10;
+    public readonly int startingHealth = 10;
+    private readonly int difficultyHealthIncrease = 5;
+    private int waveNumIncrease = 5;
     private int currentHealth;
     public Animator animator;
     private WaveController waveControll;
@@ -12,8 +14,9 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
         waveControll = GameObject.Find("WaveController").GetComponent<WaveController>();
+        int extraHealth = (waveControll.GetWaveCount() / waveNumIncrease) * difficultyHealthIncrease;//extra health gained ever waveNumIncrease number of waves
+        currentHealth = startingHealth + extraHealth;
     }
 
     public void DealDamage(int dmg)
