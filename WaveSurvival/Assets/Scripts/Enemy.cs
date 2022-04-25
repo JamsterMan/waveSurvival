@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public readonly int startingHealth = 10;
-    private readonly int difficultyHealthIncrease = 5;
+    public int startingHealth = 10;
+    public int difficultyHealthIncrease = 5;
     private int waveNumIncrease = 5;
     private int currentHealth;
     public Animator animator;

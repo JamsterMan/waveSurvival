@@ -1060,7 +1060,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81be99f1613e9264c95e329f70ae8e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3172533242035286298, guid: d393194b4f0e4f94e9647141669b4562,
+  normalEnemyPrefab: {fileID: 3172533242035286298, guid: d393194b4f0e4f94e9647141669b4562,
+    type: 3}
+  fastEnemyPrefab: {fileID: 2477742756198489460, guid: d08aaa172e81b1a4e94013c45ac81440,
+    type: 3}
+  slowEnemyPrefab: {fileID: 2812246563251610923, guid: b8f5b15109c79044bbf238bc2421603c,
     type: 3}
 --- !u!4 &838386658
 Transform:
@@ -1575,7 +1579,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81be99f1613e9264c95e329f70ae8e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3172533242035286298, guid: d393194b4f0e4f94e9647141669b4562,
+  normalEnemyPrefab: {fileID: 3172533242035286298, guid: d393194b4f0e4f94e9647141669b4562,
+    type: 3}
+  fastEnemyPrefab: {fileID: 2477742756198489460, guid: d08aaa172e81b1a4e94013c45ac81440,
+    type: 3}
+  slowEnemyPrefab: {fileID: 2812246563251610923, guid: b8f5b15109c79044bbf238bc2421603c,
     type: 3}
 --- !u!4 &1399839223
 Transform:
@@ -2133,7 +2141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81be99f1613e9264c95e329f70ae8e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3172533242035286298, guid: d393194b4f0e4f94e9647141669b4562,
+  normalEnemyPrefab: {fileID: 3172533242035286298, guid: d393194b4f0e4f94e9647141669b4562,
+    type: 3}
+  fastEnemyPrefab: {fileID: 2477742756198489460, guid: d08aaa172e81b1a4e94013c45ac81440,
+    type: 3}
+  slowEnemyPrefab: {fileID: 2812246563251610923, guid: b8f5b15109c79044bbf238bc2421603c,
     type: 3}
 --- !u!4 &1956641268
 Transform:
@@ -2311,5 +2323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81be99f1613e9264c95e329f70ae8e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3172533242035286298, guid: d393194b4f0e4f94e9647141669b4562,
+  normalEnemyPrefab: {fileID: 3172533242035286298, guid: d393194b4f0e4f94e9647141669b4562,
+    type: 3}
+  fastEnemyPrefab: {fileID: 2477742756198489460, guid: d08aaa172e81b1a4e94013c45ac81440,
+    type: 3}
+  slowEnemyPrefab: {fileID: 2812246563251610923, guid: b8f5b15109c79044bbf238bc2421603c,
     type: 3}
