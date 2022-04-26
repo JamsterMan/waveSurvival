@@ -34,7 +34,7 @@ public class WaveController : MonoBehaviour
                 {
                     foreach (EnemySpawner spawn in spawners)
                     {
-                        spawn.SpawnEnemy(waveCount);
+                        spawn.SpawnEnemy();
                         count++;
                     }
                     nextSpawnTime = Time.time + (1f / spawnRate);
