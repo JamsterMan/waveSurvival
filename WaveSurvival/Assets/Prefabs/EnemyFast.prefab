@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: attackDamage
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3172533242035286290, guid: d393194b4f0e4f94e9647141669b4562,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ca2b7b91e044bca458dce8d2c3d316a5, type: 2}
     - target: {fileID: 3172533242035286291, guid: d393194b4f0e4f94e9647141669b4562,
         type: 3}
       propertyPath: moveSpeed
@@ -26,7 +31,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -8693552940742017930, guid: be2838623a472ea4c899387eaaa4e017,
+      objectReference: {fileID: -152383444409153901, guid: 38a3bbc83d8c28d42afc339829960dd9,
         type: 3}
     - target: {fileID: 3172533242035286300, guid: d393194b4f0e4f94e9647141669b4562,
         type: 3}
@@ -36,12 +41,12 @@ PrefabInstance:
     - target: {fileID: 3172533242035286300, guid: d393194b4f0e4f94e9647141669b4562,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.5613208
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3172533242035286300, guid: d393194b4f0e4f94e9647141669b4562,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.5613208
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3172533242035286300, guid: d393194b4f0e4f94e9647141669b4562,
         type: 3}
