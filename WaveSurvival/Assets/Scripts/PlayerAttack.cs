@@ -13,6 +13,13 @@ public class PlayerAttack : MonoBehaviour
     public float attackRate = 2f;
     float nextAttackTime = 0f;
 
+    public GameObject energyBlast;
+    //public int rangedAttackDamage = 10;
+    //public float rangedAttackRange = 10f;
+    public float rangedAttackRate = 3f;
+    float nextRangedAttackTime = 0f;
+    public Transform firePoint;
+
     // Update is called once per frame
     void Update()
     {
@@ -22,6 +29,14 @@ public class PlayerAttack : MonoBehaviour
             {
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
+            }
+        }
+        if (Time.time > nextRangedAttackTime)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                RangedAttack();
+                nextAttackTime = Time.time + 1f / rangedAttackRate;
             }
         }
     }
@@ -37,6 +52,13 @@ public class PlayerAttack : MonoBehaviour
         {
             hitEnemy.GetComponent<Enemy>().DealDamage(attackDamage);
         }
+    }
+    void RangedAttack()
+    {
+        //play animations
+        //animator.SetBool("Attack", true);
+        
+        GameObject blast = Instantiate(energyBlast, firePoint.position, firePoint.rotation, this.transform);
     }
 
     private void OnDrawGizmosSelected()

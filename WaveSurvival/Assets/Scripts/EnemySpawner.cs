@@ -19,7 +19,6 @@ public class EnemySpawner : MonoBehaviour
     {
         //decide enemy to spawn
         int enenmyId = GetEnemyIndex();
-            //Random.Range(0, enemyPrefabs.Length);
 
         Instantiate(enemyPrefabs[enenmyId], transform.position, Quaternion.identity);
 

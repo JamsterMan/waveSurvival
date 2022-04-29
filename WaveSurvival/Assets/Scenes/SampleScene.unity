@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 992184595}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -908,6 +908,7 @@ Transform:
   m_Children:
   - {fileID: 646536133}
   - {fileID: 1245247489}
+  - {fileID: 1300858700}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -946,6 +947,12 @@ MonoBehaviour:
   attackDamage: 10
   attackRange: 0.6
   attackRate: 3
+  energyBlast: {fileID: 1590105081076686590, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+    type: 3}
+  rangedAttackDamage: 5
+  rangedAttackRange: 0.5
+  rangedAttackRate: 2
+  firePoint: {fileID: 1300858700}
 --- !u!61 &992184594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1282,6 +1289,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1300858699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1300858700}
+  m_Layer: 9
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1300858700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300858699}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.006, y: 0.233, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 992184591}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1385115077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,6 +2121,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81be99f1613e9264c95e329f70ae8e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1590105082627492085
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2474737
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.26003122
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686590, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_Name
+      value: EnergyBlast
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590105081076686590, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df, type: 3}
 --- !u!1001 &8534626564383725206
 PrefabInstance:
   m_ObjectHideFlags: 0
