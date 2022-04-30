@@ -949,9 +949,9 @@ MonoBehaviour:
   attackRate: 3
   energyBlast: {fileID: 1590105081076686590, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
     type: 3}
-  rangedAttackDamage: 5
-  rangedAttackRange: 0.5
   rangedAttackRate: 2
+  maxBlastAmmo: 3
+  chargePerAmmo: 20
   firePoint: {fileID: 1300858700}
 --- !u!61 &992184594
 BoxCollider2D:

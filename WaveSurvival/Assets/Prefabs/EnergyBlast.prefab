@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1590105081076686586}
   - component: {fileID: 1590105081076686565}
   - component: {fileID: 1590105081076686585}
+  - component: {fileID: 3094962935383270404}
   m_Layer: 0
   m_Name: EnergyBlast
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4879686145108042967, guid: 4a026d5159901e64f8475280c23d78b9,
+  m_Sprite: {fileID: 4123528552258266527, guid: a0be160aaa2455545b505adb087b8180,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -137,3 +138,23 @@ MonoBehaviour:
   rb: {fileID: 1590105081076686565}
   projectileSpeed: 10
   blastDamage: 10
+  attackRange: 10
+--- !u!95 &3094962935383270404
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590105081076686590}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5d8a3c4faf7d41142b8e94d520ca4bcb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
