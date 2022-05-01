@@ -10,7 +10,7 @@ public class EnemyAttack : MonoBehaviour
     public int attackDamage = 5;
     public float attackRange = 0.5f;
 
-    public void Attack()
+    public virtual void Attack()
     {
         //play animations
 

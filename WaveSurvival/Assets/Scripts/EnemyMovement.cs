@@ -7,15 +7,17 @@ public class EnemyMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
 
-    private GameObject playerObject;
-    private Transform player;
-    private PlayerHealth playerH;
-    private EnemyAttack attack;
+    protected GameObject playerObject;
+    protected Transform player;
+    protected PlayerHealth playerH;
+    public EnemyAttack attack;
 
-    Vector2 movement;
-    Vector2 playerPos;
+    protected Vector2 jumpLocation = new Vector2();
 
-    public bool isAttacking = false;
+    protected Vector2 movement;
+    protected Vector2 playerPos;
+
+    [SerializeField] protected bool isAttacking = false;
 
     private void Start()
     {
@@ -40,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
 
-        if (isAttacking)
+        if (isAttacking)//enemy state
         {
             if (playerH.IsDamageable())
                 attack.Attack();
@@ -55,10 +57,34 @@ public class EnemyMovement : MonoBehaviour
             movement = lookDirection / lookDirection.magnitude;
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
-            if(lookDirection.magnitude <= attack.attackRange)
+            if(lookDirection.magnitude <= attack.attackRange )//&& canJump)
             {
                 isAttacking = true;
             }
         }
+
+        /*if (!canJump)
+        {
+            if (Time.time > nextJumpTime)
+                canJump = true;
+        }*/
     }
+
+    /*IEnumerator Jump()
+    {
+        jumpLocation = player.position;
+
+        yield return new WaitForSeconds(1f);
+
+        rb.MovePosition(jumpLocation);
+        isAttacking = false;
+    }
+
+    public void EnemyJump()
+    {
+        StartCoroutine(Jump());
+        canJump = false;
+        nextJumpTime = Time.time + jumpCooldown;
+    }*/
+
 }
