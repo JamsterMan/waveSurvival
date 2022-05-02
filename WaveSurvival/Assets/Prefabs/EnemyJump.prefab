@@ -146,7 +146,7 @@ Animator:
   m_GameObject: {fileID: 3172533242035286298}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1421ae0d29abacf4c8bdc4cf8823b187, type: 2}
+  m_Controller: {fileID: 9100000, guid: 28813878757589d4aaac3f50d756f2ab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -184,9 +184,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 3172533242035286302}
+  attack: {fileID: -448584665676282046}
   isAttacking: 0
+  facePlayer: 1
+  isJumping: 0
   canJump: 1
-  jumpCooldown: 5
+  jumpCooldown: 3
+  jumpSpeed: 20
+  jumpDistance: 8
 --- !u!114 &-448584665676282046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +211,7 @@ MonoBehaviour:
   attackDamage: 5
   attackRange: 5
   movement: {fileID: 4665309541917497196}
+  jumpRange: 5
 --- !u!1 &3172533242373281343
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class EnemyJumpMovement : EnemyMovement
     public float jumpCooldown = 5f;
     private float nextJumpTime = 0f;
     public float jumpSpeed = 20f;
+    public float jumpDistance = 10f;
 
     // Update is called at a fixed framerate
     private void FixedUpdate()
@@ -34,11 +35,11 @@ public class EnemyJumpMovement : EnemyMovement
             lookDirection = jumpLocation - rb.position;
 
             angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = angle;//face the player
+            rb.rotation = angle;//face the jump loctaion
 
             movement = lookDirection / lookDirection.magnitude;
 
-            rb.MovePosition(rb.position + movement * jumpSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + (movement * jumpSpeed * Time.fixedDeltaTime));
 
             if (playerH.IsDamageable())
                 attack.Attack();
@@ -72,7 +73,9 @@ public class EnemyJumpMovement : EnemyMovement
 
     IEnumerator Jump()
     {
-        jumpLocation = player.position;
+        Vector2 lookDirection = (Vector2)player.position - rb.position;
+        jumpLocation = rb.position + (lookDirection.normalized * jumpDistance);//point in space where the jump should end
+        //jumpLocation = player.position;
         canJump = false;
         facePlayer = false;
         nextJumpTime = Time.time + jumpCooldown;
@@ -87,4 +90,9 @@ public class EnemyJumpMovement : EnemyMovement
     {
         StartCoroutine(Jump());
     }
+
+    /*
+     * add function to tell if the jump is finished
+     * based on the lookdirection of the jump
+     */
 }
