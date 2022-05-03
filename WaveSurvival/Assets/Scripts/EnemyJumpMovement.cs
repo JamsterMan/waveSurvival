@@ -12,6 +12,8 @@ public class EnemyJumpMovement : EnemyMovement
     public float jumpSpeed = 20f;
     public float jumpDistance = 10f;
 
+    private Vector2 startJumpDist = new Vector2();
+
     // Update is called at a fixed framerate
     private void FixedUpdate()
     {
@@ -44,7 +46,7 @@ public class EnemyJumpMovement : EnemyMovement
             if (playerH.IsDamageable())
                 attack.Attack();
 
-            if (rb.position.magnitude <= jumpLocation.magnitude + 0.3f && rb.position.magnitude >= jumpLocation.magnitude - 0.3f)
+            if(IsJumpDone(lookDirection))
             {
                 isJumping = false;
                 facePlayer = true;
@@ -75,7 +77,7 @@ public class EnemyJumpMovement : EnemyMovement
     {
         Vector2 lookDirection = (Vector2)player.position - rb.position;
         jumpLocation = rb.position + (lookDirection.normalized * jumpDistance);//point in space where the jump should end
-        //jumpLocation = player.position;
+        startJumpDist = jumpLocation - rb.position;
         canJump = false;
         facePlayer = false;
         nextJumpTime = Time.time + jumpCooldown;
@@ -92,7 +94,24 @@ public class EnemyJumpMovement : EnemyMovement
     }
 
     /*
-     * add function to tell if the jump is finished
-     * based on the lookdirection of the jump
+     * checks if the enemy has jumped far enough
+     * once enemy passes jumpLocation then jump will face the opposite dirction of startJumpDist
      */
+    private bool IsJumpDone(Vector2 jump)
+    {
+        if ((startJumpDist + jump).magnitude > startJumpDist.magnitude)
+            return false;
+        else
+            return true;
+    }
+
+    //stop jump state if wall is hit
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayBounds"))
+        {
+            isJumping = false;
+            facePlayer = true;
+        }
+    }
 }
