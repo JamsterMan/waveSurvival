@@ -108,7 +108,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &3172533242035286289
 BoxCollider2D:
@@ -190,7 +190,7 @@ MonoBehaviour:
   isJumping: 0
   canJump: 1
   jumpCooldown: 3
-  jumpSpeed: 20
+  jumpSpeed: 25
   jumpDistance: 8
 --- !u!114 &-448584665676282046
 MonoBehaviour:
@@ -209,7 +209,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attackDamage: 5
-  attackRange: 5
+  attackRange: 0.5
   movement: {fileID: 4665309541917497196}
   jumpRange: 5
 --- !u!1 &3172533242373281343

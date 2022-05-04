@@ -12,7 +12,21 @@ public class EnemyJumpMovement : EnemyMovement
     public float jumpSpeed = 20f;
     public float jumpDistance = 10f;
 
+    private Collider2D col;
+
     private Vector2 startJumpDist = new Vector2();
+
+    private void Start()
+    {
+        playerObject = GameObject.Find("Player");
+        player = playerObject.transform;
+        playerH = playerObject.GetComponent<PlayerHealth>();
+
+        attack = GetComponent<EnemyAttack>();
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+        col = GetComponent<Collider2D>();
+    }
 
     // Update is called at a fixed framerate
     private void FixedUpdate()
@@ -39,18 +53,21 @@ public class EnemyJumpMovement : EnemyMovement
             angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
             rb.rotation = angle;//face the jump loctaion
 
-            movement = lookDirection / lookDirection.magnitude;
+            if (IsJumpDone(lookDirection))
+            {
+                isJumping = false;
+                facePlayer = true;
+                col.isTrigger = false;
+            }
+
+            if (lookDirection.magnitude != 0)
+                movement = lookDirection / lookDirection.magnitude;
 
             rb.MovePosition(rb.position + (movement * jumpSpeed * Time.fixedDeltaTime));
 
             if (playerH.IsDamageable())
                 attack.Attack();
 
-            if(IsJumpDone(lookDirection))
-            {
-                isJumping = false;
-                facePlayer = true;
-            }
         }
         else
         {
@@ -75,6 +92,7 @@ public class EnemyJumpMovement : EnemyMovement
 
     IEnumerator Jump()
     {
+        col.isTrigger = true;   
         Vector2 lookDirection = (Vector2)player.position - rb.position;
         jumpLocation = rb.position + (lookDirection.normalized * jumpDistance);//point in space where the jump should end
         startJumpDist = jumpLocation - rb.position;
@@ -112,6 +130,7 @@ public class EnemyJumpMovement : EnemyMovement
         {
             isJumping = false;
             facePlayer = true;
+            col.isTrigger = false;
         }
     }
 }
