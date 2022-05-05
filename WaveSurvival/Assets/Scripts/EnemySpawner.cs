@@ -15,6 +15,9 @@ public class EnemySpawner : MonoBehaviour
         NormalizeWeights();
     }
 
+    /*
+     * Spawns a random enemy
+     */
     public void SpawnEnemy()
     {
         //decide enemy to spawn
@@ -25,6 +28,9 @@ public class EnemySpawner : MonoBehaviour
         //update enemy health based of wave number
     }
 
+    /*
+     * Normalize enemy wieght values so that they sum to one
+     */
     private void NormalizeWeights()//makes the weights total to 1.0
     {
         float total = 0;
@@ -38,6 +44,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    /*
+     * use normalized enemy wights to decide what enemy to spawn
+     */
     private int GetEnemyIndex()
     {
         float totalWeight = 0;

@@ -10,6 +10,9 @@ public class EnemyAttack : MonoBehaviour
     public int attackDamage = 5;
     public float attackRange = 0.5f;
 
+    /*
+     * checks if player is in range, then does damage
+     */
     public virtual void Attack()
     {
         //play animations
@@ -22,6 +25,7 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    //draws circle in editor to show attack range
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)

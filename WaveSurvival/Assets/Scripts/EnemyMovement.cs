@@ -62,29 +62,6 @@ public class EnemyMovement : MonoBehaviour
                 isAttacking = true;
             }
         }
-
-        /*if (!canJump)
-        {
-            if (Time.time > nextJumpTime)
-                canJump = true;
-        }*/
     }
-
-    /*IEnumerator Jump()
-    {
-        jumpLocation = player.position;
-
-        yield return new WaitForSeconds(1f);
-
-        rb.MovePosition(jumpLocation);
-        isAttacking = false;
-    }
-
-    public void EnemyJump()
-    {
-        StartCoroutine(Jump());
-        canJump = false;
-        nextJumpTime = Time.time + jumpCooldown;
-    }*/
 
 }

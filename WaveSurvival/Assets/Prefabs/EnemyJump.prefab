@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3172533242035286290}
   - component: {fileID: 3172533242035286301}
   - component: {fileID: 4665309541917497196}
-  - component: {fileID: -448584665676282046}
+  - component: {fileID: 4443009771626224971}
   m_Layer: 8
   m_Name: EnemyJump
   m_TagString: Enemy
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 3172533242035286302}
-  attack: {fileID: -448584665676282046}
+  attack: {fileID: 4443009771626224971}
   isAttacking: 0
   facePlayer: 1
   isJumping: 0
@@ -192,7 +192,8 @@ MonoBehaviour:
   jumpCooldown: 3
   jumpSpeed: 25
   jumpDistance: 8
---- !u!114 &-448584665676282046
+  jumpRange: 5
+--- !u!114 &4443009771626224971
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,7 +202,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3172533242035286298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8de8ba30e6b924ca5d0a31cb14353a, type: 3}
+  m_Script: {fileID: 11500000, guid: cf46bf506abed5b4f904097497fc9a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 3172533242373281342}
@@ -210,8 +211,6 @@ MonoBehaviour:
     m_Bits: 512
   attackDamage: 5
   attackRange: 0.5
-  movement: {fileID: 4665309541917497196}
-  jumpRange: 5
 --- !u!1 &3172533242373281343
 GameObject:
   m_ObjectHideFlags: 0

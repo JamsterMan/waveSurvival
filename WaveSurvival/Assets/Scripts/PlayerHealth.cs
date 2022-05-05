@@ -23,6 +23,10 @@ public class PlayerHealth : MonoBehaviour
         UpdateUIHealth();
     }
 
+    /*
+     * removes health based on damage
+     * updates UI
+     */
     public void DealDamage(int dmg)
     {
         if (Time.time > nextDamageTime)
@@ -46,10 +50,12 @@ public class PlayerHealth : MonoBehaviour
         Time.timeScale = 0;//temp player death
     }
 
+    //iframes
     public bool IsDamageable()
     {
         return Time.time > nextDamageTime;
     }
+
 
     private void UpdateUIHealth()
     {

@@ -45,6 +45,9 @@ public class WaveController : MonoBehaviour
         }
     }
 
+    /*
+     * used to tell if all spawned enemies have died
+     */
     public void EnemyDied()
     {
         enemiesDefeated++;
@@ -60,6 +63,10 @@ public class WaveController : MonoBehaviour
         }
     }
 
+    /*
+     * Sets starting values for a new wave
+     * also updates UI
+     */
     public void WaveStart()
     {
         spawnedEnemyCount = 0;
@@ -76,6 +83,7 @@ public class WaveController : MonoBehaviour
 
     }
 
+    //wave count getter
     public int GetWaveCount()
     {
         return waveCount;

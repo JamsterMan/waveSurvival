@@ -11,6 +11,7 @@ public class EnemyJumpMovement : EnemyMovement
     private float nextJumpTime = 0f;
     public float jumpSpeed = 20f;
     public float jumpDistance = 10f;
+    public float jumpRange = 5f;
 
     private Collider2D col;
 
@@ -31,6 +32,24 @@ public class EnemyJumpMovement : EnemyMovement
     // Update is called at a fixed framerate
     private void FixedUpdate()
     {
+        EnemyStateControl();
+
+        if (!canJump)
+        {
+            if (Time.time > nextJumpTime)
+            {
+                canJump = true;
+                Debug.Log("can jump");
+            }
+        }
+    }
+
+    /*
+     * decide what movement action to take based on state
+     * decides when to switch states
+     */
+    private void EnemyStateControl()
+    {
         Vector2 lookDirection = playerPos - rb.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         if (facePlayer)
@@ -39,9 +58,9 @@ public class EnemyJumpMovement : EnemyMovement
         if (isAttacking)//enemy state
         {
             if (canJump)
-                ((EnemyJumpAttack)attack).Jump();
+                EnemyJump();
 
-            if (lookDirection.magnitude > ((EnemyJumpAttack)attack).jumpRange && canJump)
+            if (lookDirection.magnitude > jumpRange && canJump)
             {
                 isAttacking = false;
             }
@@ -74,24 +93,21 @@ public class EnemyJumpMovement : EnemyMovement
             movement = lookDirection / lookDirection.magnitude;
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
-            if (lookDirection.magnitude <= ((EnemyJumpAttack)attack).jumpRange && canJump)
+            if (lookDirection.magnitude <= jumpRange && canJump)
             {
                 isAttacking = true;
             }
         }
-
-        if (!canJump)
-        {
-            if (Time.time > nextJumpTime)
-            {
-                canJump = true;
-                Debug.Log("can jump");
-            }
-        }
     }
 
+    /*
+     * Sets up variables for the jump attack
+     * waits to add a delay before the jump happens
+     */
     IEnumerator Jump()
     {
+        //play pre-jump animation here
+
         col.isTrigger = true;   
         Vector2 lookDirection = (Vector2)player.position - rb.position;
         jumpLocation = rb.position + (lookDirection.normalized * jumpDistance);//point in space where the jump should end
@@ -106,6 +122,7 @@ public class EnemyJumpMovement : EnemyMovement
         isAttacking = false;
     }
 
+    //starts Jump corutine
     public void EnemyJump()
     {
         StartCoroutine(Jump());

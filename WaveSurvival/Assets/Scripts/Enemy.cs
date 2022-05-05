@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
         currentHealth = startingHealth + extraHealth;
     }
 
+    /*
+     * removes health based on damage
+     */
     public void DealDamage(int dmg)
     {
         animator.SetBool("EnemyHit", true);
@@ -30,10 +33,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    /*
+     * Tells wave controller that enemy died then destroys self
+     */
     void Die()
     {
         //play animation
-        //Debug.Log("enemy Died");
+
         waveControll.EnemyDied();
         Destroy(this.gameObject);
     }

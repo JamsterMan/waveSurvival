@@ -54,6 +54,10 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    /*
+     * plays the animation for a melee attack
+     * sees if any thing was hit, then deal damage
+     */
     void Attack()
     {
         //play animations
@@ -78,16 +82,20 @@ public class PlayerAttack : MonoBehaviour
             
         }
     }
+
+    //fires projectile ia prefab
     void RangedAttack()
     {
         //play animations
         //animator.SetBool("Attack", true);
         
-        GameObject blast = Instantiate(energyBlast, firePoint.position, firePoint.rotation, this.transform);
+        Instantiate(energyBlast, firePoint.position, firePoint.rotation, this.transform);
+
         //decrease ammo
         blastAmmo--;
     }
 
+    //draws circle in editor to show attack range
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
