@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyJumpMovement : EnemyMovement
 {
-    [SerializeField] private bool facePlayer = true;
-    [SerializeField] private bool isJumping = false;
+    enum JumpEnemyState {chase, jumpPrep, jumping };
+
     [SerializeField] private bool canJump = true;
+    [SerializeField] private JumpEnemyState state = JumpEnemyState.chase;
     public float jumpCooldown = 5f;
     private float nextJumpTime = 0f;
     public float jumpSpeed = 20f;
@@ -51,21 +52,19 @@ public class EnemyJumpMovement : EnemyMovement
     private void EnemyStateControl()
     {
         Vector2 lookDirection = playerPos - rb.position;
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-        if (facePlayer)
-            rb.rotation = angle;//face the player
+        float angle;
 
-        if (isAttacking)//enemy state
+        if (state == JumpEnemyState.jumpPrep)//enemy state
         {
             if (canJump)
                 EnemyJump();
 
             if (lookDirection.magnitude > jumpRange && canJump)
             {
-                isAttacking = false;
+                state = JumpEnemyState.chase;
             }
         }
-        else if (isJumping)
+        else if (state == JumpEnemyState.jumping)
         {
             lookDirection = jumpLocation - rb.position;
 
@@ -74,8 +73,7 @@ public class EnemyJumpMovement : EnemyMovement
 
             if (IsJumpDone(lookDirection))
             {
-                isJumping = false;
-                facePlayer = true;
+                state = JumpEnemyState.chase;
                 col.isTrigger = false;
             }
 
@@ -88,14 +86,17 @@ public class EnemyJumpMovement : EnemyMovement
                 attack.Attack();
 
         }
-        else
+        else//state == JumpEnemyState.chase
         {
+            angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+            rb.rotation = angle;//face the player
+
             movement = lookDirection / lookDirection.magnitude;
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
             if (lookDirection.magnitude <= jumpRange && canJump)
             {
-                isAttacking = true;
+                state = JumpEnemyState.jumpPrep;
             }
         }
     }
@@ -108,18 +109,17 @@ public class EnemyJumpMovement : EnemyMovement
     {
         //play pre-jump animation here
 
-        col.isTrigger = true;   
+        col.isTrigger = true;//no collision while jumping  
+        
         Vector2 lookDirection = (Vector2)player.position - rb.position;
         jumpLocation = rb.position + (lookDirection.normalized * jumpDistance);//point in space where the jump should end
         startJumpDist = jumpLocation - rb.position;
         canJump = false;
-        facePlayer = false;
         nextJumpTime = Time.time + jumpCooldown;
 
         yield return new WaitForSeconds(0.5f);
 
-        isJumping = true;
-        isAttacking = false;
+        state = JumpEnemyState.jumping;
     }
 
     //starts Jump corutine
@@ -145,8 +145,7 @@ public class EnemyJumpMovement : EnemyMovement
     {
         if (collision.gameObject.CompareTag("PlayBounds"))
         {
-            isJumping = false;
-            facePlayer = true;
+            state = JumpEnemyState.chase;
             col.isTrigger = false;
         }
     }

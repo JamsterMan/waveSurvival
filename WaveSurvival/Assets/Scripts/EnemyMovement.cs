@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     protected Vector2 movement;
     protected Vector2 playerPos;
 
-    [SerializeField] protected bool isAttacking = false;
+    [SerializeField] private bool isAttacking = false;
 
     private void Start()
     {
