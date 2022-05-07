@@ -40,7 +40,7 @@ public class EnemyJumpMovement : EnemyMovement
             if (Time.time > nextJumpTime)
             {
                 canJump = true;
-                Debug.Log("can jump");
+                //Debug.Log("can jump");
             }
         }
     }
