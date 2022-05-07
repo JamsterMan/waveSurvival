@@ -2235,7 +2235,7 @@ PrefabInstance:
     - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1590105081076686587, guid: 0a8020b2dfe2d514ca1e8c1f66d0e7df,
         type: 3}
