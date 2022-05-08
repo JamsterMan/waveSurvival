@@ -10,6 +10,7 @@ public class EnemyRangedMovement : EnemyMovement
     [SerializeField] private RangedEnemyState state = RangedEnemyState.chase;
 
     public float shootCooldown = 5f;
+    public float backStepSpeed = 1.5f;
     private float nextShootTime = 0f;
 
     private void FixedUpdate()
@@ -26,6 +27,11 @@ public class EnemyRangedMovement : EnemyMovement
                 canShoot = false;
                 nextShootTime = Time.time + shootCooldown;
                 state = RangedEnemyState.reloading;
+                
+            }
+            else
+            {
+                state = RangedEnemyState.reloading;
             }
 
             if (lookDirection.magnitude > attack.attackRange)
@@ -35,6 +41,11 @@ public class EnemyRangedMovement : EnemyMovement
         }
         else if (state == RangedEnemyState.reloading)
         {
+            if(lookDirection.magnitude < attack.attackRange / 2)
+            {
+                movement = (lookDirection / lookDirection.magnitude)*-1;
+                rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            }
             if (Time.time > nextShootTime)
             {
                 canShoot = true;
@@ -52,7 +63,7 @@ public class EnemyRangedMovement : EnemyMovement
         else // state == JumpEnemyState.chase
         {
             movement = lookDirection / lookDirection.magnitude;
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movement * backStepSpeed * Time.fixedDeltaTime);
 
             if (lookDirection.magnitude <= attack.attackRange)
             {

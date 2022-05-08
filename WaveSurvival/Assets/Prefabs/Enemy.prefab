@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   rb: {fileID: 3172533242035286302}
-  isAttacking: 0
+  attack: {fileID: 0}
 --- !u!1 &3172533242373281343
 GameObject:
   m_ObjectHideFlags: 0

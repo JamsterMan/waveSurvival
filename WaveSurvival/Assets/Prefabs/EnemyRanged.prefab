@@ -102,8 +102,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 10000
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -185,9 +185,10 @@ MonoBehaviour:
   moveSpeed: 3
   rb: {fileID: 3172533242035286302}
   attack: {fileID: 4203094805839223846}
-  isAttacking: 0
   canShoot: 1
   state: 0
+  shootCooldown: 2
+  backStepSpeed: 1.5
 --- !u!114 &4203094805839223846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +206,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attackDamage: 5
-  attackRange: 6
+  attackRange: 8
   rangedShot: {fileID: 1590105081076686590, guid: f8610f2e72101a242907fe06674503e4,
     type: 3}
 --- !u!1 &3172533242373281343
@@ -232,7 +233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3172533242373281343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3172533242035286303}
