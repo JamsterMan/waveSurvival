@@ -924,9 +924,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee1b0d9419949c478b0652a53ba9a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
   rb: {fileID: 992184589}
   cam: {fileID: 519420031}
+  moveSpeed: 10
+  dodgeSpeed: 20
+  dodgeCooldown: 0.5
+  dodgeDuration: 0.15
+  isDodging: 0
+  canDodge: 0
 --- !u!114 &992184593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1745,6 +1750,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyRanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3172533242035286298, guid: 975fe4dbb7d5b6d41aec73a5beaa7274,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3172533242035286303, guid: 975fe4dbb7d5b6d41aec73a5beaa7274,
         type: 3}
