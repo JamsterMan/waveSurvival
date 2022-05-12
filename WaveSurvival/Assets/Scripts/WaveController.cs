@@ -8,10 +8,12 @@ public class WaveController : MonoBehaviour
     public EnemySpawner[] spawners = new EnemySpawner[4];
     public GameObject waveStart;
     public Text waveCountText;
+    public PlayerGold playerGold;
 
     public int maxEnemiesSpawn = 20;
     public float spawnRate = 0.5f;
     public float waveBreakTime = 0.2f;
+    public int goldPerWave = 20;
 
     private int spawnedEnemyCount = 0;
     private float nextSpawnTime = 0f;
@@ -54,13 +56,20 @@ public class WaveController : MonoBehaviour
         if(enemiesDefeated == maxEnemiesSpawn)
         {
             //wave ended
-            inWave = false;
-            nextWaveTime = Time.time + waveBreakTime;
-            Debug.Log("Wave ended");
-
-            //enable wave start button
-            waveStart.SetActive(true);
+            WaveEnded();
         }
+    }
+
+    private void WaveEnded()
+    {
+        //wave ended
+        inWave = false;
+        nextWaveTime = Time.time + waveBreakTime;
+        Debug.Log("Wave ended");
+
+        //enable wave start button
+        waveStart.SetActive(true);
+        playerGold.AddGold(goldPerWave);
     }
 
     /*
