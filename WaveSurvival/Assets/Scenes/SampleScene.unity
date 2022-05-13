@@ -278,6 +278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveController: {fileID: 1700725460}
+  playerPos: {fileID: 992184591}
+  safeDistance: 2
+  canBeUsed: 1
 --- !u!1 &196860642
 GameObject:
   m_ObjectHideFlags: 0
