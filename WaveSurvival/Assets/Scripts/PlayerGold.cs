@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerGold : MonoBehaviour
 {
     public int maxGold = 100;
-    private int currentGold = 0;
+    [SerializeField]private int currentGold = 0;
 
     public void AddGold(int amount)
     {
@@ -14,7 +14,7 @@ public class PlayerGold : MonoBehaviour
             currentGold = maxGold;
 
         //Update UI
-        Debug.Log("total Gold: " + currentGold);
+        Debug.Log("Gold Added, total Gold: " + currentGold);
     }
 
     public bool RemoveGold(int amount)
@@ -23,8 +23,15 @@ public class PlayerGold : MonoBehaviour
             return false;
 
         currentGold -= amount;
+
         //Update UI
+        Debug.Log("Gold Removed, total Gold: " + currentGold);
 
         return true;
+    }
+
+    public bool HasEnoughGold(int amount)
+    {
+        return currentGold - amount >= 0;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public readonly int maxHealth = 20;
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
     public Animator animator;
 
     public float IframeRate = 2f;
@@ -41,6 +41,19 @@ public class PlayerHealth : MonoBehaviour
                 Die();
             }
         }
+    }
+
+    public void HealHealth(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+        UpdateUIHealth();
+    }
+
+    public bool IsMaxHealth()
+    {
+        return currentHealth == maxHealth;
     }
 
     void Die()
