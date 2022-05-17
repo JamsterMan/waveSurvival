@@ -580,6 +580,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37599c5481fb8d14fa82382dcc8550ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testPack:
+    healAmount: 7
+  shopItem: {fileID: 664558277}
 --- !u!1 &646536132
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +713,7 @@ MonoBehaviour:
   playerPos: {fileID: 992184591}
   safeDistance: 2
   canBeUsed: 1
-  healAmount: 5
+  shopItemType: 0
 --- !u!4 &664558278
 Transform:
   m_ObjectHideFlags: 0

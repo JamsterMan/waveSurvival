@@ -10,6 +10,9 @@ public class ShopItem : MonoBehaviour
     public float safeDistance = 2f;
     [SerializeField] private bool canBeUsed = true;
 
+    public ItemType shopItemType = ItemType.consumable;
+    public Item shopItem;
+
     private void Update()
     {
         if (!canBeUsed)
@@ -21,31 +24,41 @@ public class ShopItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && canBeUsed)//only start the wave if the player hits the button
+        if (other.gameObject.CompareTag("Player") && canBeUsed && shopItem != null)//only start the wave if the player hits the button
         {
-            PlayerGold pg = other.gameObject.GetComponent<PlayerGold>();
-            PlayerHealth ph = other.gameObject.GetComponent<PlayerHealth>();
-            if (!ph.IsMaxHealth() && pg.HasEnoughGold(itemCost)) {
-                if (HealItem(other.gameObject))//health pack specific
-                {
-                    pg.RemoveGold(itemCost);
-                    canBeUsed = false;
-                }
+            GameObject player = other.gameObject;
+            PlayerGold pg = player.GetComponent<PlayerGold>();
+            if (pg.HasEnoughGold(itemCost) && shopItem.CanPlayerTakeItem(player)) {
+                Debug.Log("Item Bought.");
+                shopItem.OnBuy(player);
+                pg.RemoveGold(itemCost);
+                canBeUsed = false;
             }
         }
+    }
+
+    public ItemType GetShopItemType()
+    {
+        return shopItemType;
+    }
+
+    public void SetShopItem(Item item)
+    {
+        shopItem = item;
+        //set Sprite
     }
 
     /**************************************************
      * above is shop item generalized (all items would need)
      * 
      * Below is health pack specific
-     */
+     *
 
     public int healAmount = 5;
 
     /*
      * returns true if player could be healed, else false
-     */
+     *
     private bool HealItem(GameObject player)
     {
         PlayerHealth ph = player.gameObject.GetComponent<PlayerHealth>();
@@ -59,6 +72,6 @@ public class ShopItem : MonoBehaviour
         {
             return false;
         }
-    }
+    }*/
 
 }

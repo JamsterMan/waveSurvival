@@ -4,6 +4,12 @@ using UnityEngine;
 
 public interface Item
 {
-    public void OnBuy();
-    public ItemType GetItemType();
+    //what to do when item is bought
+    void OnBuy(GameObject player);
+
+    //get the type of the item
+    ItemType GetItemType();
+
+    //returns true if it is possible 
+    bool CanPlayerTakeItem(GameObject player);
 }
