@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopItem : MonoBehaviour
 {
     public int itemCost = 5;
+    public SpriteRenderer spriteRenderer;
 
     public Transform playerPos;
     public float safeDistance = 2f;
@@ -46,6 +47,9 @@ public class ShopItem : MonoBehaviour
     {
         shopItem = item;
         //set Sprite
+        spriteRenderer.sprite = item.GetItemSprite();
+
+        Debug.Log("Item set");
     }
 
     /**************************************************

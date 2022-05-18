@@ -5,8 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class HealthPackItem : Item
 {
-    private ItemType itemType = ItemType.consumable;
+    private readonly ItemType itemType = ItemType.consumable;
     public int healAmount = 5;
+    public Sprite sprite;
 
     public HealthPackItem(ItemType type)
     {
@@ -32,5 +33,10 @@ public class HealthPackItem : Item
     public ItemType GetItemType()
     {
         return itemType;
+    }
+
+    public Sprite GetItemSprite()
+    {
+        return sprite;
     }
 }

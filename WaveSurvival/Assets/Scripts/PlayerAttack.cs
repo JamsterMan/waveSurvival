@@ -95,6 +95,15 @@ public class PlayerAttack : MonoBehaviour
         blastAmmo--;
     }
 
+
+    public void ChangePlayerDamage(int amount)
+    {
+        if (attackDamage + amount > 0)
+            attackDamage += amount;
+        else
+            attackDamage = 1;//minAttack Value
+    }
+
     //draws circle in editor to show attack range
     private void OnDrawGizmosSelected()
     {
@@ -103,4 +112,5 @@ public class PlayerAttack : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
 }
