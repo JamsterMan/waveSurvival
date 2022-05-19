@@ -104,6 +104,14 @@ public class PlayerAttack : MonoBehaviour
             attackDamage = 1;//minAttack Value
     }
 
+    public void ChangePlayerAttackRate(float amount)
+    {
+        if (attackRate + amount > 0)
+            attackRate += amount;
+        else
+            attackRate = 1;//minAttack Value
+    }
+
     //draws circle in editor to show attack range
     private void OnDrawGizmosSelected()
     {

@@ -23,10 +23,10 @@ public class ShopController : MonoBehaviour
             shopItem.SetShopItem(healthPack);
         }
 
-        //Random.Range(0,itemArray.Length)
+        int itemIndex = Random.Range(0, itemArray.Length);
         //shopItem.SetShopItem(item);
         if(itemArray.Length > 0)
-            shopItem2.SetShopItem(itemArray[0]);
+            shopItem2.SetShopItem(itemArray[itemIndex]);
 
     }
 

@@ -13,11 +13,12 @@ public class PassiveItem : Item
     public int attackDamage = 0;
     public float attackRange = 0f;
     public float attackRate = 0f;
+    //public float rangedAttackDamage = 0f;
     public float rangedAttackRate = 0f;
     public int maxBlastAmmo = 0;
     public int chargePerAmmo = 0;
     public int maxHealth = 0;
-    public float moveSpeed;
+    public float moveSpeed = 0;
 
     public bool CanPlayerTakeItem(GameObject player)
     {
@@ -35,6 +36,11 @@ public class PassiveItem : Item
         if(attackDamage != 0)
         {
             pA.ChangePlayerDamage(attackDamage);
+        }
+        if (attackRate != 0)
+        {
+            pA.ChangePlayerAttackRate(attackRate);
+            //adjust animations speed????
         }
     }
 

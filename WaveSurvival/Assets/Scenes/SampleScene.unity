@@ -591,6 +591,24 @@ MonoBehaviour:
     chargePerAmmo: 0
     maxHealth: 0
     moveSpeed: 0
+  - sprite: {fileID: 21300000, guid: 8a00b35482c148d43a6540b54a786e77, type: 3}
+    attackDamage: 0
+    attackRange: 0
+    attackRate: 1
+    rangedAttackRate: 0
+    maxBlastAmmo: 0
+    chargePerAmmo: 0
+    maxHealth: 0
+    moveSpeed: 0
+  - sprite: {fileID: 21300000, guid: 08836bed2aa6db04aaacee4c7daaf88a, type: 3}
+    attackDamage: 15
+    attackRange: 0
+    attackRate: -2
+    rangedAttackRate: 0
+    maxBlastAmmo: 0
+    chargePerAmmo: 0
+    maxHealth: 0
+    moveSpeed: 0
   healthPack:
     healAmount: 5
     sprite: {fileID: 21300000, guid: 803b0ea1890302f41a16b380fdf7c487, type: 3}
