@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public readonly int maxHealth = 20;
+    public int maxHealth = 20;
     [SerializeField] private int currentHealth;
     public Animator animator;
 
@@ -69,9 +69,17 @@ public class PlayerHealth : MonoBehaviour
         return Time.time > nextDamageTime;
     }
 
-
     private void UpdateUIHealth()
     {
         healthBar.value = currentHealth;
+    }
+
+    public void ChangePlayerMaxHealth(int amount)
+    {
+        if (maxHealth + amount > 0 && maxHealth + amount < 40)
+        {//needs a max an min values
+            maxHealth += amount;
+            currentHealth += amount; //adds to current health too
+        }
     }
 }

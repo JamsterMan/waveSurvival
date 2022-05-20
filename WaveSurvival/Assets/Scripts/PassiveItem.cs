@@ -13,8 +13,9 @@ public class PassiveItem : Item
     public int attackDamage = 0;
     public float attackRange = 0f;
     public float attackRate = 0f;
-    //public float rangedAttackDamage = 0f;
+    public float rangedAttackDamage = 0f;
     public float rangedAttackRate = 0f;
+    public float rangedAttackRange = 0f;
     public int maxBlastAmmo = 0;
     public int chargePerAmmo = 0;
     public int maxHealth = 0;
@@ -42,7 +43,39 @@ public class PassiveItem : Item
             pA.ChangePlayerAttackRate(attackRate);
             //adjust animations speed????
         }
-    }
+        if (rangedAttackDamage != 0)
+        {
+            pA.ChangePlayerRangedAttackDamage(attackRate);
+        }
+        if (rangedAttackRate != 0)
+        {
+            pA.ChangePlayerRangedAttackRate(attackRate);
+            //adjust animations speed????
+        }
+        if (rangedAttackRange != 0)
+        {
+            pA.ChangePlayerRangedAttackRange(attackRate);
+        }
+        if (maxBlastAmmo != 0)
+        {
+            pA.ChangePlayerMaxBlastAmmo(maxBlastAmmo);
+        }
+        if (chargePerAmmo != 0)
+        {
+            pA.ChangePlayerChargePerAmmo(chargePerAmmo);
+        }
+        if (maxHealth != 0)
+        {
+            PlayerHealth pH = player.GetComponent<PlayerHealth>();
+            pH.ChangePlayerMaxHealth(maxHealth);
+        }
+        if (moveSpeed != 0)
+        {
+            PlayerMovement pM = player.GetComponent<PlayerMovement>();
+            pM.ChangePlayerMoveSpeed(moveSpeed);
+            //adjust animations speed????
+        }
+}
 
     public Sprite GetItemSprite()
     {

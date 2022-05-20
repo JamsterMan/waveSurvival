@@ -112,8 +112,41 @@ public class PlayerAttack : MonoBehaviour
             attackRate = 1;//minAttack Value
     }
 
-    //draws circle in editor to show attack range
-    private void OnDrawGizmosSelected()
+    public void ChangePlayerRangedAttackDamage(float amount)
+    {
+        //make bellets get damage value from this script first
+        Debug.Log("ChangePlayerRangedAttackDamage: not implemented");
+    }
+
+    public void ChangePlayerRangedAttackRate(float amount)
+    {
+        if (rangedAttackRate + amount > 0)
+            rangedAttackRate += amount;
+        else
+            rangedAttackRate = 1;//minAttack Value
+    }
+    public void ChangePlayerRangedAttackRange(float amount)
+    {
+        //make bellets get damage value from this script first
+        Debug.Log("ChangePlayerRangedAttackRange: not implemented");
+    }
+    public void ChangePlayerMaxBlastAmmo(int amount)
+    {
+        if (maxBlastAmmo + amount > 0)
+            maxBlastAmmo += amount;
+        else
+            maxBlastAmmo = 1;//minAttack Value
+    }
+    public void ChangePlayerChargePerAmmo(int amount)
+    {
+        if (chargePerAmmo + amount > 0)
+            chargePerAmmo += amount;
+        else
+            chargePerAmmo = 1;//minAttack Value
+    }
+
+//draws circle in editor to show attack range
+private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
             return;

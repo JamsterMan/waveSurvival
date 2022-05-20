@@ -83,4 +83,10 @@ public class PlayerMovement : MonoBehaviour
             isDodging = false;
         }
     }
+
+    public void ChangePlayerMoveSpeed(float amount)
+    {
+        if(moveSpeed + amount > 0f && moveSpeed + amount < 20f)//needs a max an min values
+            moveSpeed += amount;
+    }
 }
