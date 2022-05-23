@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class ShopItem : MonoBehaviour
 {
-    public int itemCost = 5;
-    public SpriteRenderer spriteRenderer;
+    public int consumableItemCost = 5;
+    public int passiveItemCost = 15;
+    private int itemCost = 5;
+    public SpriteRenderer shopItemSprite;
+    public SpriteRenderer shopItemPriceSprite;
+    public Sprite consumablePriceSprite;
+    public Sprite passivePriceSprite;
 
     public Transform playerPos;
     public float safeDistance = 2f;
@@ -13,6 +18,20 @@ public class ShopItem : MonoBehaviour
 
     public ItemType shopItemType = ItemType.consumable;
     public Item shopItem;
+
+    private void Start()
+    {
+        if (shopItemType == ItemType.consumable)
+        {
+            itemCost = consumableItemCost;
+            shopItemPriceSprite.sprite = consumablePriceSprite;
+        }
+        else
+        {
+            itemCost = passiveItemCost;
+            shopItemPriceSprite.sprite = passivePriceSprite;
+        }
+    }
 
     private void Update()
     {
@@ -30,10 +49,11 @@ public class ShopItem : MonoBehaviour
             GameObject player = other.gameObject;
             PlayerGold pg = player.GetComponent<PlayerGold>();
             if (pg.HasEnoughGold(itemCost) && shopItem.CanPlayerTakeItem(player)) {
-                Debug.Log("Item Bought.");
                 shopItem.OnBuy(player);
                 pg.RemoveGold(itemCost);
                 canBeUsed = false;
+
+                Debug.Log("Item Bought.");//remove item here
             }
         }
     }
@@ -47,35 +67,9 @@ public class ShopItem : MonoBehaviour
     {
         shopItem = item;
         //set Sprite
-        spriteRenderer.sprite = item.GetItemSprite();
+        shopItemSprite.sprite = item.GetItemSprite();
 
         Debug.Log("Item set");
     }
-
-    /**************************************************
-     * above is shop item generalized (all items would need)
-     * 
-     * Below is health pack specific
-     *
-
-    public int healAmount = 5;
-
-    /*
-     * returns true if player could be healed, else false
-     *
-    private bool HealItem(GameObject player)
-    {
-        PlayerHealth ph = player.gameObject.GetComponent<PlayerHealth>();
-        if (!ph.IsMaxHealth())
-        {
-            Debug.Log("Item Bought");
-            ph.HealHealth(healAmount);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }*/
 
 }

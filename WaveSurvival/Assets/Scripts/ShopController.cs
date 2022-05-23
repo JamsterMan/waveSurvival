@@ -11,28 +11,42 @@ public class ShopController : MonoBehaviour
     //public List<Item> consumableItemList = new List<Item>();
     public HealthPackItem healthPack;
 
-    public ShopItem shopItem;
-    public ShopItem shopItem2;
+    public ShopItem[] shopItems;
 
     // Start is called before the first frame update
     void Start()
     {
         //get/set list of all items
-        if(shopItem.GetShopItemType() == ItemType.consumable)
-        {
-            shopItem.SetShopItem(healthPack);
-        }
 
-        int itemIndex = Random.Range(0, itemArray.Length);
-        //shopItem.SetShopItem(item);
-        if(itemArray.Length > 0)
-            shopItem2.SetShopItem(itemArray[itemIndex]);
+
+        foreach (ShopItem item in shopItems) 
+        {
+            SetShopItem(item);
+        }
 
     }
 
-    // Update is called once per frame
-    void Update()
+    /*
+     *Sets every shop item to a corrisponding item
+     */
+    private void SetShopItem(ShopItem shopItem)
     {
-        
+        if (shopItem.GetShopItemType() == ItemType.consumable)
+        {
+            shopItem.SetShopItem(healthPack);
+        }
+        else
+        {
+            if (itemArray.Length > 0)
+            {
+                int itemIndex = Random.Range(0, itemArray.Length);
+                shopItem.SetShopItem(itemArray[itemIndex]);
+            }
+            else//if there are no items to spawn
+            {
+                shopItem.SetShopItem(healthPack);
+                Debug.Log("no items in list");
+            }
+        }
     }
 }

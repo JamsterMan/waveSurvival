@@ -621,8 +621,10 @@ MonoBehaviour:
   healthPack:
     healAmount: 5
     sprite: {fileID: 21300000, guid: 803b0ea1890302f41a16b380fdf7c487, type: 3}
-  shopItem: {fileID: 664558277}
-  shopItem2: {fileID: 0}
+  shopItems:
+  - {fileID: 664558277}
+  - {fileID: 1402235881}
+  - {fileID: 1621046599}
 --- !u!1 &646536132
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +966,7 @@ MonoBehaviour:
   arenaPos: {x: 0, y: 0, z: -10}
   shopPos: {x: 0, y: -20, z: -10}
   cameraPostion: {fileID: 519420032}
+  playerPostion: {fileID: 992184591}
 --- !u!114 &763953711 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8534626563633999481, guid: 9267a50a85b855f48a9d4828cd2593d3,
@@ -1819,10 +1822,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9067216874707879722, guid: d99feed7d75710346aaa8f82daa4a336,
+        type: 3}
+      propertyPath: shopItemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067216874707879722, guid: d99feed7d75710346aaa8f82daa4a336,
+        type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 992184591}
     - target: {fileID: 9067216874707879723, guid: d99feed7d75710346aaa8f82daa4a336,
         type: 3}
       propertyPath: m_Name
-      value: ShopItem1
+      value: ShopItemR
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d99feed7d75710346aaa8f82daa4a336, type: 3}
@@ -1832,6 +1845,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1402235879}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1402235881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9067216874707879722, guid: d99feed7d75710346aaa8f82daa4a336,
+    type: 3}
+  m_PrefabInstance: {fileID: 1402235879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86452b465b7a49f4588ded7e13657c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1406678841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,10 +2260,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9067216874707879722, guid: d99feed7d75710346aaa8f82daa4a336,
+        type: 3}
+      propertyPath: shopItemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067216874707879722, guid: d99feed7d75710346aaa8f82daa4a336,
+        type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 992184591}
     - target: {fileID: 9067216874707879723, guid: d99feed7d75710346aaa8f82daa4a336,
         type: 3}
       propertyPath: m_Name
-      value: ShopItem1 (1)
+      value: ShopItemL
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d99feed7d75710346aaa8f82daa4a336, type: 3}
@@ -2248,6 +2283,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1621046597}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1621046599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9067216874707879722, guid: d99feed7d75710346aaa8f82daa4a336,
+    type: 3}
+  m_PrefabInstance: {fileID: 1621046597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86452b465b7a49f4588ded7e13657c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1661513746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2978,6 +3025,18 @@ PrefabInstance:
       propertyPath: playerPos
       value: 
       objectReference: {fileID: 992184591}
+    - target: {fileID: 9067216874707879722, guid: d99feed7d75710346aaa8f82daa4a336,
+        type: 3}
+      propertyPath: consumablePriceSprite
+      value: 
+      objectReference: {fileID: 5194477015909326474, guid: 3bc7aeb7d1d4bbb489e8e70bb86d4d73,
+        type: 3}
+    - target: {fileID: 9067216874707879722, guid: d99feed7d75710346aaa8f82daa4a336,
+        type: 3}
+      propertyPath: passivePriceSprite
+      value: 
+      objectReference: {fileID: -243230047141838412, guid: 3bc7aeb7d1d4bbb489e8e70bb86d4d73,
+        type: 3}
     - target: {fileID: 9067216874707879723, guid: d99feed7d75710346aaa8f82daa4a336,
         type: 3}
       propertyPath: m_Name

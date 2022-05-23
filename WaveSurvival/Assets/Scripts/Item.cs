@@ -13,5 +13,6 @@ public interface Item
     //returns true if it is possible 
     bool CanPlayerTakeItem(GameObject player);
 
+    //returns the sprite of the item
     Sprite GetItemSprite();
 }
