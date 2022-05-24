@@ -967,6 +967,7 @@ MonoBehaviour:
   shopPos: {x: 0, y: -20, z: -10}
   cameraPostion: {fileID: 519420032}
   playerPostion: {fileID: 992184591}
+  cameraMoveSpeed: 15
 --- !u!114 &763953711 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8534626563633999481, guid: 9267a50a85b855f48a9d4828cd2593d3,
@@ -1775,7 +1776,7 @@ PrefabInstance:
     - target: {fileID: 9067216874707879721, guid: d99feed7d75710346aaa8f82daa4a336,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9067216874707879721, guid: d99feed7d75710346aaa8f82daa4a336,
         type: 3}
@@ -2213,7 +2214,7 @@ PrefabInstance:
     - target: {fileID: 9067216874707879721, guid: d99feed7d75710346aaa8f82daa4a336,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9067216874707879721, guid: d99feed7d75710346aaa8f82daa4a336,
         type: 3}
@@ -2973,7 +2974,7 @@ PrefabInstance:
     - target: {fileID: 9067216874707879721, guid: d99feed7d75710346aaa8f82daa4a336,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9067216874707879721, guid: d99feed7d75710346aaa8f82daa4a336,
         type: 3}

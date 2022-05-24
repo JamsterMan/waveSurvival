@@ -10,6 +10,16 @@ public class CameraMove : MonoBehaviour
     public Transform playerPostion;
     private bool isInShop = false;
 
+    public float cameraMoveSpeed = 5f;
+    private float startTime = 0f;
+    private Vector3 targetPos;
+    private bool moveCam = false;
+
+    private void Start()
+    {
+        targetPos = arenaPos;
+    }
+
     /*
      * moves the camera between the shop and the arena
      */
@@ -17,15 +27,31 @@ public class CameraMove : MonoBehaviour
     {
         if (isInShop)
         {
-            cameraPostion.position = arenaPos;//switch to smooth camera movement
+            //cameraPostion.position = arenaPos;//switch to smooth camera movement
+            targetPos = arenaPos;
             playerPostion.position += new Vector3(0, 1, 0);
+            moveCam = true;
         }
         else
         {
-            cameraPostion.position = shopPos;
+            //cameraPostion.position = shopPos;
+            targetPos = shopPos;
             playerPostion.position += new Vector3(0, -1, 0);
+            moveCam = true;
         }
         isInShop = !isInShop;
+    }
+
+    private void Update()
+    {
+        if (moveCam)
+        {
+            cameraPostion.position = Vector3.Lerp(cameraPostion.position, targetPos, cameraMoveSpeed * Time.deltaTime);
+            if(cameraPostion.position == targetPos)
+            {
+                moveCam = false;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
