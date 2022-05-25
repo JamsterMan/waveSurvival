@@ -18,12 +18,7 @@ public class ShopController : MonoBehaviour
     {
         //get/set list of all items
 
-
-        foreach (ShopItem item in shopItems) 
-        {
-            SetShopItem(item);
-        }
-
+        ShopRefresh();
     }
 
     /*
@@ -47,6 +42,17 @@ public class ShopController : MonoBehaviour
                 shopItem.SetShopItem(healthPack);
                 Debug.Log("no items in list");
             }
+        }
+    }
+
+    /*
+     * sets all shop item pedestals to new items
+     */
+    public void ShopRefresh()
+    {
+        foreach (ShopItem item in shopItems)
+        {
+            SetShopItem(item);
         }
     }
 }

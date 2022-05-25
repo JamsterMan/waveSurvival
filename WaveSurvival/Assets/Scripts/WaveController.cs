@@ -10,6 +10,9 @@ public class WaveController : MonoBehaviour
     public Text waveCountText;
     public PlayerGold playerGold;
 
+    public GameObject shopDoorClose;
+    public ShopController shopControl;
+
     public int maxEnemiesSpawn = 20;
     public float spawnRate = 0.5f;
     public float waveBreakTime = 0.2f;
@@ -67,6 +70,9 @@ public class WaveController : MonoBehaviour
         nextWaveTime = Time.time + waveBreakTime;
         Debug.Log("Wave ended");
 
+        shopDoorClose.SetActive(false);//open door to the shop
+        shopControl.ShopRefresh();
+
         //enable wave start button
         waveStart.SetActive(true);
         playerGold.AddGold(goldPerWave);
@@ -83,6 +89,9 @@ public class WaveController : MonoBehaviour
 
         inWave = true;
         Debug.Log("new wave started");
+
+        shopDoorClose.SetActive(true);//close door to the shop
+
         nextWaveTime = Time.time + waveBreakTime;
 
         //increase wave count
@@ -97,5 +106,6 @@ public class WaveController : MonoBehaviour
     {
         return waveCount;
     }
+
 
 }

@@ -54,6 +54,7 @@ public class ShopItem : MonoBehaviour
                 canBeUsed = false;
 
                 Debug.Log("Item Bought.");//remove item here
+                gameObject.SetActive(false);
             }
         }
     }
@@ -68,8 +69,8 @@ public class ShopItem : MonoBehaviour
         shopItem = item;
         //set Sprite
         shopItemSprite.sprite = item.GetItemSprite();
-
-        Debug.Log("Item set");
+        //set item active
+        gameObject.SetActive(true);
     }
 
 }

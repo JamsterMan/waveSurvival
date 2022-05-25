@@ -154,6 +154,7 @@ Transform:
   - {fileID: 196860643}
   - {fileID: 1490545016}
   - {fileID: 729524240}
+  - {fileID: 1078658503}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -913,7 +914,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -26947489423941907, guid: 4a026d5159901e64f8475280c23d78b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1024,7 +1025,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -9.990366}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1035,7 +1036,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 22.035309}
+  m_Size: {x: 1, y: 42.01604}
   m_EdgeRadius: 0
 --- !u!1 &802347935
 GameObject:
@@ -1380,6 +1381,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxGold: 100
   currentGold: 0
+--- !u!1 &1078658502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1078658503}
+  - component: {fileID: 1078658504}
+  m_Layer: 0
+  m_Name: Top (1)
+  m_TagString: PlayBounds
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1078658503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078658502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -30, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 133223875}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1078658504
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078658502}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 37.56593, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &1091299719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1943,7 +2001,7 @@ GameObject:
   - component: {fileID: 1408618249}
   - component: {fileID: 1408618250}
   m_Layer: 0
-  m_Name: BottomRight
+  m_Name: MiddleRight
   m_TagString: PlayBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2111,7 +2169,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -10.03001}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2122,7 +2180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 22.035309}
+  m_Size: {x: 1, y: 42.09533}
   m_EdgeRadius: 0
 --- !u!1001 &1569734603
 PrefabInstance:
@@ -2381,7 +2439,7 @@ GameObject:
   - component: {fileID: 1679863910}
   - component: {fileID: 1679863911}
   m_Layer: 0
-  m_Name: BottomLeft
+  m_Name: MiddleLeft
   m_TagString: PlayBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2483,6 +2541,8 @@ MonoBehaviour:
   waveStart: {fileID: 172719936}
   waveCountText: {fileID: 1424789244}
   playerGold: {fileID: 992184597}
+  shopDoorClose: {fileID: 802347935}
+  shopControl: {fileID: 582041094}
   maxEnemiesSpawn: 4
   spawnRate: 1
   waveBreakTime: 0.5
