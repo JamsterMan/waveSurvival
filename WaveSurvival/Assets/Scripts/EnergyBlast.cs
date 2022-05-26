@@ -8,6 +8,8 @@ public class EnergyBlast : MonoBehaviour
     public float projectileSpeed = 10f;
     public int blastDamage = 10;
     public float attackRange = 10f;
+    public Animator animator;
+    private bool canDamage = true;
 
     private Vector2 startPos;
 
@@ -24,16 +26,27 @@ public class EnergyBlast : MonoBehaviour
         Vector2 distance = new Vector2(transform.position.x, transform.position.y) - startPos;
         if(distance.magnitude > attackRange)
         {
-            Destroy(this.gameObject);
+            animator.SetBool("BlastEnd", true);
+            canDamage = false;
+            rb.velocity = new Vector2(0,0);//stop movement
+            //Destroy(this.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && canDamage)
         {
             collision.gameObject.GetComponent<Enemy>().DealDamage(blastDamage);
-            Destroy(this.gameObject);
+
+            animator.SetBool("BlastEnd", true);
+            canDamage = false;
+            //Destroy(this.gameObject);
         }
+    }
+
+    public void EnergyBlastEnd()
+    {
+        Destroy(this.gameObject);
     }
 }

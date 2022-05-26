@@ -139,6 +139,7 @@ MonoBehaviour:
   projectileSpeed: 10
   blastDamage: 10
   attackRange: 10
+  animator: {fileID: 3094962935383270404}
 --- !u!95 &3094962935383270404
 Animator:
   serializedVersion: 3

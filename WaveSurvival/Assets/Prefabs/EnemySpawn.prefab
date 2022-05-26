@@ -49,10 +49,12 @@ MonoBehaviour:
   - {fileID: 2477742756198489460, guid: d08aaa172e81b1a4e94013c45ac81440, type: 3}
   - {fileID: 2812246563251610923, guid: b8f5b15109c79044bbf238bc2421603c, type: 3}
   - {fileID: 3172533242035286298, guid: fbca65e74bd22d844ab7b38e7c61f722, type: 3}
+  - {fileID: 3172533242035286298, guid: 975fe4dbb7d5b6d41aec73a5beaa7274, type: 3}
   enemyWeights:
   - 10
   - 3
   - 3
+  - 1
   - 1
   enemyWeightsNormalized: []
 --- !u!1 &8534626564870426722
