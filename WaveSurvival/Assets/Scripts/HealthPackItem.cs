@@ -9,12 +9,7 @@ public class HealthPackItem : Item
     public int healAmount = 5;
     public Sprite sprite;
 
-    public HealthPackItem(ItemType type)
-    {
-        itemType = type;
-    }
-
-    public void OnBuy(GameObject player)
+    public void OnPickUp(GameObject player)
     {
         PlayerHealth ph = player.GetComponent<PlayerHealth>();
         if (!ph.IsMaxHealth())

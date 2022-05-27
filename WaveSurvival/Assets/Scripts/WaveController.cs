@@ -28,6 +28,8 @@ public class WaveController : MonoBehaviour
 
     private bool inWave = false;
 
+    [Range(0, 1)] public float enemyDropRate = 0.5f;
+
     // Update is called once per frame
     void Update()
     {
@@ -107,5 +109,8 @@ public class WaveController : MonoBehaviour
         return waveCount;
     }
 
-
+    public float GetEnemyDropRate()
+    {
+        return enemyDropRate;
+    }
 }

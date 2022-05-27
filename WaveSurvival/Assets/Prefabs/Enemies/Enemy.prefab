@@ -170,6 +170,9 @@ MonoBehaviour:
   startingHealth: 10
   difficultyHealthIncrease: 5
   animator: {fileID: 3172533242035286290}
+  enemyDrop: {fileID: 8412626439470405974, guid: 70d20c2370c9be04ea3f628ef04b9904,
+    type: 3}
+  dropRate: 0.5
 --- !u!114 &3172533242035286288
 MonoBehaviour:
   m_ObjectHideFlags: 0

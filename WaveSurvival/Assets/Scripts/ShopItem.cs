@@ -49,7 +49,7 @@ public class ShopItem : MonoBehaviour
             GameObject player = other.gameObject;
             PlayerGold pg = player.GetComponent<PlayerGold>();
             if (pg.HasEnoughGold(itemCost) && shopItem.CanPlayerTakeItem(player)) {
-                shopItem.OnBuy(player);
+                shopItem.OnPickUp(player);
                 pg.RemoveGold(itemCost);
                 canBeUsed = false;
 

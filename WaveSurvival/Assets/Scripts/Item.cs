@@ -5,7 +5,7 @@ using UnityEngine;
 public interface Item
 {
     //what to do when item is bought
-    void OnBuy(GameObject player);
+    void OnPickUp(GameObject player);
 
     //get the type of the item
     ItemType GetItemType();

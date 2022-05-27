@@ -170,6 +170,9 @@ MonoBehaviour:
   startingHealth: 10
   difficultyHealthIncrease: 5
   animator: {fileID: 3172533242035286290}
+  enemyDrop: {fileID: 8412626439470405974, guid: 70d20c2370c9be04ea3f628ef04b9904,
+    type: 3}
+  dropRate: 0.5
 --- !u!114 &4665309541917497196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,10 +188,8 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 3172533242035286302}
   attack: {fileID: 4443009771626224971}
-  isAttacking: 0
-  facePlayer: 1
-  isJumping: 0
   canJump: 1
+  state: 0
   jumpCooldown: 3
   jumpSpeed: 25
   jumpDistance: 8

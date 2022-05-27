@@ -11,7 +11,6 @@ public class CameraMove : MonoBehaviour
     private bool isInShop = false;
 
     public float cameraMoveSpeed = 5f;
-    private float startTime = 0f;
     private Vector3 targetPos;
     private bool moveCam = false;
 
@@ -27,14 +26,12 @@ public class CameraMove : MonoBehaviour
     {
         if (isInShop)
         {
-            //cameraPostion.position = arenaPos;//switch to smooth camera movement
             targetPos = arenaPos;
             playerPostion.position += new Vector3(0, 1, 0);
             moveCam = true;
         }
         else
         {
-            //cameraPostion.position = shopPos;
             targetPos = shopPos;
             playerPostion.position += new Vector3(0, -1, 0);
             moveCam = true;

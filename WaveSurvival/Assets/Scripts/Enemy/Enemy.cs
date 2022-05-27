@@ -9,13 +9,14 @@ public class Enemy : MonoBehaviour
     private int waveNumIncrease = 5;
     private int currentHealth;
     public Animator animator;
-    private WaveController waveControll;
+    public PickUps enemyDrop;
+    private WaveController waveControl;
 
     // Start is called before the first frame update
     void Start()
     {
-        waveControll = GameObject.Find("WaveController").GetComponent<WaveController>();
-        int extraHealth = (waveControll.GetWaveCount() / waveNumIncrease) * difficultyHealthIncrease;//extra health gained ever waveNumIncrease number of waves
+        waveControl = GameObject.Find("WaveController").GetComponent<WaveController>();
+        int extraHealth = (waveControl.GetWaveCount() / waveNumIncrease) * difficultyHealthIncrease;//extra health gained ever waveNumIncrease number of waves
         currentHealth = startingHealth + extraHealth;
     }
 
@@ -40,8 +41,19 @@ public class Enemy : MonoBehaviour
     {
         //play animation
 
-        waveControll.EnemyDied();
+        EnemyDrop();
+
+        waveControl.EnemyDied();
         Destroy(this.gameObject);
+    }
+
+    //Decides if Enemy drops a consumable
+    private void EnemyDrop()
+    {
+        if(Random.Range(0f, 1f) <= waveControl.GetEnemyDropRate())
+        {
+            Instantiate(enemyDrop, transform.position, Quaternion.identity);
+        }
     }
 
 }

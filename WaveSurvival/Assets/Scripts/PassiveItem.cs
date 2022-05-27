@@ -31,7 +31,7 @@ public class PassiveItem : Item
         return itemType;
     }
 
-    public void OnBuy(GameObject player)
+    public void OnPickUp(GameObject player)
     {
         PlayerAttack pA= player.GetComponent<PlayerAttack>();
         if(attackDamage != 0)
