@@ -5,12 +5,21 @@ using UnityEngine;
 public class PickUps : MonoBehaviour
 {
     private Item item;
+    public SpriteRenderer spriteRenderer;
+
+    public Sprite healthPack;
+    public Sprite coin;
 
     private void Start()
     {
         //choose which item here
+        int itemId = Random.Range(0, 2);
+        if (itemId == 0)
+            item = new CoinItem(coin);
+        else
+            item = new HealthPackItem(healthPack);
 
-        item = new HealthPackItem();
+        spriteRenderer.sprite = item.GetItemSprite();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

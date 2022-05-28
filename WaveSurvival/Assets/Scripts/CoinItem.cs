@@ -2,32 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class HealthPackItem : Item
+public class CoinItem : Item
 {
     private readonly ItemType itemType = ItemType.consumable;
-    public int healAmount = 5;
+    public int coinValue = 5;
     public Sprite sprite;
 
-    public HealthPackItem(Sprite hPack)
+    public CoinItem(Sprite coin)
     {
-        sprite = hPack;
+        sprite = coin;
     }
 
     public void OnPickUp(GameObject player)
     {
-        PlayerHealth ph = player.GetComponent<PlayerHealth>();
-        if (!ph.IsMaxHealth())
-        {
-            Debug.Log("Player Healed");
-            ph.HealHealth(healAmount);
-        }
+        PlayerGold pGold = player.GetComponent<PlayerGold>();
+        pGold.AddGold(coinValue);
     }
 
     public bool CanPlayerTakeItem(GameObject player)
     {
-        PlayerHealth ph = player.GetComponent<PlayerHealth>();
-        return !ph.IsMaxHealth();
+        return true;// can always pick up coins
     }
 
     public ItemType GetItemType()

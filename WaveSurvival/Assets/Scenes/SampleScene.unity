@@ -1505,6 +1505,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawnBR
       objectReference: {fileID: 0}
+    - target: {fileID: 8534626564870426720, guid: 9267a50a85b855f48a9d4828cd2593d3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9267a50a85b855f48a9d4828cd2593d3, type: 3}
 --- !u!4 &1091299720 stripped
@@ -2249,6 +2254,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawnTL
       objectReference: {fileID: 0}
+    - target: {fileID: 8534626564870426720, guid: 9267a50a85b855f48a9d4828cd2593d3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9267a50a85b855f48a9d4828cd2593d3, type: 3}
 --- !u!4 &1569734604 stripped
@@ -2547,7 +2557,7 @@ MonoBehaviour:
   spawnRate: 1
   waveBreakTime: 0.5
   goldPerWave: 5
-  enemyDropRate: 0.2
+  enemyDropRate: 0.5
 --- !u!1 &1715564767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,6 +2746,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemySpawnBL
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534626564870426720, guid: 9267a50a85b855f48a9d4828cd2593d3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9267a50a85b855f48a9d4828cd2593d3, type: 3}
@@ -3017,6 +3032,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemySpawnTR
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534626564870426720, guid: 9267a50a85b855f48a9d4828cd2593d3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9267a50a85b855f48a9d4828cd2593d3, type: 3}

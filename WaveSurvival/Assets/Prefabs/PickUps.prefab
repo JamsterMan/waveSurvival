@@ -121,3 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2fb4deee087a2c4f955bacdca894698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 8412626439470405968}
+  healthPack: {fileID: 21300000, guid: 803b0ea1890302f41a16b380fdf7c487, type: 3}
+  coin: {fileID: -8006567193951291799, guid: b6f62964347caa5418d53893869be9c2, type: 3}
