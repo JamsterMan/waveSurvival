@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 5194477015909326474, guid: 3bc7aeb7d1d4bbb489e8e70bb86d4d73,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -131,6 +131,7 @@ MonoBehaviour:
   consumableItemCost: 5
   passiveItemCost: 15
   shopItemSprite: {fileID: 9067216875571417694}
+  shopItemSpriteBorder: {fileID: 0}
   shopItemPriceSprite: {fileID: 7194635765598570777}
   consumablePriceSprite: {fileID: 5194477015909326474, guid: 3bc7aeb7d1d4bbb489e8e70bb86d4d73,
     type: 3}
@@ -235,8 +236,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 803b0ea1890302f41a16b380fdf7c487, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 59cc3dc487f9b7f4ca5196b9aff7f05d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
