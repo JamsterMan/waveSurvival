@@ -8,6 +8,8 @@ public class CameraMove : MonoBehaviour
     public Vector3 shopPos;
     public Transform cameraPostion;
     public Transform playerPostion;
+    public Transform playerArenaAdjust;
+    public Transform playerShopAdjust;
     private bool isInShop = false;
 
     public float cameraMoveSpeed = 5f;
@@ -27,13 +29,13 @@ public class CameraMove : MonoBehaviour
         if (isInShop)
         {
             targetPos = arenaPos;
-            playerPostion.position += new Vector3(0, 1, 0);
+            playerPostion.position = playerArenaAdjust.position;
             moveCam = true;
         }
         else
         {
             targetPos = shopPos;
-            playerPostion.position += new Vector3(0, -1, 0);
+            playerPostion.position = playerShopAdjust.position;
             moveCam = true;
         }
         isInShop = !isInShop;
