@@ -5,21 +5,25 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 20;
+    private readonly int maxHearts = 10;
+    public int health = 8;
     [SerializeField] private int currentHealth;
+
     public Animator animator;
+
+    public HeartsAreaUI heartsUI;
+    private readonly int healthPerHeart = 2;
 
     public float IframeRate = 2f;
     float nextDamageTime = 0f;
 
-    private Slider healthBar;
-
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar = GameObject.Find("PlayerHealth").GetComponent<Slider>();
-        healthBar.maxValue = maxHealth;
+        currentHealth = health;
+
+        heartsUI.SetUpHeartsUI(health/healthPerHeart);
+
         UpdateUIHealth();
     }
 
@@ -46,14 +50,14 @@ public class PlayerHealth : MonoBehaviour
     public void HealHealth(int amount)
     {
         currentHealth += amount;
-        if (currentHealth > maxHealth)
-            currentHealth = maxHealth;
+        if (currentHealth > health)
+            currentHealth = health;
         UpdateUIHealth();
     }
 
     public bool IsMaxHealth()
     {
-        return currentHealth == maxHealth;
+        return currentHealth == health;
     }
 
     void Die()
@@ -71,15 +75,45 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateUIHealth()
     {
-        healthBar.value = currentHealth;
+        //healthBar.value = currentHealth;
+        heartsUI.UpdateHearts(currentHealth, health, healthPerHeart);
     }
 
+    //amount -> number of hearts to add
     public void ChangePlayerMaxHealth(int amount)
     {
-        if (maxHealth + amount > 0 && maxHealth + amount < 40)
-        {//needs a max an min values
-            maxHealth += amount;
-            currentHealth += amount; //adds to current health too
+        if(amount > 0)//add hearts
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                if(health <= maxHearts*healthPerHeart)
+                {
+                    heartsUI.AddHeart();
+                    health += healthPerHeart;
+                    currentHealth += healthPerHeart;
+
+                }
+            }
+        }
+        else if(amount < 0)//remove hearts
+        {
+            for (int i = 0; i < -amount; i++)
+            {
+                if (health > 0)
+                {
+                    heartsUI.RemoveHeart();
+                    health -= healthPerHeart;
+                    if (health <= 0)
+                        Die();
+
+                    if (currentHealth > health)
+                        currentHealth = health;
+                }
+                else
+                {
+                    Die();
+                }
+            }
         }
     }
 }

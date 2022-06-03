@@ -156,6 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1590105081076686565}
   projectileSpeed: 10
-  blastDamage: 4
+  blastDamage: 1
   attackRange: 10
   animator: {fileID: 3094962935383270404}
