@@ -14,11 +14,12 @@ public class HeartsAreaUI : MonoBehaviour
 
     public void SetUpHeartsUI(int numHearts)
     {
-        numOfHearts = numHearts;
+        //numOfHearts = numHearts;
 
         for (int i = 0; i < numHearts; i++)
         {
-            hearts[i] = Instantiate(heartPrefab,gameObject.transform).GetComponent<HeartUI>();
+            //hearts[i] = Instantiate(heartPrefab,gameObject.transform).GetComponent<HeartUI>();
+            AddHeart();
         }
     }
 

@@ -70,7 +70,6 @@ public class WaveController : MonoBehaviour
         //wave ended
         inWave = false;
         nextWaveTime = Time.time + waveBreakTime;
-        Debug.Log("Wave ended");
 
         shopDoorClose.SetActive(false);//open door to the shop
         shopControl.ShopRefresh();
@@ -90,7 +89,6 @@ public class WaveController : MonoBehaviour
         enemiesDefeated = 0;
 
         inWave = true;
-        Debug.Log("new wave started");
 
         shopDoorClose.SetActive(true);//close door to the shop
 
