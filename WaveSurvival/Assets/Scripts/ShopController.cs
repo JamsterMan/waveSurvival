@@ -9,13 +9,15 @@ public class ShopController : MonoBehaviour
     public PassiveItem[] itemArray;
 
     //public List<Item> consumableItemList = new List<Item>();
-    public HealthPackItem healthPack;
+    public Sprite healthPackSprite;
+    private HealthPackItem healthPack;
 
     public ShopItem[] shopItems;
 
     // Start is called before the first frame update
     void Start()
     {
+        healthPack = new HealthPackItem(healthPackSprite);
         //get/set list of all items
 
         ShopRefresh();

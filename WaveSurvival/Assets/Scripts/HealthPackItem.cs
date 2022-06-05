@@ -6,12 +6,13 @@ using UnityEngine;
 public class HealthPackItem : Item
 {
     private readonly ItemType itemType = ItemType.consumable;
-    public int healAmount = 5;
+    private readonly int healAmount = 2;
     public Sprite sprite;
 
     public HealthPackItem(Sprite hPack)
     {
         sprite = hPack;
+        healAmount = 2;
     }
 
     public void OnPickUp(GameObject player)
@@ -19,7 +20,6 @@ public class HealthPackItem : Item
         PlayerHealth ph = player.GetComponent<PlayerHealth>();
         if (!ph.IsMaxHealth())
         {
-            Debug.Log("Player Healed");
             ph.HealHealth(healAmount);
         }
     }
