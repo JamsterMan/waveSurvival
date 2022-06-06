@@ -10,9 +10,9 @@ public class EnemyMovement : MonoBehaviour
     protected GameObject playerObject;
     protected Transform player;
     protected PlayerHealth playerH;
-    public EnemyAttack attack;
+    protected EnemyAttack attack;
 
-    protected Vector2 jumpLocation = new Vector2();
+    public Transform temp;
 
     protected Vector2 movement;
     protected Vector2 playerPos;
@@ -41,6 +41,7 @@ public class EnemyMovement : MonoBehaviour
         Vector2 lookDirection = playerPos - rb.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
+        temp.rotation = Quaternion.identity;
 
         if (isAttacking)//enemy state
         {

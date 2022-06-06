@@ -14,6 +14,7 @@ public class EnemyJumpMovement : EnemyMovement
     public float jumpDistance = 10f;
     public float jumpRange = 5f;
 
+    private Vector2 jumpLocation = new Vector2();
     private Collider2D col;
 
     private Vector2 startJumpDist = new Vector2();
