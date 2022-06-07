@@ -6,13 +6,12 @@ public class EnemyMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
+    public SpriteRenderer enemySpriteRenderer;
 
     protected GameObject playerObject;
     protected Transform player;
     protected PlayerHealth playerH;
     protected EnemyAttack attack;
-
-    public Transform temp;
 
     protected Vector2 movement;
     protected Vector2 playerPos;
@@ -39,9 +38,7 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 lookDirection = playerPos - rb.position;
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
-        temp.rotation = Quaternion.identity;
+        LookAtPlayer(lookDirection.x);
 
         if (isAttacking)//enemy state
         {
@@ -62,6 +59,18 @@ public class EnemyMovement : MonoBehaviour
             {
                 isAttacking = true;
             }
+        }
+    }
+
+    private void LookAtPlayer(float xdir)
+    {
+        if(xdir >= 0)//face to the right
+        {
+            enemySpriteRenderer.flipX = false;
+        }
+        else if(xdir < 0)//face to the left
+        {
+            enemySpriteRenderer.flipX = true;
         }
     }
 

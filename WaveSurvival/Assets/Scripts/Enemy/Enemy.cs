@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour
     private int currentHealth;
     public Animator animator;
     public PickUps enemyDrop;
+    public Slider healthSlider;
     private WaveController waveControl;
 
     // Start is called before the first frame update
@@ -18,6 +20,9 @@ public class Enemy : MonoBehaviour
         waveControl = GameObject.Find("WaveController").GetComponent<WaveController>();
         int extraHealth = (waveControl.GetWaveCount() / waveNumIncrease) * difficultyHealthIncrease;//extra health gained ever waveNumIncrease number of waves
         currentHealth = startingHealth + extraHealth;
+
+        healthSlider.maxValue = currentHealth;
+        healthSlider.value = currentHealth;
     }
 
     /*
@@ -32,6 +37,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        UpdateUI();
     }
 
     /*
@@ -54,6 +60,11 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(enemyDrop, transform.position, Quaternion.identity);
         }
+    }
+
+    private void UpdateUI()
+    {
+        healthSlider.value = currentHealth;
     }
 
 }
