@@ -303,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3172533242035286298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.71, y: -0.043338105, z: 0}
+  m_LocalPosition: {x: 7.71, y: 0.026, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6681026190793271757}
@@ -408,7 +408,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3119586, y: 0.74104095}
+  m_Size: {x: 1.2690594, y: 0.6709536}
   m_EdgeRadius: 0
 --- !u!95 &3172533242035286290
 Animator:
@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 3172533242373281342}
+  attackPointSize: {x: 1.2, y: 0.6}
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -504,7 +505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3172533242373281343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: -0.094, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3172533242035286303}

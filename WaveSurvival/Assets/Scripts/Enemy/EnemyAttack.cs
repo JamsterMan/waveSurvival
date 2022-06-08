@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public Transform attackPoint;
+    public Vector2 attackPointSize;
     public LayerMask PlayerLayer;
 
-    public int attackDamage = 5;
+    public int attackDamage = 1;
     public float attackRange = 0.5f;
 
     /*
@@ -17,11 +18,15 @@ public class EnemyAttack : MonoBehaviour
     {
         //play animations
 
-        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, PlayerLayer);
+        Collider2D[] hitPlayers = Physics2D.OverlapBoxAll(attackPoint.position, attackPointSize, 0, PlayerLayer);//0 -> angle
+
+        if (hitPlayers == null)
+            return;
 
         foreach (Collider2D hitPlayer in hitPlayers)
         {
-            hitPlayer.GetComponent<PlayerHealth>().DealDamage(attackDamage);
+            if (hitPlayer != null)
+                hitPlayer.GetComponent<PlayerHealth>().DealDamage(attackDamage);
         }
     }
 
@@ -31,6 +36,6 @@ public class EnemyAttack : MonoBehaviour
         if (attackPoint == null)
             return;
 
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.DrawWireCube(attackPoint.position,attackPointSize);
     }
 }

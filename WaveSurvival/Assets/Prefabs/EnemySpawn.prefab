@@ -51,11 +51,11 @@ MonoBehaviour:
   - {fileID: 3172533242035286298, guid: fbca65e74bd22d844ab7b38e7c61f722, type: 3}
   - {fileID: 3172533242035286298, guid: 975fe4dbb7d5b6d41aec73a5beaa7274, type: 3}
   enemyWeights:
-  - 1
-  - 1
-  - 1
   - 10
-  - 10
+  - 4
+  - 4
+  - 0
+  - 0
   enemyWeightsNormalized: []
 --- !u!1 &8534626564870426722
 GameObject:
