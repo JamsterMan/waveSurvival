@@ -53,7 +53,7 @@ public class EnemyJumpMovement : EnemyMovement
     private void EnemyStateControl()
     {
         Vector2 lookDirection = playerPos - rb.position;
-        float angle;
+        //float angle;
 
         if (state == JumpEnemyState.jumpPrep)//enemy state
         {
@@ -69,8 +69,8 @@ public class EnemyJumpMovement : EnemyMovement
         {
             lookDirection = jumpLocation - rb.position;
 
-            angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = angle;//face the jump loctaion
+            //angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+            //rb.rotation = angle;//face the jump loctaion
 
             if (IsJumpDone(lookDirection))
             {
@@ -89,8 +89,8 @@ public class EnemyJumpMovement : EnemyMovement
         }
         else//state == JumpEnemyState.chase
         {
-            angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = angle;//face the player
+            //angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+            //rb.rotation = angle;//face the player
 
             movement = lookDirection / lookDirection.magnitude;
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);

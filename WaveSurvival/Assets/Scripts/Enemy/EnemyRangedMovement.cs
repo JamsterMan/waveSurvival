@@ -17,7 +17,8 @@ public class EnemyRangedMovement : EnemyMovement
     {
         Vector2 lookDirection = playerPos - rb.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
+        //rb.rotation = angle;
+        attack.attackPoint.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         if (state == RangedEnemyState.shooting)//enemy state
         {
@@ -49,7 +50,6 @@ public class EnemyRangedMovement : EnemyMovement
             if (Time.time > nextShootTime)
             {
                 canShoot = true;
-                Debug.Log("can Shoot");
                 if (lookDirection.magnitude > attack.attackRange)
                 {
                     state = RangedEnemyState.chase;
