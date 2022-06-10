@@ -116,4 +116,11 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
+
+    public void DodgeIframes()
+    {
+        //base off of dodge duration
+
+        nextDamageTime = Time.time + IframeRate;
+    }
 }

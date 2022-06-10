@@ -23,7 +23,7 @@ public class EnemyRangedMovement : EnemyMovement
         if (state == RangedEnemyState.shooting)//enemy state
         {
             if (canShoot)
-            {//playerH.IsDamageable())
+            {
                 attack.Attack();//start shooting
                 canShoot = false;
                 nextShootTime = Time.time + shootCooldown;
@@ -69,6 +69,11 @@ public class EnemyRangedMovement : EnemyMovement
             {
                 state = RangedEnemyState.shooting;
             }
+        }
+
+        if(lookDirection.magnitude <= 1.3)
+        {
+            ((EnemyRangedAttack)attack).ContactAttack();
         }
     }
 }

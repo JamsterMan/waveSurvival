@@ -4894,6 +4894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 992184589}
   cam: {fileID: 519420031}
+  pHealth: {fileID: 992184595}
   moveSpeed: 10
   dodgeSpeed: 20
   dodgeCooldown: 0.5

@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     public Camera cam;
+    public PlayerHealth pHealth;
     public float moveSpeed = 5f;
     public float dodgeSpeed = 10f;
     public float dodgeCooldown = 3f;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
             nextDodgetime = Time.time + dodgeCooldown;
             isDodging = true;
             canDodge = false;
+            pHealth.DodgeIframes();
 
             if (movement.magnitude < 0.05)
             {
