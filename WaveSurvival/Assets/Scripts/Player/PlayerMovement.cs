@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public MenuScript pauseMenu;
     public Rigidbody2D rb;
     public Camera cam;
     public PlayerHealth pHealth;
@@ -25,36 +25,39 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDodging)
+        if (!pauseMenu.IsGamePaused())
         {
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
-
-        }
-
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-        if (Input.GetKeyDown(KeyCode.Space) && canDodge)//dodge
-        {
-            dodgeFinishTime = Time.time + dodgeDuration;
-            nextDodgetime = Time.time + dodgeCooldown;
-            isDodging = true;
-            canDodge = false;
-            pHealth.DodgeIframes();
-
-            if (movement.magnitude < 0.05)
+            if (!isDodging)
             {
-                Vector2 dodgeDirection = rb.position - mousePos;
-                movement = dodgeDirection.normalized;
+                movement.x = Input.GetAxisRaw("Horizontal");
+                movement.y = Input.GetAxisRaw("Vertical");
 
             }
-        }
 
-        //cooldown for dodge
-        if (!canDodge && Time.time > nextDodgetime)
-        {
-            canDodge = true;
-            Debug.Log("player can dodge");
+            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+            if (Input.GetKeyDown(KeyCode.Space) && canDodge)//dodge
+            {
+                dodgeFinishTime = Time.time + dodgeDuration;
+                nextDodgetime = Time.time + dodgeCooldown;
+                isDodging = true;
+                canDodge = false;
+                pHealth.DodgeIframes();
+
+                if (movement.magnitude < 0.05)
+                {
+                    Vector2 dodgeDirection = rb.position - mousePos;
+                    movement = dodgeDirection.normalized;
+
+                }
+            }
+
+            //cooldown for dodge
+            if (!canDodge && Time.time > nextDodgetime)
+            {
+                canDodge = true;
+                Debug.Log("player can dodge");
+            }
         }
     }
 

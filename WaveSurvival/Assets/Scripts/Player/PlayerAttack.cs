@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPoint;
     public LayerMask enemyLayer;
     public Animator animator;
+    public MenuScript pauseMenu;
 
     public int attackDamage = 5;
     public float attackRange = 0.5f;
@@ -34,23 +35,26 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextAttackTime)
+        if (!pauseMenu.IsGamePaused())
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Time.time > nextAttackTime)
             {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
-        }
-        if (Time.time > nextRangedAttackTime)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                //check if ammo is not 0
-                if (blastAmmo > 0)
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    RangedAttack();
-                    nextAttackTime = Time.time + 1f / rangedAttackRate;
+                    Attack();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                }
+            }
+            if (Time.time > nextRangedAttackTime)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    //check if ammo is not 0
+                    if (blastAmmo > 0)
+                    {
+                        RangedAttack();
+                        nextAttackTime = Time.time + 1f / rangedAttackRate;
+                    }
                 }
             }
         }
