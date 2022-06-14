@@ -71,8 +71,8 @@ public class WaveController : MonoBehaviour
         inWave = false;
         nextWaveTime = Time.time + waveBreakTime;
 
-        shopDoorClose.SetActive(false);//open door to the shop
-        shopControl.ShopRefresh();
+        if(waveCount%5 == 0)
+            SetShop(false);
 
         //enable wave start button
         waveStart.SetActive(true);
@@ -90,7 +90,7 @@ public class WaveController : MonoBehaviour
 
         inWave = true;
 
-        shopDoorClose.SetActive(true);//close door to the shop
+        SetShop(true);
 
         nextWaveTime = Time.time + waveBreakTime;
 
@@ -99,6 +99,13 @@ public class WaveController : MonoBehaviour
         //update wave count UI
         waveCountText.text = "" + waveCount;
 
+    }
+
+    private void SetShop(bool val)
+    {
+        shopDoorClose.SetActive(val);//open/close door to the shop
+        if(!val)
+            shopControl.ShopRefresh();
     }
 
     //wave count getter

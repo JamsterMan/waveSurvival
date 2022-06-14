@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
                 nextDodgetime = Time.time + dodgeCooldown;
                 isDodging = true;
                 canDodge = false;
-                pHealth.DodgeIframes();
+                pHealth.DodgeIframes(dodgeFinishTime);
 
                 if (movement.magnitude < 0.05)
                 {

@@ -117,10 +117,10 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void DodgeIframes()
+    public void DodgeIframes(float time)
     {
         //base off of dodge duration
 
-        nextDamageTime = Time.time + IframeRate;
+        nextDamageTime = time;
     }
 }

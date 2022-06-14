@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public int startingHealth = 10;
     public int difficultyHealthIncrease = 5;
-    private int waveNumIncrease = 5;
+    private readonly int waveNumIncrease = 20;
     private int currentHealth;
     public Animator animator;
     public PickUps enemyDrop;
