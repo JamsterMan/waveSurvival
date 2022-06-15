@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -65,7 +66,11 @@ public class PlayerHealth : MonoBehaviour
     {
         //play animation
         Debug.Log("Game Over");
-        Time.timeScale = 0;//temp player death
+        SceneManager.LoadScene(0);//temp player death
+        /*
+         * add menu/stats for death
+         * then have buttons to return to menu or play again
+         */
     }
 
     //iframes
