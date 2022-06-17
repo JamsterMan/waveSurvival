@@ -5,11 +5,11 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     public Vector3 arenaPos;
-    public Vector3 shopPos;
+    public Vector3 roomPos;
     public Transform cameraPostion;
     public Transform playerPostion;
     public Transform playerArenaAdjust;
-    public Transform playerShopAdjust;
+    public Transform playerRoomAdjust;
     private bool isInShop = false;
 
     public float cameraMoveSpeed = 5f;
@@ -34,8 +34,8 @@ public class CameraMove : MonoBehaviour
         }
         else
         {
-            targetPos = shopPos;
-            playerPostion.position = playerShopAdjust.position;
+            targetPos = roomPos;
+            playerPostion.position = playerRoomAdjust.position;
             moveCam = true;
         }
         isInShop = !isInShop;

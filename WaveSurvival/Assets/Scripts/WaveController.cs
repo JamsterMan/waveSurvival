@@ -12,6 +12,7 @@ public class WaveController : MonoBehaviour
 
     public GameObject shopDoorClose;
     public ShopController shopControl;
+    public GameObject bossDoorClose;
 
     public int maxEnemiesSpawn = 20;
     public float spawnRate = 0.5f;
@@ -71,8 +72,11 @@ public class WaveController : MonoBehaviour
         inWave = false;
         nextWaveTime = Time.time + waveBreakTime;
 
-        if(waveCount%5 == 0)
-            SetShop(false);
+        if(waveCount%5 == 0)//shop every 5 waves
+            SetShop(true);
+
+        if (waveCount % 20 == 0)//boss every 20 waves
+            SetBossRoom(true);
 
         //enable wave start button
         waveStart.SetActive(true);
@@ -90,7 +94,8 @@ public class WaveController : MonoBehaviour
 
         inWave = true;
 
-        SetShop(true);
+        SetShop(false);
+        SetBossRoom(false);
 
         nextWaveTime = Time.time + waveBreakTime;
 
@@ -103,9 +108,18 @@ public class WaveController : MonoBehaviour
 
     private void SetShop(bool val)
     {
-        shopDoorClose.SetActive(val);//open/close door to the shop
-        if(!val)
+        shopDoorClose.SetActive(!val);//open/close door to the shop
+        if(val)
             shopControl.ShopRefresh();
+    }
+
+    private void SetBossRoom(bool val)
+    {
+        bossDoorClose.SetActive(!val);//if val == true then door closed->set unactive
+
+        //remove wave start button untill boss is beaten
+        
+
     }
 
     //wave count getter
