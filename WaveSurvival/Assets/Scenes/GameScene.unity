@@ -1779,7 +1779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &808337586
 Transform:
   m_ObjectHideFlags: 0
@@ -7022,7 +7022,7 @@ Transform:
   - {fileID: 1245247489}
   - {fileID: 1300858700}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &992184592
 MonoBehaviour:
@@ -8736,7 +8736,7 @@ Transform:
   - {fileID: 1091299720}
   - {fileID: 1865596702}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1700725460
 MonoBehaviour:
@@ -8760,6 +8760,7 @@ MonoBehaviour:
   playerGold: {fileID: 992184597}
   shopDoorClose: {fileID: 802347935}
   shopControl: {fileID: 582041094}
+  bossDoorClose: {fileID: 0}
   maxEnemiesSpawn: 4
   spawnRate: 1
   waveBreakTime: 0.5
