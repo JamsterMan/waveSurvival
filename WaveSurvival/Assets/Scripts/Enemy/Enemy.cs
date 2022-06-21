@@ -7,12 +7,12 @@ public class Enemy : MonoBehaviour
 {
     public int startingHealth = 10;
     public int difficultyHealthIncrease = 5;
-    private readonly int waveNumIncrease = 20;
-    private int currentHealth;
+    protected readonly int waveNumIncrease = 20;
+    protected int currentHealth;
     public Animator animator;
     public PickUps enemyDrop;
     public Slider healthSlider;
-    private WaveController waveControl;
+    protected WaveController waveControl;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     /*
      * removes health based on damage
      */
-    public void DealDamage(int dmg)
+    public virtual void DealDamage(int dmg)
     {
         animator.SetBool("EnemyHit", true);
 
@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
     /*
      * Tells wave controller that enemy died then destroys self
      */
-    void Die()
+    protected virtual void Die()
     {
         //play animation
 
@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
     }
 
     //Decides if Enemy drops a consumable
-    private void EnemyDrop()
+    protected void EnemyDrop()
     {
         if(Random.Range(0f, 1f) <= waveControl.GetEnemyDropRate())
         {
@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void UpdateUI()
+    protected void UpdateUI()
     {
         healthSlider.value = currentHealth;
     }

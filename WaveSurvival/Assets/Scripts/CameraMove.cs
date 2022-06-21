@@ -10,7 +10,8 @@ public class CameraMove : MonoBehaviour
     public Transform playerPostion;
     public Transform playerArenaAdjust;
     public Transform playerRoomAdjust;
-    private bool isInShop = false;
+    public bool isBossRoom = false;
+    private bool isInRoom = false;
 
     public float cameraMoveSpeed = 5f;
     private Vector3 targetPos;
@@ -26,7 +27,7 @@ public class CameraMove : MonoBehaviour
      */
     private void MoveCameraPosition()
     {
-        if (isInShop)
+        if (isInRoom)
         {
             targetPos = arenaPos;
             playerPostion.position = playerArenaAdjust.position;
@@ -38,7 +39,7 @@ public class CameraMove : MonoBehaviour
             playerPostion.position = playerRoomAdjust.position;
             moveCam = true;
         }
-        isInShop = !isInShop;
+        isInRoom = !isInRoom;
     }
 
     private void Update()

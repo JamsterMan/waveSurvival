@@ -66,6 +66,17 @@ public class WaveController : MonoBehaviour
         }
     }
 
+    /*
+     * used to tell if all spawned enemies have died
+     */
+    public void BossDied()
+    {
+        //open boss door
+
+        //activate wave button 
+
+    }
+
     private void WaveEnded()
     {
         //wave ended
