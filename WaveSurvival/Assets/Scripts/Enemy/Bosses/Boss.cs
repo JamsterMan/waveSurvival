@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : Enemy
 {
@@ -9,6 +8,7 @@ public class Boss : Enemy
     void Start()
     {
         waveControl = GameObject.Find("WaveController").GetComponent<WaveController>();
+        healthSlider = GameObject.Find("BossHealth").GetComponent<Slider>();
         //int extraHealth = (waveControl.GetWaveCount() / waveNumIncrease) * difficultyHealthIncrease;//extra health gained ever waveNumIncrease number of waves
         currentHealth = startingHealth;// + extraHealth;
 
