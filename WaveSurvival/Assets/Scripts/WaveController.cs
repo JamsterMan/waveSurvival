@@ -79,7 +79,7 @@ public class WaveController : MonoBehaviour
         //open boss door
         bossDoorClose.SetActive(false);
         //activate wave button 
-
+        waveStart.SetActive(true);
     }
 
     private void WaveEnded()
@@ -93,9 +93,9 @@ public class WaveController : MonoBehaviour
 
         if (waveCount % bossWaves == 0)//boss every 20 waves
             SetBossRoom(true);
+        else//enable wave start button unless it is boss time
+            waveStart.SetActive(true);
 
-        //enable wave start button
-        waveStart.SetActive(true);
         playerGold.AddGold(goldPerWave);
     }
 
