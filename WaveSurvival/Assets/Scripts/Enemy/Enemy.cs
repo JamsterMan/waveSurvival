@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 {
     public int startingHealth = 10;
     public int difficultyHealthIncrease = 5;
-    protected readonly int waveNumIncrease = 20;
     protected int currentHealth;
     public Animator animator;
     public PickUps enemyDrop;
@@ -18,7 +17,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         waveControl = GameObject.Find("WaveController").GetComponent<WaveController>();
-        int extraHealth = (waveControl.GetWaveCount() / waveNumIncrease) * difficultyHealthIncrease;//extra health gained ever waveNumIncrease number of waves
+        int extraHealth = (waveControl.GetBossCount() +1) * difficultyHealthIncrease;//extra health gained after every boss
         currentHealth = startingHealth + extraHealth;
 
         healthSlider.maxValue = currentHealth;

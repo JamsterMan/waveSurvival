@@ -8,6 +8,9 @@ public class BossRoom : MonoBehaviour
     public Slider bossHealth;
     public bool newBoss = false;
 
+    /*
+     * sets up the boss room for the boss fight
+     */
     private void StartBossFight()
     {
         bossDoorClose.gameObject.SetActive(true);
@@ -25,6 +28,9 @@ public class BossRoom : MonoBehaviour
         }
     }
 
+    /*
+     * sets up script to summon a boss fight when the boss door is entered
+     */
     public void NewBossSpawn()
     {
         newBoss = true;

@@ -30,6 +30,7 @@ public class WaveController : MonoBehaviour
     private float nextWaveTime = 2f;
 
     private int waveCount = 0;
+    private int bossCount = 0;
     private int enemiesDefeated = 0;
 
     private bool inWave = false;
@@ -80,8 +81,12 @@ public class WaveController : MonoBehaviour
         bossDoorClose.SetActive(false);
         //activate wave button 
         waveStart.SetActive(true);
+        bossCount++;
     }
 
+    /*
+     * sets up arena and doors for inbetween waves
+     */
     private void WaveEnded()
     {
         //wave ended
@@ -122,21 +127,22 @@ public class WaveController : MonoBehaviour
 
     }
 
+    //sets up the shop room with new items
     private void SetShop(bool val)
     {
-        shopDoorClose.SetActive(!val);//open/close door to the shop
+        shopDoorClose.SetActive(!val);//open/close door to the shop, since this is for the door close sprite it needs the opposite bool of val
         if(val)
             shopControl.ShopRefresh();
     }
 
+    //sets up the boss room for a boss fight
     private void SetBossRoom(bool val)
     {
-        bossDoorClose.SetActive(!val);//if val == true then door closed->set unactive
+        bossDoorClose.SetActive(!val);//if val == true then door closed->set unactive, since this is for the door close sprite it needs the opposite bool of val
 
         if (val)
         {
             bossRoom.NewBossSpawn();
-            //remove wave button
         }
 
     }
@@ -145,6 +151,10 @@ public class WaveController : MonoBehaviour
     public int GetWaveCount()
     {
         return waveCount;
+    }
+    public int GetBossCount()
+    {
+        return bossCount;
     }
 
     public float GetEnemyDropRate()

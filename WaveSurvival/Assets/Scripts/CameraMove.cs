@@ -23,7 +23,7 @@ public class CameraMove : MonoBehaviour
     }
 
     /*
-     * moves the camera between the shop and the arena
+     * moves the camera between the main arena and the room (boss room or shop room)
      */
     private void MoveCameraPosition()
     {
