@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WaveController : MonoBehaviour
@@ -34,6 +35,7 @@ public class WaveController : MonoBehaviour
     private int enemiesDefeated = 0;
 
     private bool inWave = false;
+    private bool finalBossFight = false;
 
     [Range(0, 1)] public float enemyDropRate = 0.5f;
 
@@ -77,11 +79,20 @@ public class WaveController : MonoBehaviour
      */
     public void BossDied()
     {
-        //open boss door
-        bossDoorClose.SetActive(false);
-        //activate wave button 
-        waveStart.SetActive(true);
-        bossCount++;
+        if (!finalBossFight)
+        {
+            //open boss door
+            bossDoorClose.SetActive(false);
+            //activate wave button 
+            waveStart.SetActive(true);
+            bossCount++;
+        }
+        else
+        {
+            //game won
+            //add end game screen / animation
+            SceneManager.LoadScene(0);
+        }
     }
 
     /*
@@ -100,6 +111,9 @@ public class WaveController : MonoBehaviour
             SetBossRoom(true);
         else//enable wave start button unless it is boss time
             waveStart.SetActive(true);
+
+        if (waveCount % 100 == 0)
+            finalBossFight = true;
 
         playerGold.AddGold(goldPerWave);
     }
