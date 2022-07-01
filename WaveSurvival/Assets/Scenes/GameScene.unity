@@ -1291,7 +1291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &666015679
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1810,11 +1810,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 578700970926345464, guid: 55b21bc14ba28bc4897ff43743755833,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 578700970926345466, guid: 55b21bc14ba28bc4897ff43743755833,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1870,26 +1865,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 578700970926345471, guid: 55b21bc14ba28bc4897ff43743755833,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 666015680}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55b21bc14ba28bc4897ff43743755833, type: 3}
---- !u!1 &767836487 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 578700970926345464, guid: 55b21bc14ba28bc4897ff43743755833,
-    type: 3}
-  m_PrefabInstance: {fileID: 767836486}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &767836488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767836487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8c4a82c2db44d74daef3fd76111f9e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &772081034
 GameObject:
   m_ObjectHideFlags: 0
@@ -8302,8 +8284,8 @@ RectTransform:
   m_Father: {fileID: 734086822}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.75, y: 0}
-  m_AnchorMax: {x: 0.75, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10026,7 +10008,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.75, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

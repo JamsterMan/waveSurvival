@@ -170,8 +170,8 @@ public class PlayerAttack : MonoBehaviour
             chargePerAmmo = 1;//minAttack Value
     }
 
-//draws circle in editor to show attack range
-private void OnDrawGizmosSelected()
+    //draws circle in editor to show attack range
+    private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
             return;
