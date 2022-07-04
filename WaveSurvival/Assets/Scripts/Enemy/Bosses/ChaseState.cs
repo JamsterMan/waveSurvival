@@ -19,7 +19,7 @@ public class ChaseState : State
 
     public override void FixedUpdateState(BossState boss)
     {
-        Vector2 lookDirection = playerPos - rb.position;
+        Vector2 lookDirection = playerPos - boss.rb.position;
 
         movement = lookDirection / lookDirection.magnitude;
         boss.rb.MovePosition(boss.rb.position + movement * boss.moveSpeed * Time.fixedDeltaTime);
