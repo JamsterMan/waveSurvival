@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BossState : MonoBehaviour
 {
-    private enum State {chase, attack, charge, p2Chase, p2Attack, p2Charge}
-    [SerializeField]private State bossState = State.chase;
 
     public float moveSpeed = 5f;
     public float attackRange = 1f;
@@ -18,24 +16,37 @@ public class BossState : MonoBehaviour
     protected Vector2 movement;
     protected Vector2 playerPos;
 
+    private State currState;
+    public ChaseState chaseState = new ChaseState();
+
     private void Start()
     {
-        playerObject = GameObject.Find("Player");
+        currState = chaseState;
+
+        currState.EnterState(this);
+
+        /*playerObject = GameObject.Find("Player");
         player = playerObject.transform;
         playerH = playerObject.GetComponent<PlayerHealth>();
 
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());*/
     }
 
     // Update is called once per frame
     void Update()
     {
         playerPos = player.position;
+
+        //currState.UpdateState(this);
     }
+
+
 
     private void FixedUpdate()
     {
-        Vector2 lookDirection = playerPos - rb.position;
+        currState.FixedUpdateState(this);
+
+        /*Vector2 lookDirection = playerPos - rb.position;
 
         if (bossState == State.chase)//chase player
         {
@@ -73,12 +84,18 @@ public class BossState : MonoBehaviour
         }*/
     }
 
+    public void SwitchState(State state)
+    {
+        currState = state;
+        currState.EnterState(this);
+    }
+
 
 
     //draws circle in editor to show attack range
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
 
         Gizmos.DrawWireSphere(this.transform.position, attackRange);
-    }
+    }*/
 }
