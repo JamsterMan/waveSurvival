@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Boss : Enemy
 {
-
+    public BossState bossState;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +24,12 @@ public class Boss : Enemy
         //animator.SetBool("EnemyHit", true);
 
         currentHealth -= dmg;
+        if (!bossState.phase2 && ((float)currentHealth)/((float)startingHealth) < 0.51f)
+            bossState.SetPhase2();
+
         if (currentHealth <= 0)
-        {
             Die();
-        }
+
         UpdateUI();
     }
 
@@ -41,6 +43,11 @@ public class Boss : Enemy
 
         healthSlider.gameObject.SetActive(false);
         Destroy(this.gameObject);
+    }
+
+    public bool IsInPhase2() 
+    {
+        return startingHealth - currentHealth < 0.51;
     }
 
 }

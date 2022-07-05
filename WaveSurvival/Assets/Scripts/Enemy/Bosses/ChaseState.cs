@@ -20,9 +20,13 @@ public class ChaseState : State
     public override void FixedUpdateState(BossState boss)
     {
         Vector2 lookDirection = playerPos - boss.rb.position;
-
+        float speed = boss.moveSpeed;
         movement = lookDirection / lookDirection.magnitude;
-        boss.rb.MovePosition(boss.rb.position + movement * boss.moveSpeed * Time.fixedDeltaTime);
+
+        if (boss.phase2)
+            speed = boss.p2MoveSpeed;
+
+        boss.rb.MovePosition(boss.rb.position + movement * speed * Time.fixedDeltaTime);
 
         if (lookDirection.magnitude <= boss.attackRange)//&& canJump)
         {

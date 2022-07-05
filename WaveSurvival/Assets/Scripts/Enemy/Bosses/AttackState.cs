@@ -19,9 +19,33 @@ public class AttackState : State
     public override void FixedUpdateState(BossState boss)
     {
         Vector2 lookDirection = playerPos - boss.rb.position;
+
+        if (boss.playerH.IsDamageable())
+            Attack(boss);
+
         if (lookDirection.magnitude > boss.attackRange)//&& canJump)
         {
             boss.SwitchState(boss.chaseState);
+        }
+    }
+
+    private void Attack(BossState boss)
+    {
+        //play animations
+
+        Collider2D[] hitPlayers = Physics2D.OverlapBoxAll(boss.attackPoint.position, boss.attackPointSize, 0, boss.PlayerLayer);//0 -> angle
+
+        if (hitPlayers == null)
+            return;
+
+        int damage = boss.attackDamage;
+        if (boss.phase2)
+            damage = boss.p2AttackDamage;
+
+        foreach (Collider2D hitPlayer in hitPlayers)
+        {
+            if (hitPlayer != null)
+                hitPlayer.GetComponent<PlayerHealth>().DealDamage(damage);
         }
     }
 }

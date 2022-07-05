@@ -6,18 +6,26 @@ public class BossState : MonoBehaviour
 {
 
     public float moveSpeed = 5f;
+    public float p2MoveSpeed = 7f;
     public float attackRange = 1f;
+    public int attackDamage = 1;
+    public int p2AttackDamage = 2;
+    public bool phase2 = false;
+
+    public Transform attackPoint;
+    public Vector2 attackPointSize;
+    public LayerMask PlayerLayer;
+
+    //public Boss bossHealth;
     public Rigidbody2D rb;
 
     protected GameObject playerObject;
     public Transform player;
-    protected PlayerHealth playerH;
+    public PlayerHealth playerH;
 
     private State currState;
     public ChaseState chaseState = new ChaseState();
     public AttackState attackState = new AttackState();
-    public P2ChaseState p2ChaseState = new P2ChaseState();
-    public P2AttackState p2AttackState = new P2AttackState();
 
     private void Start()
     {
@@ -35,52 +43,12 @@ public class BossState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         currState.UpdateState(this);
     }
-
-
 
     private void FixedUpdate()
     {
         currState.FixedUpdateState(this);
-
-        /*Vector2 lookDirection = playerPos - rb.position;
-
-        if (bossState == State.chase)//chase player
-        {
-            movement = lookDirection / lookDirection.magnitude;
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
-            if (lookDirection.magnitude <= attackRange)//&& canJump)
-            {
-                bossState = State.attack;
-            }
-        }
-        else if (bossState == State.attack)//attack the player
-        {
-            
-            if (lookDirection.magnitude > attackRange)
-            {
-                bossState = State.chase;
-            }
-        }
-        else if (bossState == State.charge)//charge at the player
-        {
-
-        }
-        /*else if (bossState == State.p2Chase)//faster chase
-        {
-
-        }
-        else if (bossState == State.p2Attack)//stronger attack
-        {
-
-        }
-        else if (bossState == State.p2Charge)//faster charge
-        {
-
-        }*/
     }
 
     public void SwitchState(State state)
@@ -89,12 +57,19 @@ public class BossState : MonoBehaviour
         currState.EnterState(this);
     }
 
+    public void SetPhase2()
+    {
+        phase2 = true;
+    }
 
 
     //draws circle in editor to show attack range
-    /*private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
+        if (attackPoint == null)
+            return;
 
-        Gizmos.DrawWireSphere(this.transform.position, attackRange);
-    }*/
+        Gizmos.DrawWireCube(attackPoint.position, attackPointSize);
+        //Gizmos.DrawWireSphere(this.transform.position, attackRange);
+    }
 }
