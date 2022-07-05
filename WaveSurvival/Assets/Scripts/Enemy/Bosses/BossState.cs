@@ -10,14 +10,14 @@ public class BossState : MonoBehaviour
     public Rigidbody2D rb;
 
     protected GameObject playerObject;
-    protected Transform player;
+    public Transform player;
     protected PlayerHealth playerH;
-
-    protected Vector2 movement;
-    protected Vector2 playerPos;
 
     private State currState;
     public ChaseState chaseState = new ChaseState();
+    public AttackState attackState = new AttackState();
+    public P2ChaseState p2ChaseState = new P2ChaseState();
+    public P2AttackState p2AttackState = new P2AttackState();
 
     private void Start()
     {
@@ -25,19 +25,18 @@ public class BossState : MonoBehaviour
 
         currState.EnterState(this);
 
-        /*playerObject = GameObject.Find("Player");
+        playerObject = GameObject.Find("Player");
         player = playerObject.transform;
         playerH = playerObject.GetComponent<PlayerHealth>();
 
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());*/
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerPos = player.position;
 
-        //currState.UpdateState(this);
+        currState.UpdateState(this);
     }
 
 
