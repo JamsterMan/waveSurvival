@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    protected Vector2 playerPos;
+    private Vector2 playerPos;
 
     public override void EnterState(BossState boss)
     {
@@ -23,7 +23,7 @@ public class AttackState : State
         if (boss.playerH.IsDamageable())
             Attack(boss);
 
-        if (lookDirection.magnitude > boss.attackRange)//&& canJump)
+        if (lookDirection.magnitude > boss.attackRange)
         {
             boss.SwitchState(boss.chaseState);
         }

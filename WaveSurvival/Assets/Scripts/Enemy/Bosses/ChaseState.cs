@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ChaseState : State
 {
-    protected Vector2 movement;
-    protected Vector2 playerPos;
+    private Vector2 movement;
+    private Vector2 playerPos;
 
     public override void EnterState(BossState boss)
     {
@@ -28,7 +28,12 @@ public class ChaseState : State
 
         boss.rb.MovePosition(boss.rb.position + movement * speed * Time.fixedDeltaTime);
 
-        if (lookDirection.magnitude <= boss.attackRange)//&& canJump)
+        if (lookDirection.magnitude > boss.minRangedAttackRange && Random.Range(0,81) == 1)
+        {
+            boss.SwitchState(boss.rangedAttackState);
+        }
+
+        if (lookDirection.magnitude <= boss.attackRange)
         {
             boss.SwitchState(boss.attackState);
         }

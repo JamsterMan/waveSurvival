@@ -165,11 +165,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c4a82c2db44d74daef3fd76111f9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  p2MoveSpeed: 7
+  moveSpeed: 4
+  p2MoveSpeed: 6
   attackRange: 1
   attackDamage: 1
   p2AttackDamage: 2
+  minRangedAttackRange: 4.5
   phase2: 0
   attackPoint: {fileID: 7911321331180479819}
   attackPointSize: {x: 2.4, y: 1.2}
@@ -179,6 +180,8 @@ MonoBehaviour:
   rb: {fileID: 578700970926345468}
   player: {fileID: 0}
   playerH: {fileID: 0}
+  rangedShot: {fileID: 1590105081076686590, guid: f8610f2e72101a242907fe06674503e4,
+    type: 3}
 --- !u!1 &3530208881045948632
 GameObject:
   m_ObjectHideFlags: 0

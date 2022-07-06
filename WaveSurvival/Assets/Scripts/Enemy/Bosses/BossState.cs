@@ -10,6 +10,7 @@ public class BossState : MonoBehaviour
     public float attackRange = 1f;
     public int attackDamage = 1;
     public int p2AttackDamage = 2;
+    public float minRangedAttackRange = 2f;
     public bool phase2 = false;
 
     public Transform attackPoint;
@@ -23,9 +24,12 @@ public class BossState : MonoBehaviour
     public Transform player;
     public PlayerHealth playerH;
 
+    public GameObject rangedShot;
+
     private State currState;
     public ChaseState chaseState = new ChaseState();
     public AttackState attackState = new AttackState();
+    public RangedAttackState rangedAttackState = new RangedAttackState();
 
     private void Start()
     {
@@ -70,6 +74,6 @@ public class BossState : MonoBehaviour
             return;
 
         Gizmos.DrawWireCube(attackPoint.position, attackPointSize);
-        //Gizmos.DrawWireSphere(this.transform.position, attackRange);
+        Gizmos.DrawWireSphere(this.transform.position, minRangedAttackRange);
     }
 }
