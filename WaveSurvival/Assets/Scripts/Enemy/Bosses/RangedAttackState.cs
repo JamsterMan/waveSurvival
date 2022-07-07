@@ -9,6 +9,8 @@ public class RangedAttackState : State
     private int shots = 0;
     private readonly int maxShots = 5;
     private readonly int minShots = 2;
+    private readonly int p2MaxShots = 7;
+    private readonly int p2MinShots = 3;
     private bool canShoot = true;
     private float nextShootTime = 0f;
     private float timeBetweenShots = 0.3f;
@@ -18,7 +20,16 @@ public class RangedAttackState : State
     {
         Debug.Log("Entered Ranged Attack State");
         shotCount = 0;
-        shots = Random.Range(minShots, maxShots + 1);//+1 since max is exclusive
+        if (boss.phase2)
+        {
+            shots = Random.Range(p2MinShots, p2MaxShots + 1);//+1 since max is exclusive
+            timeBetweenShots = 0.2f;
+        }
+        else
+        {
+            shots = Random.Range(minShots, maxShots + 1);//+1 since max is exclusive
+            timeBetweenShots = 0.3f;
+        }
     }
 
     public override void UpdateState(BossState boss)
@@ -51,7 +62,7 @@ public class RangedAttackState : State
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        Object.Instantiate(boss.rangedShot, boss.attackPoint.position, rot, boss.transform);
+        Object.Instantiate(boss.rangedShot, boss.attackPoint.position, rot, boss.transform).transform.localScale = new Vector3(0.5f,0.5f,0.5f);
 
         shotCount++;
         canShoot = false;
