@@ -84,7 +84,7 @@ public class PlayerAttack : MonoBehaviour
                     blastAmmo++;
                 }
                 //update UI
-                ammoUI.UpdateAmmo(blastAmmo ,ammoCharge, chargePerAmmo);
+                ammoUI.UpdateAmmoUI(blastAmmo ,ammoCharge, chargePerAmmo);
             }
             
         }
@@ -101,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
         //decrease ammo
         blastAmmo--;
         //update UI
-        ammoUI.UpdateAmmo(blastAmmo, ammoCharge, chargePerAmmo);
+        ammoUI.UpdateAmmoUI(blastAmmo, ammoCharge, chargePerAmmo);
     }
 
 

@@ -6,7 +6,7 @@ public class AmmoAreaUI : MonoBehaviour
 {
     public GameObject ammoPrefab;
 
-    private AmmoUI[] ammo = new AmmoUI[10];//max 10 hearts 
+    private ImageFillUI[] ammo = new ImageFillUI[10];//max 10 hearts 
 
     private int currMaxAmmo = 0;
     private readonly int maxAmmo = 10;
@@ -24,7 +24,7 @@ public class AmmoAreaUI : MonoBehaviour
     {
         if (currMaxAmmo + 1 <= maxAmmo)
         {
-            ammo[currMaxAmmo] = Instantiate(ammoPrefab, gameObject.transform).GetComponent<AmmoUI>();
+            ammo[currMaxAmmo] = Instantiate(ammoPrefab, gameObject.transform).GetComponent<ImageFillUI>();
             currMaxAmmo++;
         }
     }
@@ -39,22 +39,22 @@ public class AmmoAreaUI : MonoBehaviour
     }
 
 
-    public void UpdateAmmo( int currAmmo, int ammoCharge, int chargePerAmmo)
+    public void UpdateAmmoUI( int currAmmo, int ammoCharge, int chargePerAmmo)
     {
         
         
         for (int i = 0; i < currAmmo; i++)
         {
-            ammo[i].SetAmmoEmptyFill(0f);
+            ammo[i].SetImageFill(0f);
         }
         if (currAmmo < currMaxAmmo)
         {
             float val = ((float)ammoCharge) / ((float)chargePerAmmo);
-            ammo[currAmmo].SetAmmoEmptyFill(1-val);
+            ammo[currAmmo].SetImageFill(1-val);
         }
         for (int i = currAmmo+1; i < currMaxAmmo; i++)
         {
-            ammo[i].SetAmmoEmptyFill(1f);
+            ammo[i].SetImageFill(1f);
         }
     }
 }

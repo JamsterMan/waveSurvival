@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Camera cam;
     public PlayerHealth pHealth;
+    public DodgeUI dodgeUI;
     public float moveSpeed = 5f;
     public float dodgeSpeed = 10f;
     public float dodgeCooldown = 3f;
@@ -48,7 +49,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     Vector2 dodgeDirection = rb.position - mousePos;
                     movement = dodgeDirection.normalized;
-
+                }
+                else
+                {
+                    movement = movement.normalized;
                 }
             }
 
@@ -56,8 +60,11 @@ public class PlayerMovement : MonoBehaviour
             if (!canDodge && Time.time > nextDodgetime)
             {
                 canDodge = true;
-                Debug.Log("player can dodge");
+                dodgeUI.UpdateDodgeUI(nextDodgetime , nextDodgetime, dodgeCooldown);//set fill to 0
+                //activate border so cooldown finish more clear
             }
+            else if (!canDodge)
+                dodgeUI.UpdateDodgeUI(Time.time, nextDodgetime, dodgeCooldown);
         }
     }
 
