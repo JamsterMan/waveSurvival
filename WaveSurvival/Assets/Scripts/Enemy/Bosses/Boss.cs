@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Boss : Enemy
 {
     public BossState bossState;
+    public int bossCoinValue = 15;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,9 @@ public class Boss : Enemy
             bossState.SetPhase2();
 
         if (currentHealth <= 0)
+        {
             Die();
+        }
 
         UpdateUI();
     }
@@ -37,6 +40,8 @@ public class Boss : Enemy
     {
         //play animation
 
+        PlayerGold pGold = GameObject.Find("Player").GetComponent<PlayerGold>();
+        pGold.AddGold(bossCoinValue);
         EnemyDrop();
 
         waveControl.BossDied();

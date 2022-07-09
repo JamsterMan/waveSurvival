@@ -7422,7 +7422,7 @@ MonoBehaviour:
   dodgeUI: {fileID: 461574302}
   moveSpeed: 10
   dodgeSpeed: 30
-  dodgeCooldown: 0.5
+  dodgeCooldown: 1
   dodgeDuration: 0.15
   isDodging: 0
   canDodge: 0
