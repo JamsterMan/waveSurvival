@@ -95,8 +95,8 @@ public class PlayerAttack : MonoBehaviour
     {
         //play animations
         //animator.SetBool("Attack", true);
-        
-        Instantiate(energyBlast, firePoint.position, firePoint.rotation, this.transform);
+
+        Instantiate(energyBlast, firePoint.position, firePoint.rotation);//, this.transform);
 
         //decrease ammo
         blastAmmo--;
