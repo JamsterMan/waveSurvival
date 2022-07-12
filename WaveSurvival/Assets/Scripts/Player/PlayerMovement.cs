@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerHealth pHealth;
     public DodgeUI dodgeUI;
     public GameObject swordPos;
+    public Animator animator;
     public float moveSpeed = 5f;
     public float dodgeSpeed = 10f;
     public float dodgeCooldown = 3f;
@@ -34,8 +35,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
-
-            }
+                if (movement.magnitude > 0.05)
+                    animator.SetBool("PlayerWalking", true);
+                else
+                    animator.SetBool("PlayerWalking", false);
+        }
 
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
@@ -76,7 +80,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 lookDirection = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
 
-        Debug.Log(angle + 90f);
         if (isFlipped && angle >= -180f && angle <= 0f)
             FlipPlayer();
         else if (!isFlipped && (angle <= -180f || angle >= 0f))

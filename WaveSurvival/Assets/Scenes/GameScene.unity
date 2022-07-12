@@ -7457,6 +7457,7 @@ MonoBehaviour:
   pHealth: {fileID: 992184595}
   dodgeUI: {fileID: 461574302}
   swordPos: {fileID: 904877313}
+  animator: {fileID: 992184596}
   moveSpeed: 10
   dodgeSpeed: 30
   dodgeCooldown: 1
