@@ -53,7 +53,7 @@ public class ShopItem : MonoBehaviour
                 pg.RemoveGold(itemCost);
                 canBeUsed = false;
 
-                Debug.Log("Item Bought.");//remove item here
+                //Debug.Log("Item Bought.");//remove item here
                 gameObject.SetActive(false);
             }
         }

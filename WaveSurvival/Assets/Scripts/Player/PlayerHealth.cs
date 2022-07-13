@@ -50,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void HealHealth(int amount)
     {
-        Debug.Log("player healed: "+amount);
+        //Debug.Log("player healed: "+amount);
         currentHealth += amount;
         if (currentHealth > health)
             currentHealth = health;
@@ -120,6 +120,7 @@ public class PlayerHealth : MonoBehaviour
                 }
             }
         }
+        UpdateUIHealth();
     }
 
     public void DodgeIframes(float time)

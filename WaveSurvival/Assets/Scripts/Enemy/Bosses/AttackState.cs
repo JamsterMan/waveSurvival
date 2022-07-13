@@ -8,7 +8,7 @@ public class AttackState : State
 
     public override void EnterState(BossState boss)
     {
-        Debug.Log("Entered Attack State");
+        //Debug.Log("Entered Attack State");
     }
 
     public override void UpdateState(BossState boss)

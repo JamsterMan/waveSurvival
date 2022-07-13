@@ -9,7 +9,7 @@ public class ChaseState : State
 
     public override void EnterState(BossState boss)
     {
-        Debug.Log("Entered Chase State");
+        //Debug.Log("Entered Chase State");
     }
 
     public override void UpdateState(BossState boss)
