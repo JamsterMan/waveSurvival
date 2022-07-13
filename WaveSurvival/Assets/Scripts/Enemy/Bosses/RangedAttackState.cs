@@ -18,7 +18,7 @@ public class RangedAttackState : State
 
     public override void EnterState(BossState boss)
     {
-        Debug.Log("Entered Ranged Attack State");
+        //Debug.Log("Entered Ranged Attack State");
         shotCount = 0;
         if (boss.phase2)
         {

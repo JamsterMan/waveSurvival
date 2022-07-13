@@ -13,7 +13,7 @@ public class WaveStart : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && canBeUsed)//only start the wave if the player hits the button
         {
-            Debug.Log("Wave Start");
+            //Debug.Log("Wave Start");
             waveController.WaveStart();
             gameObject.SetActive(false);
         }

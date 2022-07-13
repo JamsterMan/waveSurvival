@@ -17,8 +17,8 @@ public class PlayerAttack : MonoBehaviour
     public GameObject energyBlast;
     public float rangedAttackRate = 3f;
     float nextRangedAttackTime = 0f;//
-    public readonly int maxBlastAmmo = 10;
-    public int currMaxBlastAmmo = 3;
+    public readonly int maxBlastAmmo = 10;//max player can have
+    public int currMaxBlastAmmo = 3;//max player can shoot
     private int blastAmmo;
     public int chargePerAmmo = 20;
     private int ammoCharge = 0;//when this = chargePerAmmo, increase ammo by one
@@ -145,11 +145,16 @@ public class PlayerAttack : MonoBehaviour
         {
             if (currMaxBlastAmmo + amount < maxBlastAmmo)
             {
+                blastAmmo += amount;
                 currMaxBlastAmmo += amount;
                 ammoUI.AddAmmo();
             }
             else
+            {
                 currMaxBlastAmmo = maxBlastAmmo;//max Value
+                if (blastAmmo + amount <= currMaxBlastAmmo)
+                    blastAmmo += amount;
+            }
         }
         else if(amount < 0)//removing ammo
         {
@@ -161,6 +166,7 @@ public class PlayerAttack : MonoBehaviour
             else
                 currMaxBlastAmmo = 1;//min Value
         }
+        ammoUI.UpdateAmmoUI(blastAmmo, ammoCharge, chargePerAmmo);
     }
     public void ChangePlayerChargePerAmmo(int amount)
     {
