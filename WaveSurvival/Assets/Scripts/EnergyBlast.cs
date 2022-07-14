@@ -11,12 +11,12 @@ public class EnergyBlast : MonoBehaviour
     public Animator animator;
     private bool canDamage = true;
 
-    private Vector2 startPos;
+    protected Vector2 startPos;
 
     private void Start()
     {
         startPos = transform.position;
-        rb.velocity = transform.up * projectileSpeed;
+        rb.velocity = transform.right * projectileSpeed;
     }
 
     // Update is called once per frame

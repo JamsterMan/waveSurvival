@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public Camera cam;
     public PlayerHealth pHealth;
     public DodgeUI dodgeUI;
-    public GameObject swordPos;
+    public GameObject weapon;
+    public GameObject firePoint;
     public Animator animator;
     public float moveSpeed = 5f;
     public float dodgeSpeed = 10f;
@@ -78,14 +79,14 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 lookDirection = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
-        if (isFlipped && angle >= -180f && angle <= 0f)
+        if (isFlipped && angle >= -90f && angle <= 90f)
             FlipPlayer();
-        else if (!isFlipped && (angle <= -180f || angle >= 0f))
+        else if (!isFlipped && (angle <= -90f || angle >= 90f))
             FlipPlayer();
 
-        swordPos.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        weapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         if (isDodging)
         {
@@ -112,11 +113,15 @@ public class PlayerMovement : MonoBehaviour
         if (isFlipped)
         {
             transform.localScale = new Vector3(1, 1, 1);
+            weapon.transform.localScale = new Vector3(1, 1, 1);
+            firePoint.transform.localScale = new Vector3(1, 1, 1);
             isFlipped = false;
         }
         else
         {
             transform.localScale = new Vector3(-1, 1, 1);
+            weapon.transform.localScale = new Vector3(-1, -1, 1);
+            firePoint.transform.localScale = new Vector3(-1, -1, 1);
             isFlipped = true;
         }
 
