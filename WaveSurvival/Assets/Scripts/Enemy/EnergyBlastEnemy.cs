@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class EnergyBlastEnemy : EnergyBlast
 {
+    private void Start()
+    {
+        startPos = transform.position;
+        rb.velocity = transform.up * projectileSpeed;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerHealth ph = collision.gameObject.GetComponent<PlayerHealth>();
