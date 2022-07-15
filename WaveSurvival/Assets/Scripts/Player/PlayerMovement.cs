@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private float nextDodgetime = 0f;
     private float dodgeFinishTime = 0f;
     private bool isFlipped = false;
+    private bool isMoving = false;
 
     [SerializeField]private bool isDodging = false;
     [SerializeField] private bool canDodge = true;
@@ -36,10 +37,16 @@ public class PlayerMovement : MonoBehaviour
             {
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
-                if (movement.magnitude > 0.05)
+                if (!isMoving && movement.magnitude > 0.05)
+                {
                     animator.SetBool("PlayerWalking", true);
-                else
+                    isMoving = true;
+                }
+                else if(isMoving && movement.magnitude < 0.05)
+                {
                     animator.SetBool("PlayerWalking", false);
+                    isMoving = false;
+                }
         }
 
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -108,6 +115,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /*
+     * flips player to face right or left
+     * flips weapon so it is always held pointing up
+     * adjusts firepoint to make ranged attack always fire where the mouse is aiming
+     */
     private void FlipPlayer()
     {
         if (isFlipped)
