@@ -39,6 +39,7 @@ public class MenuScript : MonoBehaviour
 
     public void MainManu()
     {
+        UnpauseGame();
         SceneManager.LoadScene(0);
     }
 
