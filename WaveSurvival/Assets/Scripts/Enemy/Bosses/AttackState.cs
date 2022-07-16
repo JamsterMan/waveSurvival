@@ -19,6 +19,7 @@ public class AttackState : State
     public override void FixedUpdateState(BossState boss)
     {
         Vector2 lookDirection = playerPos - boss.rb.position;
+        boss.LookAtPlayer(lookDirection.x);
 
         if (boss.playerH.IsDamageable())
             Attack(boss);

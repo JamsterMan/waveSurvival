@@ -23,6 +23,7 @@ public class BossState : MonoBehaviour
     protected GameObject playerObject;
     public Transform player;
     public PlayerHealth playerH;
+    public SpriteRenderer bossSpriteRenderer;
 
     public GameObject rangedShot;
 
@@ -64,6 +65,18 @@ public class BossState : MonoBehaviour
     public void SetPhase2()
     {
         phase2 = true;
+    }
+
+    public void LookAtPlayer(float xdir)
+    {
+        if (xdir >= 0)//face to the right
+        {
+            bossSpriteRenderer.flipX = false;
+        }
+        else if (xdir < 0)//face to the left
+        {
+            bossSpriteRenderer.flipX = true;
+        }
     }
 
 

@@ -153,6 +153,7 @@ MonoBehaviour:
     type: 3}
   healthSlider: {fileID: 0}
   bossState: {fileID: 767836488}
+  bossCoinValue: 15
 --- !u!114 &767836488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +181,7 @@ MonoBehaviour:
   rb: {fileID: 578700970926345468}
   player: {fileID: 0}
   playerH: {fileID: 0}
+  bossSpriteRenderer: {fileID: 578700970926345467}
   rangedShot: {fileID: 1590105081076686590, guid: f8610f2e72101a242907fe06674503e4,
     type: 3}
 --- !u!1 &3530208881045948632
