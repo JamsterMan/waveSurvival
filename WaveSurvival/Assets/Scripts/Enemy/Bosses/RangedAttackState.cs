@@ -59,6 +59,7 @@ public class RangedAttackState : State
         //play animations
 
         Vector2 lookDirection = playerPos - boss.rb.position;
+        boss.LookAtPlayer(lookDirection.x);
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
