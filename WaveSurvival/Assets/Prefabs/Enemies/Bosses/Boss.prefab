@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 578700970926345467}
   - component: {fileID: 578700970926345468}
   - component: {fileID: 578700970926345469}
+  - component: {fileID: 1473079135064642258}
   - component: {fileID: 578700970926345471}
   - component: {fileID: 767836488}
   m_Layer: 8
@@ -134,6 +135,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2690594, y: 0.6709536}
   m_EdgeRadius: 0
+--- !u!95 &1473079135064642258
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578700970926345464}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 657585b3267b63049bcf15a255509fd7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &578700970926345471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   difficultyHealthIncrease: 50
-  animator: {fileID: 0}
+  animator: {fileID: 1473079135064642258}
   enemyDrop: {fileID: 8412626439470405974, guid: 70d20c2370c9be04ea3f628ef04b9904,
     type: 3}
   healthSlider: {fileID: 0}
