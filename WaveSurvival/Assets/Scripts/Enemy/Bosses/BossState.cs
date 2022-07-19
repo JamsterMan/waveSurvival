@@ -18,6 +18,7 @@ public class BossState : MonoBehaviour
     public LayerMask PlayerLayer;
 
     //public Boss bossHealth;
+    public Animator animator;
     public Rigidbody2D rb;
 
     protected GameObject playerObject;
@@ -58,6 +59,7 @@ public class BossState : MonoBehaviour
 
     public void SwitchState(State state)
     {
+        animator.SetBool("EnemyMove", false);
         currState = state;
         currState.EnterState(this);
     }

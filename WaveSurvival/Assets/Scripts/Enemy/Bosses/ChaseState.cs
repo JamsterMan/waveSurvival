@@ -10,6 +10,7 @@ public class ChaseState : State
     public override void EnterState(BossState boss)
     {
         //Debug.Log("Entered Chase State");
+        boss.animator.SetBool("EnemyMove", true);
     }
 
     public override void UpdateState(BossState boss)

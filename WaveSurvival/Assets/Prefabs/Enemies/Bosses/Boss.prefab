@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -8693552940742017930, guid: be2838623a472ea4c899387eaaa4e017,
+  m_Sprite: {fileID: -2976605339467019896, guid: 6864620f4d9db0b4fa1b7ff79718ea91,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -198,6 +198,7 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 512
+  animator: {fileID: 1473079135064642258}
   rb: {fileID: 578700970926345468}
   player: {fileID: 0}
   playerH: {fileID: 0}
