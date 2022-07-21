@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    private Vector2 playerPos;
 
     public override void EnterState(BossState boss)
     {
@@ -13,12 +12,12 @@ public class AttackState : State
 
     public override void UpdateState(BossState boss)
     {
-        playerPos = boss.player.position;
+        //playerPos = boss.player.position;
     }
 
     public override void FixedUpdateState(BossState boss)
     {
-        Vector2 lookDirection = playerPos - boss.rb.position;
+        Vector2 lookDirection = boss.playerPos - boss.rb.position;
         boss.LookAtPlayer(lookDirection.x);
 
         if (boss.playerH.IsDamageable())
