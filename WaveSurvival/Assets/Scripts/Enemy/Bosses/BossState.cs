@@ -17,7 +17,10 @@ public class BossState : MonoBehaviour
     public Vector2 attackPointSize;
     public LayerMask PlayerLayer;
 
+    public Vector2 playerPos;
+
     //public Boss bossHealth;
+    public Animator animator;
     public Rigidbody2D rb;
 
     protected GameObject playerObject;
@@ -48,6 +51,7 @@ public class BossState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerPos = player.position;
         currState.UpdateState(this);
     }
 
@@ -58,6 +62,7 @@ public class BossState : MonoBehaviour
 
     public void SwitchState(State state)
     {
+        animator.SetBool("EnemyMove", false);
         currState = state;
         currState.EnterState(this);
     }

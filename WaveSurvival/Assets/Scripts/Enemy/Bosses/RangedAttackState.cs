@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RangedAttackState : State
 {
-    private Vector2 playerPos;
     private int shotCount = 0;
     private int shots = 0;
     private readonly int maxShots = 5;
@@ -34,7 +33,7 @@ public class RangedAttackState : State
 
     public override void UpdateState(BossState boss)
     {
-        playerPos = boss.player.position;
+        //playerPos = boss.player.position;
 
         if (!canShoot && Time.time > nextShootTime)
         {
@@ -58,7 +57,7 @@ public class RangedAttackState : State
     {
         //play animations
 
-        Vector2 lookDirection = playerPos - boss.rb.position;
+        Vector2 lookDirection = boss.playerPos - boss.rb.position;
         boss.LookAtPlayer(lookDirection.x);
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);

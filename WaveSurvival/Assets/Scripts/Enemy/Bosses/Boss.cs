@@ -22,7 +22,7 @@ public class Boss : Enemy
      */
     public override void DealDamage(int dmg)
     {
-        //animator.SetBool("EnemyHit", true);
+        animator.SetBool("EnemyHit", true);
 
         currentHealth -= dmg;
         if (!bossState.phase2 && ((float)currentHealth)/((float)startingHealth) < 0.51f)
