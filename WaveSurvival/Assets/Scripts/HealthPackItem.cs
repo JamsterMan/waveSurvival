@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class HealthPackItem : Item
 {
-    private readonly ItemType itemType = ItemType.consumable;
-    private readonly int healAmount = 2;
     public Sprite sprite;
+
+    private readonly ItemType _itemType = ItemType.consumable;
+    private readonly int _healAmount = 2;
 
     public HealthPackItem(Sprite hPack)
     {
         sprite = hPack;
-        healAmount = 2;
+        _healAmount = 2;
     }
 
     public void OnPickUp(GameObject player)
@@ -20,7 +19,7 @@ public class HealthPackItem : Item
         PlayerHealth ph = player.GetComponent<PlayerHealth>();
         if (!ph.IsMaxHealth())
         {
-            ph.HealHealth(healAmount);
+            ph.HealHealth(_healAmount);
         }
     }
 
@@ -32,7 +31,7 @@ public class HealthPackItem : Item
 
     public ItemType GetItemType()
     {
-        return itemType;
+        return _itemType;
     }
 
     public Sprite GetItemSprite()

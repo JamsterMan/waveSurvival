@@ -21,12 +21,12 @@ public class EnemyJumpMovement : EnemyMovement
 
     private void Start()
     {
-        playerObject = GameObject.Find("Player");
-        player = playerObject.transform;
-        playerH = playerObject.GetComponent<PlayerHealth>();
+        _playerObject = GameObject.Find("Player");
+        _player = _playerObject.transform;
+        _playerH = _playerObject.GetComponent<PlayerHealth>();
 
-        attack = GetComponent<EnemyAttack>();
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        _attack = GetComponent<EnemyAttack>();
+        Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
         col = GetComponent<Collider2D>();
     }
@@ -52,7 +52,7 @@ public class EnemyJumpMovement : EnemyMovement
      */
     private void EnemyStateControl()
     {
-        Vector2 lookDirection = playerPos - rb.position;
+        Vector2 lookDirection = _playerPos - rb.position;
         //float angle;
 
         if (state == JumpEnemyState.jumpPrep)//enemy state
@@ -79,12 +79,12 @@ public class EnemyJumpMovement : EnemyMovement
             }
 
             if (lookDirection.magnitude != 0)
-                movement = lookDirection / lookDirection.magnitude;
+                _movement = lookDirection / lookDirection.magnitude;
 
-            rb.MovePosition(rb.position + (movement * jumpSpeed * Time.fixedDeltaTime));
+            rb.MovePosition(rb.position + (_movement * jumpSpeed * Time.fixedDeltaTime));
 
-            if (playerH.IsDamageable())
-                attack.Attack();
+            if (_playerH.IsDamageable())
+                _attack.Attack();
 
         }
         else//state == JumpEnemyState.chase
@@ -92,8 +92,8 @@ public class EnemyJumpMovement : EnemyMovement
             //angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
             //rb.rotation = angle;//face the player
 
-            movement = lookDirection / lookDirection.magnitude;
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            _movement = lookDirection / lookDirection.magnitude;
+            rb.MovePosition(rb.position + _movement * moveSpeed * Time.fixedDeltaTime);
 
             if (lookDirection.magnitude <= jumpRange && canJump)
             {
@@ -112,7 +112,7 @@ public class EnemyJumpMovement : EnemyMovement
 
         col.isTrigger = true;//no collision while jumping  
         
-        Vector2 lookDirection = (Vector2)player.position - rb.position;
+        Vector2 lookDirection = (Vector2)_player.position - rb.position;
         jumpLocation = rb.position + (lookDirection.normalized * jumpDistance);//point in space where the jump should end
         startJumpDist = jumpLocation - rb.position;
         canJump = false;

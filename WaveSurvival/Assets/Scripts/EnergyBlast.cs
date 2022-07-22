@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnergyBlast : MonoBehaviour
 {
@@ -9,13 +7,13 @@ public class EnergyBlast : MonoBehaviour
     public int blastDamage = 10;
     public float attackRange = 10f;
     public Animator animator;
-    private bool canDamage = true;
 
-    protected Vector2 startPos;
+    private bool _canDamage = true;
+    protected Vector2 _startPos;
 
     private void Start()
     {
-        startPos = transform.position;
+        _startPos = transform.position;
         rb.velocity = transform.right * projectileSpeed;
     }
 
@@ -23,11 +21,11 @@ public class EnergyBlast : MonoBehaviour
     void Update()
     {
         //check if projectile traveled too far then destroy  
-        Vector2 distance = new Vector2(transform.position.x, transform.position.y) - startPos;
+        Vector2 distance = new Vector2(transform.position.x, transform.position.y) - _startPos;
         if(distance.magnitude > attackRange)
         {
             animator.SetBool("BlastEnd", true);
-            canDamage = false;
+            _canDamage = false;
             rb.velocity = new Vector2(0,0);//stop movement
             //Destroy(this.gameObject);
         }
@@ -35,12 +33,12 @@ public class EnergyBlast : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && canDamage)
+        if (collision.gameObject.CompareTag("Enemy") && _canDamage)
         {
             collision.gameObject.GetComponent<Enemy>().DealDamage(blastDamage);
 
             animator.SetBool("BlastEnd", true);
-            canDamage = false;
+            _canDamage = false;
             //Destroy(this.gameObject);
         }
     }

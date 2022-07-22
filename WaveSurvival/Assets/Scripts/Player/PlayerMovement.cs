@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,13 +15,13 @@ public class PlayerMovement : MonoBehaviour
     public float dodgeCooldown = 3f;
     public float dodgeDuration = 1f;
 
-    private float nextDodgetime = 0f;
-    private float dodgeFinishTime = 0f;
-    private bool isFlipped = false;
-    private bool isMoving = false;
+    private float _nextDodgetime = 0f;
+    private float _dodgeFinishTime = 0f;
+    private bool _isFlipped = false;
+    private bool _isMoving = false;
 
-    [SerializeField]private bool isDodging = false;
-    [SerializeField] private bool canDodge = true;
+    [SerializeField]private bool _isDodging = false;
+    [SerializeField]private bool _canDodge = true;
 
     Vector2 movement;
     Vector2 mousePos;
@@ -33,31 +31,31 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!pauseMenu.IsGamePaused())
         {
-            if (!isDodging)
+            if (!_isDodging)
             {
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
-                if (!isMoving && movement.magnitude > 0.05)
+                if (!_isMoving && movement.magnitude > 0.05)
                 {
                     animator.SetBool("PlayerWalking", true);
-                    isMoving = true;
+                    _isMoving = true;
                 }
-                else if(isMoving && movement.magnitude < 0.05)
+                else if(_isMoving && movement.magnitude < 0.05)
                 {
                     animator.SetBool("PlayerWalking", false);
-                    isMoving = false;
+                    _isMoving = false;
                 }
         }
 
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-            if (Input.GetKeyDown(KeyCode.Space) && canDodge)//dodge
+            if (Input.GetKeyDown(KeyCode.Space) && _canDodge)//dodge
             {
-                dodgeFinishTime = Time.time + dodgeDuration;
-                nextDodgetime = Time.time + dodgeCooldown;
-                isDodging = true;
-                canDodge = false;
-                pHealth.DodgeIframes(dodgeFinishTime);
+                _dodgeFinishTime = Time.time + dodgeDuration;
+                _nextDodgetime = Time.time + dodgeCooldown;
+                _isDodging = true;
+                _canDodge = false;
+                pHealth.DodgeIframes(_dodgeFinishTime);
 
                 if (movement.magnitude < 0.05)
                 {
@@ -71,14 +69,14 @@ public class PlayerMovement : MonoBehaviour
             }
 
             //cooldown for dodge
-            if (!canDodge && Time.time > nextDodgetime)
+            if (!_canDodge && Time.time > _nextDodgetime)
             {
-                canDodge = true;
-                dodgeUI.UpdateDodgeUI(nextDodgetime , nextDodgetime, dodgeCooldown);//set fill to 0
+                _canDodge = true;
+                dodgeUI.UpdateDodgeUI(_nextDodgetime, _nextDodgetime, dodgeCooldown);//set fill to 0
                 //activate border so cooldown finish more clear
             }
-            else if (!canDodge)
-                dodgeUI.UpdateDodgeUI(Time.time, nextDodgetime, dodgeCooldown);
+            else if (!_canDodge)
+                dodgeUI.UpdateDodgeUI(Time.time, _nextDodgetime, dodgeCooldown);
         }
     }
 
@@ -88,14 +86,14 @@ public class PlayerMovement : MonoBehaviour
         Vector2 lookDirection = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
-        if (isFlipped && angle >= -90f && angle <= 90f)
+        if (_isFlipped && angle >= -90f && angle <= 90f)
             FlipPlayer();
-        else if (!isFlipped && (angle <= -90f || angle >= 90f))
+        else if (!_isFlipped && (angle <= -90f || angle >= 90f))
             FlipPlayer();
 
         weapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        if (isDodging)
+        if (_isDodging)
         {
             PlayerDodge();
         }
@@ -109,9 +107,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * dodgeSpeed * Time.fixedDeltaTime);
 
-        if (Time.time > dodgeFinishTime)
+        if (Time.time > _dodgeFinishTime)
         {
-            isDodging = false;
+            _isDodging = false;
         }
     }
 
@@ -122,19 +120,19 @@ public class PlayerMovement : MonoBehaviour
      */
     private void FlipPlayer()
     {
-        if (isFlipped)
+        if (_isFlipped)
         {
             transform.localScale = new Vector3(1, 1, 1);
             weapon.transform.localScale = new Vector3(1, 1, 1);
             firePoint.transform.localScale = new Vector3(1, 1, 1);
-            isFlipped = false;
+            _isFlipped = false;
         }
         else
         {
             transform.localScale = new Vector3(-1, 1, 1);
             weapon.transform.localScale = new Vector3(-1, -1, 1);
             firePoint.transform.localScale = new Vector3(-1, -1, 1);
-            isFlipped = true;
+            _isFlipped = true;
         }
 
     }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -25,37 +23,41 @@ public class WaveController : MonoBehaviour
     public int shopWaves = 5;
     public int bossWaves = 20;
 
-    private int spawnedEnemyCount = 0;
-    private float nextSpawnTime = 0f;
-    private int count = 0;
-    private float nextWaveTime = 2f;
+    private int _spawnedEnemyCount = 0;
+    private float _nextSpawnTime = 0f;
+    private int _count = 0;
+    private float _nextWaveTime = 2f;
 
-    private int waveCount = 0;
-    private int bossCount = 0;
-    private int enemiesDefeated = 0;
+    private int _waveCount = 0;
+    private int _bossCount = 0;
+    private int _enemiesDefeated = 0;
 
-    private bool inWave = false;
-    private bool finalBossFight = false;
+    private bool _inWave = false;
+    private bool _finalBossFight = false;
 
     [Range(0, 1)] public float enemyDropRate = 0.5f;
+
+    //wave count getter
+    public int GetWaveCount(){ return _waveCount; }
+    public int GetBossCount(){ return _bossCount; }
 
     // Update is called once per frame
     void Update()
     {
-        if (inWave && Time.time > nextWaveTime)
+        if (_inWave && Time.time > _nextWaveTime)
         {
-            if (spawnedEnemyCount < maxEnemiesSpawn)
+            if (_spawnedEnemyCount < maxEnemiesSpawn)
             {
-                if (Time.time > nextSpawnTime)
+                if (Time.time > _nextSpawnTime)
                 {
                     foreach (EnemySpawner spawn in spawners)
                     {
                         spawn.SpawnEnemy();
-                        count++;
+                        _count++;
                     }
-                    nextSpawnTime = Time.time + (1f / spawnRate);
-                    spawnedEnemyCount += count;
-                    count = 0;
+                    _nextSpawnTime = Time.time + (1f / spawnRate);
+                    _spawnedEnemyCount += _count;
+                    _count = 0;
                 }
             }
         }
@@ -66,8 +68,8 @@ public class WaveController : MonoBehaviour
      */
     public void EnemyDied()
     {
-        enemiesDefeated++;
-        if(enemiesDefeated == maxEnemiesSpawn)
+        _enemiesDefeated++;
+        if(_enemiesDefeated == maxEnemiesSpawn)
         {
             //wave ended
             WaveEnded();
@@ -79,13 +81,13 @@ public class WaveController : MonoBehaviour
      */
     public void BossDied()
     {
-        if (!finalBossFight)
+        if (!_finalBossFight)
         {
             //open boss door
             bossDoorClose.SetActive(false);
             //activate wave button 
             waveStart.SetActive(true);
-            bossCount++;
+            _bossCount++;
         }
         else
         {
@@ -101,19 +103,19 @@ public class WaveController : MonoBehaviour
     private void WaveEnded()
     {
         //wave ended
-        inWave = false;
-        nextWaveTime = Time.time + waveBreakTime;
+        _inWave = false;
+        _nextWaveTime = Time.time + waveBreakTime;
 
-        if(waveCount%shopWaves == 0)//shop every 5 waves
+        if(_waveCount % shopWaves == 0)//shop every 5 waves
             SetShop(true);
 
-        if (waveCount % bossWaves == 0)//boss every 20 waves
+        if (_waveCount % bossWaves == 0)//boss every 20 waves
             SetBossRoom(true);
         else//enable wave start button unless it is boss time
             waveStart.SetActive(true);
 
-        if (waveCount % 100 == 0)
-            finalBossFight = true;
+        if (_waveCount % 100 == 0)
+            _finalBossFight = true;
 
         playerGold.AddGold(goldPerWave);
     }
@@ -124,20 +126,20 @@ public class WaveController : MonoBehaviour
      */
     public void WaveStart()
     {
-        spawnedEnemyCount = 0;
-        enemiesDefeated = 0;
+        _spawnedEnemyCount = 0;
+        _enemiesDefeated = 0;
 
-        inWave = true;
+        _inWave = true;
 
         SetShop(false);
         SetBossRoom(false);
 
-        nextWaveTime = Time.time + waveBreakTime;
+        _nextWaveTime = Time.time + waveBreakTime;
 
         //increase wave count
-        waveCount++;
+        _waveCount++;
         //update wave count UI
-        waveCountText.text = "" + waveCount;
+        waveCountText.text = "" + _waveCount;
 
     }
 
@@ -159,16 +161,6 @@ public class WaveController : MonoBehaviour
             bossRoom.NewBossSpawn();
         }
 
-    }
-
-    //wave count getter
-    public int GetWaveCount()
-    {
-        return waveCount;
-    }
-    public int GetBossCount()
-    {
-        return bossCount;
     }
 
     public float GetEnemyDropRate()

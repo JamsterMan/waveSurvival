@@ -15,16 +15,16 @@ public class EnemyRangedMovement : EnemyMovement
 
     private void FixedUpdate()
     {
-        Vector2 lookDirection = playerPos - rb.position;
+        Vector2 lookDirection = _playerPos - rb.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         //rb.rotation = angle;
-        attack.attackPoint.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        _attack.attackPoint.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         if (state == RangedEnemyState.shooting)//enemy state
         {
             if (canShoot)
             {
-                attack.Attack();//start shooting
+                _attack.Attack();//start shooting
                 canShoot = false;
                 nextShootTime = Time.time + shootCooldown;
                 state = RangedEnemyState.reloading;
@@ -35,22 +35,22 @@ public class EnemyRangedMovement : EnemyMovement
                 state = RangedEnemyState.reloading;
             }
 
-            if (lookDirection.magnitude > attack.attackRange)
+            if (lookDirection.magnitude > _attack.attackRange)
             {
                 state = RangedEnemyState.chase;
             }
         }
         else if (state == RangedEnemyState.reloading)
         {
-            if(lookDirection.magnitude < attack.attackRange / 2)
+            if(lookDirection.magnitude < _attack.attackRange / 2)
             {
-                movement = (lookDirection / lookDirection.magnitude)*-1;
-                rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+                _movement = (lookDirection / lookDirection.magnitude)*-1;
+                rb.MovePosition(rb.position + _movement * moveSpeed * Time.fixedDeltaTime);
             }
             if (Time.time > nextShootTime)
             {
                 canShoot = true;
-                if (lookDirection.magnitude > attack.attackRange)
+                if (lookDirection.magnitude > _attack.attackRange)
                 {
                     state = RangedEnemyState.chase;
                 }
@@ -62,10 +62,10 @@ public class EnemyRangedMovement : EnemyMovement
         }
         else // state == JumpEnemyState.chase
         {
-            movement = lookDirection / lookDirection.magnitude;
-            rb.MovePosition(rb.position + movement * backStepSpeed * Time.fixedDeltaTime);
+            _movement = lookDirection / lookDirection.magnitude;
+            rb.MovePosition(rb.position + _movement * backStepSpeed * Time.fixedDeltaTime);
 
-            if (lookDirection.magnitude <= attack.attackRange)
+            if (lookDirection.magnitude <= _attack.attackRange)
             {
                 state = RangedEnemyState.shooting;
             }
@@ -73,7 +73,7 @@ public class EnemyRangedMovement : EnemyMovement
 
         if(lookDirection.magnitude <= 1.3)
         {
-            ((EnemyRangedAttack)attack).ContactAttack();
+            ((EnemyRangedAttack)_attack).ContactAttack();
         }
     }
 }

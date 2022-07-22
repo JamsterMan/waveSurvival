@@ -1,29 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private readonly int maxHearts = 10;
     public int health = 8;
-    [SerializeField] private int currentHealth;
-
     public Animator animator;
-
     public HeartsAreaUI heartsUI;
-    private readonly int healthPerHeart = 2;
-
     public float IframeRate = 2f;
-    float nextDamageTime = 0f;
+
+    private readonly int _maxHearts = 10;
+    [SerializeField] private int _currentHealth;
+    private readonly int _healthPerHeart = 2;
+    private float _nextDamageTime = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = health;
+        _currentHealth = health;
 
-        heartsUI.SetUpHeartsUI(health/healthPerHeart);
+        heartsUI.SetUpHeartsUI(health/ _healthPerHeart);
 
         UpdateUIHealth();
     }
@@ -34,14 +29,14 @@ public class PlayerHealth : MonoBehaviour
      */
     public void DealDamage(int dmg)
     {
-        if (Time.time > nextDamageTime)
+        if (Time.time > _nextDamageTime)
         {
             animator.SetBool("PlayerHit", true);
 
-            currentHealth -= dmg;
+            _currentHealth -= dmg;
             UpdateUIHealth();
-            nextDamageTime = Time.time + IframeRate;
-            if (currentHealth <= 0)
+            _nextDamageTime = Time.time + IframeRate;
+            if (_currentHealth <= 0)
             {
                 Die();
             }
@@ -51,15 +46,15 @@ public class PlayerHealth : MonoBehaviour
     public void HealHealth(int amount)
     {
         //Debug.Log("player healed: "+amount);
-        currentHealth += amount;
-        if (currentHealth > health)
-            currentHealth = health;
+        _currentHealth += amount;
+        if (_currentHealth > health)
+            _currentHealth = health;
         UpdateUIHealth();
     }
 
     public bool IsMaxHealth()
     {
-        return currentHealth == health;
+        return _currentHealth == health;
     }
 
     void Die()
@@ -67,21 +62,17 @@ public class PlayerHealth : MonoBehaviour
         //play animation
         Debug.Log("Game Over");
         SceneManager.LoadScene(0);//temp player death
-        /*
-         * add menu/stats for death
-         * then have buttons to return to menu or play again
-         */
     }
 
     //iframes
     public bool IsDamageable()
     {
-        return Time.time > nextDamageTime;
+        return Time.time > _nextDamageTime;
     }
 
     private void UpdateUIHealth()
     {
-        heartsUI.UpdateHearts(currentHealth, health, healthPerHeart);
+        heartsUI.UpdateHearts(_currentHealth, health, _healthPerHeart);
     }
 
     //amount -> number of hearts to add
@@ -91,11 +82,11 @@ public class PlayerHealth : MonoBehaviour
         {
             for (int i = 0; i < amount; i++)
             {
-                if(health <= maxHearts*healthPerHeart)
+                if(health <= _maxHearts * _healthPerHeart)
                 {
                     heartsUI.AddHeart();
-                    health += healthPerHeart;
-                    currentHealth += healthPerHeart;
+                    health += _healthPerHeart;
+                    _currentHealth += _healthPerHeart;
 
                 }
             }
@@ -107,12 +98,12 @@ public class PlayerHealth : MonoBehaviour
                 if (health > 0)
                 {
                     heartsUI.RemoveHeart();
-                    health -= healthPerHeart;
+                    health -= _healthPerHeart;
                     if (health <= 0)
                         Die();
 
-                    if (currentHealth > health)
-                        currentHealth = health;
+                    if (_currentHealth > health)
+                        _currentHealth = health;
                 }
                 else
                 {
@@ -127,6 +118,6 @@ public class PlayerHealth : MonoBehaviour
     {
         //base off of dodge duration
 
-        nextDamageTime = time;
+        _nextDamageTime = time;
     }
 }

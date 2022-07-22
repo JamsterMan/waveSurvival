@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BossState : MonoBehaviour
 {
@@ -23,27 +21,27 @@ public class BossState : MonoBehaviour
     public Animator animator;
     public Rigidbody2D rb;
 
-    protected GameObject playerObject;
+    protected GameObject _playerObject;
     public Transform player;
     public PlayerHealth playerH;
     public SpriteRenderer bossSpriteRenderer;
 
     public GameObject rangedShot;
 
-    private State currState;
+    private State _currState;
     public ChaseState chaseState = new ChaseState();
     public AttackState attackState = new AttackState();
     public RangedAttackState rangedAttackState = new RangedAttackState();
 
     private void Start()
     {
-        currState = chaseState;
+        _currState = chaseState;
 
-        currState.EnterState(this);
+        _currState.EnterState(this);
 
-        playerObject = GameObject.Find("Player");
-        player = playerObject.transform;
-        playerH = playerObject.GetComponent<PlayerHealth>();
+        _playerObject = GameObject.Find("Player");
+        player = _playerObject.transform;
+        playerH = _playerObject.GetComponent<PlayerHealth>();
 
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
@@ -52,19 +50,19 @@ public class BossState : MonoBehaviour
     void Update()
     {
         playerPos = player.position;
-        currState.UpdateState(this);
+        _currState.UpdateState(this);
     }
 
     private void FixedUpdate()
     {
-        currState.FixedUpdateState(this);
+        _currState.FixedUpdateState(this);
     }
 
     public void SwitchState(State state)
     {
         animator.SetBool("EnemyMove", false);
-        currState = state;
-        currState.EnterState(this);
+        _currState = state;
+        _currState.EnterState(this);
     }
 
     public void SetPhase2()

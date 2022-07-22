@@ -12,24 +12,25 @@ public class PlayerAttack : MonoBehaviour
     public int attackDamage = 5;
     public float attackRange = 0.5f;
     public float attackRate = 2f;
-    float nextAttackTime = 0f;
 
     public GameObject energyBlast;
     public float rangedAttackRate = 3f;
-    float nextRangedAttackTime = 0f;//
     public readonly int maxBlastAmmo = 10;//max player can have
     public int currMaxBlastAmmo = 3;//max player can shoot
-    private int blastAmmo;
     public int chargePerAmmo = 20;
-    private int ammoCharge = 0;//when this = chargePerAmmo, increase ammo by one
     public Transform firePoint;
     public AmmoAreaUI ammoUI;
 
+    private float _nextAttackTime = 0f;
+    private float _nextRangedAttackTime = 0f;
+    private int _blastAmmo;
+    private int _ammoCharge = 0;//when this = chargePerAmmo, increase ammo by one
+
     private void Start()
     {
-        blastAmmo = currMaxBlastAmmo;
+        _blastAmmo = currMaxBlastAmmo;
 
-        ammoUI.SetUpAmmoUI(blastAmmo);
+        ammoUI.SetUpAmmoUI(_blastAmmo);
     }
 
     // Update is called once per frame
@@ -37,23 +38,23 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!pauseMenu.IsGamePaused())
         {
-            if (Time.time > nextAttackTime)
+            if (Time.time > _nextAttackTime)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     Attack();
-                    nextAttackTime = Time.time + 1f / attackRate;
+                    _nextAttackTime = Time.time + 1f / attackRate;
                 }
             }
-            if (Time.time > nextRangedAttackTime)
+            if (Time.time > _nextRangedAttackTime)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     //check if ammo is not 0
-                    if (blastAmmo > 0)
+                    if (_blastAmmo > 0)
                     {
                         RangedAttack();
-                        nextAttackTime = Time.time + 1f / rangedAttackRate;
+                        _nextAttackTime = Time.time + 1f / rangedAttackRate;
                     }
                 }
             }
@@ -75,16 +76,16 @@ public class PlayerAttack : MonoBehaviour
         {
             hitEnemy.GetComponent<Enemy>().DealDamage(attackDamage);
             //add to next ammo charge
-            if (blastAmmo < currMaxBlastAmmo)
+            if (_blastAmmo < currMaxBlastAmmo)
             {
-                ammoCharge += attackDamage;
-                if (ammoCharge >= chargePerAmmo)
+                _ammoCharge += attackDamage;
+                if (_ammoCharge >= chargePerAmmo)
                 {
-                    ammoCharge = 0;
-                    blastAmmo++;
+                    _ammoCharge = 0;
+                    _blastAmmo++;
                 }
                 //update UI
-                ammoUI.UpdateAmmoUI(blastAmmo ,ammoCharge, chargePerAmmo);
+                ammoUI.UpdateAmmoUI(_blastAmmo, _ammoCharge, chargePerAmmo);
             }
             
         }
@@ -99,9 +100,9 @@ public class PlayerAttack : MonoBehaviour
         Instantiate(energyBlast, firePoint.position, firePoint.rotation);//, this.transform);
 
         //decrease ammo
-        blastAmmo--;
+        _blastAmmo--;
         //update UI
-        ammoUI.UpdateAmmoUI(blastAmmo, ammoCharge, chargePerAmmo);
+        ammoUI.UpdateAmmoUI(_blastAmmo, _ammoCharge, chargePerAmmo);
     }
 
 
@@ -145,15 +146,15 @@ public class PlayerAttack : MonoBehaviour
         {
             if (currMaxBlastAmmo + amount < maxBlastAmmo)
             {
-                blastAmmo += amount;
+                _blastAmmo += amount;
                 currMaxBlastAmmo += amount;
                 ammoUI.AddAmmo();
             }
             else
             {
                 currMaxBlastAmmo = maxBlastAmmo;//max Value
-                if (blastAmmo + amount <= currMaxBlastAmmo)
-                    blastAmmo += amount;
+                if (_blastAmmo + amount <= currMaxBlastAmmo)
+                    _blastAmmo += amount;
             }
         }
         else if(amount < 0)//removing ammo
@@ -166,7 +167,7 @@ public class PlayerAttack : MonoBehaviour
             else
                 currMaxBlastAmmo = 1;//min Value
         }
-        ammoUI.UpdateAmmoUI(blastAmmo, ammoCharge, chargePerAmmo);
+        ammoUI.UpdateAmmoUI(_blastAmmo, _ammoCharge, chargePerAmmo);
     }
     public void ChangePlayerChargePerAmmo(int amount)
     {

@@ -7,13 +7,13 @@ public class PlayerGold : MonoBehaviour
 {
     public int maxGold = 100;
     public Text goldUI;
-    [SerializeField]private int currentGold = 0;
+    [SerializeField]private int _currentGold = 0;
 
     public void AddGold(int amount)
     {
-        currentGold += amount;
-        if (currentGold > maxGold)
-            currentGold = maxGold;
+        _currentGold += amount;
+        if (_currentGold > maxGold)
+            _currentGold = maxGold;
 
         //Update UI
         UpdateGoldUI();
@@ -21,10 +21,10 @@ public class PlayerGold : MonoBehaviour
 
     public bool RemoveGold(int amount)
     {
-        if (currentGold - amount < 0)
+        if (_currentGold - amount < 0)
             return false;
 
-        currentGold -= amount;
+        _currentGold -= amount;
 
         //Update UI
         UpdateGoldUI();
@@ -34,11 +34,11 @@ public class PlayerGold : MonoBehaviour
 
     public bool HasEnoughGold(int amount)
     {
-        return currentGold - amount >= 0;
+        return _currentGold - amount >= 0;
     }
 
     private void UpdateGoldUI()
     {
-        goldUI.text = "" + currentGold;
+        goldUI.text = "" + _currentGold;
     }
 }

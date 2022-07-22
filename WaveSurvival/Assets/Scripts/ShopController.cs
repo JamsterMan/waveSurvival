@@ -1,23 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum ItemType { consumable, passiveItem };
 public class ShopController : MonoBehaviour
 {
-    //public List<PassiveItem> itemList = new List<PassiveItem>(); //list for pasive items 
     public PassiveItem[] itemArray;
-
-    //public List<Item> consumableItemList = new List<Item>();
     public Sprite healthPackSprite;
-    private HealthPackItem healthPack;
-
     public ShopItem[] shopItems;
+
+    private HealthPackItem _healthPack;
 
     // Start is called before the first frame update
     void Start()
     {
-        healthPack = new HealthPackItem(healthPackSprite);
+        _healthPack = new HealthPackItem(healthPackSprite);
         //get/set list of all items
 
         ShopRefresh();
@@ -30,7 +25,7 @@ public class ShopController : MonoBehaviour
     {
         if (shopItem.GetShopItemType() == ItemType.consumable)
         {
-            shopItem.SetShopItem(healthPack);
+            shopItem.SetShopItem(_healthPack);
         }
         else
         {
@@ -41,7 +36,7 @@ public class ShopController : MonoBehaviour
             }
             else//if there are no items to spawn
             {
-                shopItem.SetShopItem(healthPack);
+                shopItem.SetShopItem(_healthPack);
                 Debug.Log("no items in list");
             }
         }

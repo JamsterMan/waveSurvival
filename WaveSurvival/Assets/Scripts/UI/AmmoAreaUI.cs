@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AmmoAreaUI : MonoBehaviour
 {
     public GameObject ammoPrefab;
 
-    private ImageFillUI[] ammo = new ImageFillUI[10];//max 10 hearts 
+    private ImageFillUI[] _ammo = new ImageFillUI[10];//max 10 hearts 
 
-    private int currMaxAmmo = 0;
-    private readonly int maxAmmo = 10;
+    private int _currMaxAmmo = 0;
+    private readonly int _maxAmmo = 10;
 
 
     public void SetUpAmmoUI(int ammoMax)
@@ -22,19 +20,19 @@ public class AmmoAreaUI : MonoBehaviour
 
     public void AddAmmo()
     {
-        if (currMaxAmmo + 1 <= maxAmmo)
+        if (_currMaxAmmo + 1 <= _maxAmmo)
         {
-            ammo[currMaxAmmo] = Instantiate(ammoPrefab, gameObject.transform).GetComponent<ImageFillUI>();
-            currMaxAmmo++;
+            _ammo[_currMaxAmmo] = Instantiate(ammoPrefab, gameObject.transform).GetComponent<ImageFillUI>();
+            _currMaxAmmo++;
         }
     }
 
     public void RemoveAmmo()
     {
-        if (currMaxAmmo + 1 <= maxAmmo)
+        if (_currMaxAmmo + 1 <= _maxAmmo)
         {
-            currMaxAmmo--;
-            Destroy(ammo[currMaxAmmo].gameObject);
+            _currMaxAmmo--;
+            Destroy(_ammo[_currMaxAmmo].gameObject);
         }
     }
 
@@ -45,16 +43,16 @@ public class AmmoAreaUI : MonoBehaviour
         
         for (int i = 0; i < currAmmo; i++)
         {
-            ammo[i].SetImageFill(0f);
+            _ammo[i].SetImageFill(0f);
         }
-        if (currAmmo < currMaxAmmo)
+        if (currAmmo < _currMaxAmmo)
         {
             float val = ((float)ammoCharge) / ((float)chargePerAmmo);
-            ammo[currAmmo].SetImageFill(1-val);
+            _ammo[currAmmo].SetImageFill(1-val);
         }
-        for (int i = currAmmo+1; i < currMaxAmmo; i++)
+        for (int i = currAmmo+1; i < _currMaxAmmo; i++)
         {
-            ammo[i].SetImageFill(1f);
+            _ammo[i].SetImageFill(1f);
         }
     }
 }
