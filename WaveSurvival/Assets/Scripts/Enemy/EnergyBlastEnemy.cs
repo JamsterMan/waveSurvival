@@ -6,7 +6,7 @@ public class EnergyBlastEnemy : EnergyBlast
 {
     private void Start()
     {
-        startPos = transform.position;
+        _startPos = transform.position;
         rb.velocity = transform.up * projectileSpeed;
     }
 

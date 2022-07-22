@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CoinItem : Item
 {
-    private readonly ItemType itemType = ItemType.consumable;
+    private readonly ItemType _itemType = ItemType.consumable;
     public int coinValue = 5;
     public Sprite sprite;
 
@@ -26,7 +24,7 @@ public class CoinItem : Item
 
     public ItemType GetItemType()
     {
-        return itemType;
+        return _itemType;
     }
 
     public Sprite GetItemSprite()

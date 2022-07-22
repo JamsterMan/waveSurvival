@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
     public GameObject pauseMenu;
-    private bool isPaused = false;
+    private bool _isPaused = false;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            if (_isPaused)
             {
                 UnpauseGame();
             }
@@ -26,14 +24,14 @@ public class MenuScript : MonoBehaviour
     private void PauseGame()
     {
         Time.timeScale = 0f;
-        isPaused = true;
+        _isPaused = true;
         pauseMenu.SetActive(true);
     }
 
     public void UnpauseGame()
     {
         Time.timeScale = 1f;
-        isPaused = false;
+        _isPaused = false;
         pauseMenu.SetActive(false);
     }
 
@@ -51,7 +49,7 @@ public class MenuScript : MonoBehaviour
 
     public bool IsGamePaused()
     {
-        return isPaused;
+        return _isPaused;
     }
 
     public void PlayGame()

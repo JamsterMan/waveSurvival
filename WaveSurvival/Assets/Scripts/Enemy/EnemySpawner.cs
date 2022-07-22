@@ -7,11 +7,11 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public float[] enemyWeights;
     [SerializeField]
-    private float[] enemyWeightsNormalized;
+    private float[] _enemyWeightsNormalized;
 
     private void Awake()
     {
-        enemyWeightsNormalized = new float[enemyWeights.Length];
+        _enemyWeightsNormalized = new float[enemyWeights.Length];
         NormalizeWeights();
     }
 
@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
         }
         for (int i = 0; i < enemyWeights.Length; i++)
         {
-            enemyWeightsNormalized[i] = enemyWeights[i] / total;
+            _enemyWeightsNormalized[i] = enemyWeights[i] / total;
         }
     }
 

@@ -8,13 +8,13 @@ public class Boss : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        waveControl = GameObject.Find("WaveController").GetComponent<WaveController>();
+        _waveControl = GameObject.Find("WaveController").GetComponent<WaveController>();
         healthSlider = GameObject.Find("BossHealth").GetComponent<Slider>();
         //int extraHealth = (waveControl.GetWaveCount() / waveNumIncrease) * difficultyHealthIncrease;//extra health gained ever waveNumIncrease number of waves
-        currentHealth = startingHealth;// + extraHealth;
+        _currentHealth = startingHealth;// + extraHealth;
 
-        healthSlider.maxValue = currentHealth;
-        healthSlider.value = currentHealth;
+        healthSlider.maxValue = _currentHealth;
+        healthSlider.value = _currentHealth;
     }
 
     /*
@@ -24,11 +24,11 @@ public class Boss : Enemy
     {
         animator.SetBool("EnemyHit", true);
 
-        currentHealth -= dmg;
-        if (!bossState.phase2 && ((float)currentHealth)/((float)startingHealth) < 0.51f)
+        _currentHealth -= dmg;
+        if (!bossState.phase2 && ((float)_currentHealth) /((float)startingHealth) < 0.51f)
             bossState.SetPhase2();
 
-        if (currentHealth <= 0)
+        if (_currentHealth <= 0)
         {
             Die();
         }
@@ -44,7 +44,7 @@ public class Boss : Enemy
         pGold.AddGold(bossCoinValue);
         EnemyDrop();
 
-        waveControl.BossDied();
+        _waveControl.BossDied();
 
         healthSlider.gameObject.SetActive(false);
         Destroy(this.gameObject);
@@ -52,7 +52,7 @@ public class Boss : Enemy
 
     public bool IsInPhase2() 
     {
-        return startingHealth - currentHealth < 0.51;
+        return startingHealth - _currentHealth < 0.51;
     }
 
 }

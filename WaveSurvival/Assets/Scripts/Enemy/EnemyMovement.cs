@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -8,56 +6,56 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer enemySpriteRenderer;
 
-    protected GameObject playerObject;
-    protected Transform player;
-    protected PlayerHealth playerH;
-    protected EnemyAttack attack;
+    protected GameObject _playerObject;
+    protected Transform _player;
+    protected PlayerHealth _playerH;
+    protected EnemyAttack _attack;
 
-    protected Vector2 movement;
-    protected Vector2 playerPos;
+    protected Vector2 _movement;
+    protected Vector2 _playerPos;
 
-    private bool isAttacking = false;
+    private bool _isAttacking = false;
 
     private void Start()
     {
-        playerObject = GameObject.Find("Player");
-        player = playerObject.transform;
-        playerH = playerObject.GetComponent<PlayerHealth>();
+        _playerObject = GameObject.Find("Player");
+        _player = _playerObject.transform;
+        _playerH = _playerObject.GetComponent<PlayerHealth>();
 
-        attack = GetComponent<EnemyAttack>();
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        _attack = GetComponent<EnemyAttack>();
+        Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerPos = player.position;
+        _playerPos = _player.position;
     }
 
     // Update is called at a fixed framerate
     private void FixedUpdate()
     {
-        Vector2 lookDirection = playerPos - rb.position;
+        Vector2 lookDirection = _playerPos - rb.position;
         LookAtPlayer(lookDirection.x);
 
-        if (isAttacking)//enemy state
+        if (_isAttacking)//enemy state
         {
-            if (playerH.IsDamageable())
-                attack.Attack();
+            if (_playerH.IsDamageable())
+                _attack.Attack();
 
-            if (lookDirection.magnitude > attack.attackRange)
+            if (lookDirection.magnitude > _attack.attackRange)
             {
-                isAttacking = false;
+                _isAttacking = false;
             }
         }
         else
         {
-            movement = lookDirection / lookDirection.magnitude;
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            _movement = lookDirection / lookDirection.magnitude;
+            rb.MovePosition(rb.position + _movement * moveSpeed * Time.fixedDeltaTime);
 
-            if(lookDirection.magnitude <= attack.attackRange )//&& canJump)
+            if(lookDirection.magnitude <= _attack.attackRange )//&& canJump)
             {
-                isAttacking = true;
+                _isAttacking = true;
             }
         }
     }

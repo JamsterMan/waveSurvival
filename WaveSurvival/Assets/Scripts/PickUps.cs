@@ -1,25 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PickUps : MonoBehaviour
 {
-    private Item item;
     public SpriteRenderer spriteRenderer;
-
     public Sprite healthPack;
     public Sprite coin;
+
+    private Item _item;
 
     private void Start()
     {
         //choose which item here
         int itemId = Random.Range(0, 2);
         if (itemId == 0)
-            item = new CoinItem(coin);
+            _item = new CoinItem(coin);
         else
-            item = new HealthPackItem(healthPack);
+            _item = new HealthPackItem(healthPack);
 
-        spriteRenderer.sprite = item.GetItemSprite();
+        spriteRenderer.sprite = _item.GetItemSprite();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,9 +25,9 @@ public class PickUps : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameObject player = collision.gameObject;
-            if (item.CanPlayerTakeItem(player))
+            if (_item.CanPlayerTakeItem(player))
             {
-                item.OnPickUp(player);
+                _item.OnPickUp(player);
 
                 Destroy(this.gameObject);
             }

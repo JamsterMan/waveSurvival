@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
@@ -11,15 +9,15 @@ public class CameraMove : MonoBehaviour
     public Transform playerArenaAdjust;
     public Transform playerRoomAdjust;
     public bool isBossRoom = false;
-    private bool isInRoom = false;
-
     public float cameraMoveSpeed = 5f;
-    private Vector3 targetPos;
-    private bool moveCam = false;
+
+    private bool _isInRoom = false;
+    private Vector3 _targetPos;
+    private bool _moveCam = false;
 
     private void Start()
     {
-        targetPos = arenaPos;
+        _targetPos = arenaPos;
     }
 
     /*
@@ -27,29 +25,29 @@ public class CameraMove : MonoBehaviour
      */
     private void MoveCameraPosition()
     {
-        if (isInRoom)
+        if (_isInRoom)
         {
-            targetPos = arenaPos;
+            _targetPos = arenaPos;
             playerPostion.position = playerArenaAdjust.position;
-            moveCam = true;
+            _moveCam = true;
         }
         else
         {
-            targetPos = roomPos;
+            _targetPos = roomPos;
             playerPostion.position = playerRoomAdjust.position;
-            moveCam = true;
+            _moveCam = true;
         }
-        isInRoom = !isInRoom;
+        _isInRoom = !_isInRoom;
     }
 
     private void Update()
     {
-        if (moveCam)
+        if (_moveCam)
         {
-            cameraPostion.position = Vector3.Lerp(cameraPostion.position, targetPos, cameraMoveSpeed * Time.deltaTime);
-            if(cameraPostion.position == targetPos)
+            cameraPostion.position = Vector3.Lerp(cameraPostion.position, _targetPos, cameraMoveSpeed * Time.deltaTime);
+            if(cameraPostion.position == _targetPos)
             {
-                moveCam = false;
+                _moveCam = false;
             }
         }
     }

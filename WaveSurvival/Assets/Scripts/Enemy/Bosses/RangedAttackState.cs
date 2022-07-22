@@ -1,33 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RangedAttackState : State
 {
-    private int shotCount = 0;
-    private int shots = 0;
-    private readonly int maxShots = 5;
-    private readonly int minShots = 2;
-    private readonly int p2MaxShots = 7;
-    private readonly int p2MinShots = 3;
-    private bool canShoot = true;
-    private float nextShootTime = 0f;
-    private float timeBetweenShots = 0.3f;
+    private int _shotCount = 0;
+    private int _shots = 0;
+    private readonly int _maxShots = 5;
+    private readonly int _minShots = 2;
+    private readonly int _p2MaxShots = 7;
+    private readonly int _p2MinShots = 3;
+    private bool _canShoot = true;
+    private float _nextShootTime = 0f;
+    private float _timeBetweenShots = 0.3f;
 
 
     public override void EnterState(BossState boss)
     {
         //Debug.Log("Entered Ranged Attack State");
-        shotCount = 0;
+        _shotCount = 0;
         if (boss.phase2)
         {
-            shots = Random.Range(p2MinShots, p2MaxShots + 1);//+1 since max is exclusive
-            timeBetweenShots = 0.2f;
+            _shots = Random.Range(_p2MinShots, _p2MaxShots + 1);//+1 since max is exclusive
+            _timeBetweenShots = 0.2f;
         }
         else
         {
-            shots = Random.Range(minShots, maxShots + 1);//+1 since max is exclusive
-            timeBetweenShots = 0.3f;
+            _shots = Random.Range(_minShots, _maxShots + 1);//+1 since max is exclusive
+            _timeBetweenShots = 0.3f;
         }
     }
 
@@ -35,18 +33,18 @@ public class RangedAttackState : State
     {
         //playerPos = boss.player.position;
 
-        if (!canShoot && Time.time > nextShootTime)
+        if (!_canShoot && Time.time > _nextShootTime)
         {
-            canShoot = true;
+            _canShoot = true;
         }
     }
 
     public override void FixedUpdateState(BossState boss)
     {
-        if(canShoot)
+        if(_canShoot)
             Shoot(boss);
 
-        if (shotCount == shots)
+        if (_shotCount == _shots)
         {
             boss.SwitchState(boss.chaseState);
         }
@@ -64,8 +62,8 @@ public class RangedAttackState : State
 
         Object.Instantiate(boss.rangedShot, boss.attackPoint.position, rot, boss.transform).transform.localScale = new Vector3(0.5f,0.5f,0.5f);
 
-        shotCount++;
-        canShoot = false;
-        nextShootTime = Time.time + timeBetweenShots;
+        _shotCount++;
+        _canShoot = false;
+        _nextShootTime = Time.time + _timeBetweenShots;
     }
 }

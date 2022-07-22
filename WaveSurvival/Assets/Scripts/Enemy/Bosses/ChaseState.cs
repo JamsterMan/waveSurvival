@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ChaseState : State
 {
-    private Vector2 movement;
+    private Vector2 _movement;
 
     public override void EnterState(BossState boss)
     {
@@ -22,12 +20,12 @@ public class ChaseState : State
         Vector2 lookDirection = boss.playerPos - boss.rb.position;
         boss.LookAtPlayer(lookDirection.x);
         float speed = boss.moveSpeed;
-        movement = lookDirection / lookDirection.magnitude;
+        _movement = lookDirection / lookDirection.magnitude;
 
         if (boss.phase2)
             speed = boss.p2MoveSpeed;
 
-        boss.rb.MovePosition(boss.rb.position + movement * speed * Time.fixedDeltaTime);
+        boss.rb.MovePosition(boss.rb.position + _movement * speed * Time.fixedDeltaTime);
 
         if (lookDirection.magnitude > boss.minRangedAttackRange && Random.Range(0,81) == 1)
         {
