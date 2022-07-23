@@ -2,7 +2,7 @@
 
 public class AttackState : State
 {
-
+    Vector2 _lookDirection;
     public override void EnterState(BossState boss)
     {
         //Debug.Log("Entered Attack State");
@@ -11,20 +11,17 @@ public class AttackState : State
     public override void UpdateState(BossState boss)
     {
         //playerPos = boss.player.position;
+        CheckStateSwitch(boss);
     }
 
     public override void FixedUpdateState(BossState boss)
     {
-        Vector2 lookDirection = boss.playerPos - boss.rb.position;
-        boss.LookAtPlayer(lookDirection.x);
+        _lookDirection = boss.playerPos - boss.rb.position;
+        boss.LookAtPlayer(_lookDirection.x);
 
         if (boss.playerH.IsDamageable())
             Attack(boss);
 
-        if (lookDirection.magnitude > boss.attackRange)
-        {
-            boss.SwitchState(boss.chaseState);
-        }
     }
 
     private void Attack(BossState boss)
@@ -44,6 +41,15 @@ public class AttackState : State
         {
             if (hitPlayer != null)
                 hitPlayer.GetComponent<PlayerHealth>().DealDamage(damage);
+        }
+    }
+
+    public void CheckStateSwitch(BossState boss)
+    {
+
+        if (_lookDirection.magnitude > boss.attackRange)
+        {
+            boss.SwitchState(boss.chaseState);
         }
     }
 }

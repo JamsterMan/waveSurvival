@@ -37,17 +37,13 @@ public class RangedAttackState : State
         {
             _canShoot = true;
         }
+        CheckStateSwitch(boss);
     }
 
     public override void FixedUpdateState(BossState boss)
     {
         if(_canShoot)
             Shoot(boss);
-
-        if (_shotCount == _shots)
-        {
-            boss.SwitchState(boss.chaseState);
-        }
 
     }
 
@@ -65,5 +61,14 @@ public class RangedAttackState : State
         _shotCount++;
         _canShoot = false;
         _nextShootTime = Time.time + _timeBetweenShots;
+    }
+
+    public void CheckStateSwitch(BossState boss)
+    {
+
+        if (_shotCount == _shots)
+        {
+            boss.SwitchState(boss.chaseState);
+        }
     }
 }

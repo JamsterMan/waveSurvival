@@ -90,6 +90,8 @@ public class BossState : MonoBehaviour
             return;
 
         Gizmos.DrawWireCube(attackPoint.position, attackPointSize);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+
         Gizmos.DrawWireSphere(this.transform.position, minRangedAttackRange);
     }
 }
