@@ -30,7 +30,7 @@ public class ChaseState : State
         boss.rb.MovePosition(boss.rb.position + _movement * speed * Time.fixedDeltaTime);
     }
 
-    public void CheckStateSwitch(BossState boss)
+    public override void CheckStateSwitch(BossState boss)
     {
         if (_lookDirection.magnitude > boss.minRangedAttackRange && Random.Range(0, 81) == 1)
         {

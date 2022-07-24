@@ -10,4 +10,5 @@ public abstract class State
 
     public abstract void FixedUpdateState(BossState boss);
 
+    public abstract void CheckStateSwitch(BossState boss);
 }

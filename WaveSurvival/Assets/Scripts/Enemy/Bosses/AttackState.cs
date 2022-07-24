@@ -44,7 +44,7 @@ public class AttackState : State
         }
     }
 
-    public void CheckStateSwitch(BossState boss)
+    public override void CheckStateSwitch(BossState boss)
     {
 
         if (_lookDirection.magnitude > boss.attackRange)

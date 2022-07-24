@@ -63,7 +63,7 @@ public class RangedAttackState : State
         _nextShootTime = Time.time + _timeBetweenShots;
     }
 
-    public void CheckStateSwitch(BossState boss)
+    public override void CheckStateSwitch(BossState boss)
     {
 
         if (_shotCount == _shots)
