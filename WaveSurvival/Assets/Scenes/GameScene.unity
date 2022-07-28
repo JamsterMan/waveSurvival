@@ -362,7 +362,7 @@ MonoBehaviour:
   waveController: {fileID: 1700725460}
   playerPos: {fileID: 992184591}
   safeDistance: 2
-  canBeUsed: 1
+  _canBeUsed: 1
 --- !u!1 &196860642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,6 +1935,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767836488, guid: 55b21bc14ba28bc4897ff43743755833, type: 3}
+      propertyPath: jumpDistance
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 578700970926345464, guid: 55b21bc14ba28bc4897ff43743755833,
         type: 3}
       propertyPath: m_Name
@@ -7489,8 +7493,8 @@ MonoBehaviour:
   dodgeSpeed: 30
   dodgeCooldown: 3
   dodgeDuration: 0.15
-  isDodging: 0
-  canDodge: 0
+  _isDodging: 0
+  _canDodge: 1
 --- !u!114 &992184593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7558,10 +7562,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 8
-  currentHealth: 0
   animator: {fileID: 992184596}
   heartsUI: {fileID: 1668499762}
   IframeRate: 1
+  _currentHealth: 0
 --- !u!95 &992184596
 Animator:
   serializedVersion: 3
@@ -7595,7 +7599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxGold: 100
   goldUI: {fileID: 386763720}
-  currentGold: 0
+  _currentGold: 0
 --- !u!1 &1078658502
 GameObject:
   m_ObjectHideFlags: 0

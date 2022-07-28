@@ -7,17 +7,17 @@ public class EnemyJumpMovement : EnemyMovement
     enum JumpEnemyState {chase, jumpPrep, jumping };
 
     [SerializeField] private bool canJump = true;
-    [SerializeField] private JumpEnemyState state = JumpEnemyState.chase;
+    [SerializeField] private JumpEnemyState _state = JumpEnemyState.chase;
     public float jumpCooldown = 5f;
-    private float nextJumpTime = 0f;
+    private float _nextJumpTime = 0f;
     public float jumpSpeed = 20f;
     public float jumpDistance = 10f;
     public float jumpRange = 5f;
 
-    private Vector2 jumpLocation = new Vector2();
-    private Collider2D col;
+    private Vector2 _jumpLocation = new Vector2();
+    private Collider2D _col;
 
-    private Vector2 startJumpDist = new Vector2();
+    private Vector2 _startJumpDist = new Vector2();
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class EnemyJumpMovement : EnemyMovement
         _attack = GetComponent<EnemyAttack>();
         Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
-        col = GetComponent<Collider2D>();
+        _col = GetComponent<Collider2D>();
     }
 
     // Update is called at a fixed framerate
@@ -38,7 +38,7 @@ public class EnemyJumpMovement : EnemyMovement
 
         if (!canJump)
         {
-            if (Time.time > nextJumpTime)
+            if (Time.time > _nextJumpTime)
             {
                 canJump = true;
                 //Debug.Log("can jump");
@@ -55,27 +55,24 @@ public class EnemyJumpMovement : EnemyMovement
         Vector2 lookDirection = _playerPos - rb.position;
         //float angle;
 
-        if (state == JumpEnemyState.jumpPrep)//enemy state
+        if (_state == JumpEnemyState.jumpPrep)//enemy state
         {
             if (canJump)
                 EnemyJump();
 
             if (lookDirection.magnitude > jumpRange && canJump)
             {
-                state = JumpEnemyState.chase;
+                _state = JumpEnemyState.chase;
             }
         }
-        else if (state == JumpEnemyState.jumping)
+        else if (_state == JumpEnemyState.jumping)
         {
-            lookDirection = jumpLocation - rb.position;
-
-            //angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-            //rb.rotation = angle;//face the jump loctaion
+            lookDirection = _jumpLocation - rb.position;
 
             if (IsJumpDone(lookDirection))
             {
-                state = JumpEnemyState.chase;
-                col.isTrigger = false;
+                _state = JumpEnemyState.chase;
+                _col.isTrigger = false;
             }
 
             if (lookDirection.magnitude != 0)
@@ -89,15 +86,13 @@ public class EnemyJumpMovement : EnemyMovement
         }
         else//state == JumpEnemyState.chase
         {
-            //angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-            //rb.rotation = angle;//face the player
 
             _movement = lookDirection / lookDirection.magnitude;
             rb.MovePosition(rb.position + _movement * moveSpeed * Time.fixedDeltaTime);
 
             if (lookDirection.magnitude <= jumpRange && canJump)
             {
-                state = JumpEnemyState.jumpPrep;
+                _state = JumpEnemyState.jumpPrep;
             }
         }
     }
@@ -110,17 +105,17 @@ public class EnemyJumpMovement : EnemyMovement
     {
         //play pre-jump animation here
 
-        col.isTrigger = true;//no collision while jumping  
+        _col.isTrigger = true;//no collision while jumping  
         
         Vector2 lookDirection = (Vector2)_player.position - rb.position;
-        jumpLocation = rb.position + (lookDirection.normalized * jumpDistance);//point in space where the jump should end
-        startJumpDist = jumpLocation - rb.position;
+        _jumpLocation = rb.position + (lookDirection.normalized * jumpDistance);//point in space where the jump should end
+        _startJumpDist = _jumpLocation - rb.position;
         canJump = false;
-        nextJumpTime = Time.time + jumpCooldown;
+        _nextJumpTime = Time.time + jumpCooldown;
 
         yield return new WaitForSeconds(0.5f);
 
-        state = JumpEnemyState.jumping;
+        _state = JumpEnemyState.jumping;
     }
 
     //starts Jump corutine
@@ -135,7 +130,7 @@ public class EnemyJumpMovement : EnemyMovement
      */
     private bool IsJumpDone(Vector2 jump)
     {
-        if ((startJumpDist + jump).magnitude > startJumpDist.magnitude)
+        if ((_startJumpDist + jump).magnitude > _startJumpDist.magnitude)
             return false;
         else
             return true;
@@ -146,8 +141,8 @@ public class EnemyJumpMovement : EnemyMovement
     {
         if (collision.gameObject.CompareTag("PlayBounds"))
         {
-            state = JumpEnemyState.chase;
-            col.isTrigger = false;
+            _state = JumpEnemyState.chase;
+            _col.isTrigger = false;
         }
     }
 }
