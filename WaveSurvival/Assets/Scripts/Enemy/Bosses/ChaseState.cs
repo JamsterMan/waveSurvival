@@ -7,7 +7,7 @@ public class ChaseState : State
 
     public override void EnterState(BossState boss)
     {
-        //Debug.Log("Entered Chase State");
+        Debug.Log("Entered Chase State");
         boss.animator.SetBool("EnemyMove", true);
     }
 
@@ -34,7 +34,8 @@ public class ChaseState : State
     {
         if (_lookDirection.magnitude > boss.minRangedAttackRange && Random.Range(0, 81) == 1)
         {
-            boss.SwitchState(boss.rangedAttackState);
+            //boss.SwitchState(boss.rangedAttackState);
+            boss.SwitchState(boss.jumpAttackState);
         }
 
         if (_lookDirection.magnitude <= boss.attackRange)
