@@ -130,10 +130,17 @@ public class EnemyJumpMovement : EnemyMovement
      */
     private bool IsJumpDone(Vector2 jump)
     {
-        if ((_startJumpDist + jump).magnitude > _startJumpDist.magnitude)
-            return false;
-        else
+        /*
+         * end - start = boss.startJumpDist
+         * end - curr = boss.jumpLocation - boss.rb.position
+         * (end - start)*(end - curr) : >0 if same direction, or <0 if opposite directions
+         */
+        float val = Vector2.Dot((_startJumpDist).normalized, (_jumpLocation - rb.position).normalized);
+
+        if (val <= 0)
             return true;
+
+        return false;
     }
 
     //stop jump state if wall is hit
