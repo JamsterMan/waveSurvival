@@ -8,6 +8,11 @@ public class JumpAttackState : State
     public override void EnterState(BossState boss)
     {
         Debug.Log("Entering Jump State");
+        boss.col.isTrigger = true;//no collision while jumping  
+
+        Vector2 lookDirection = (Vector2)boss.player.position - boss.rb.position;
+        boss.jumpLocation = boss.rb.position + (lookDirection.normalized * boss.jumpDistance);//point in space where the jump should end
+        boss.startJumpDist = boss.jumpLocation - boss.rb.position;
         boss.EnemyJump();//corutine outside of state
     }
 
