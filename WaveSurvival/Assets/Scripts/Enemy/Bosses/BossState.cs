@@ -126,11 +126,11 @@ public class BossState : MonoBehaviour
     {
         //play pre-jump animation here
 
-        col.isTrigger = true;//no collision while jumping  
+        /*col.isTrigger = true;//no collision while jumping  
 
         Vector2 lookDirection = (Vector2)player.position - rb.position;
         jumpLocation = rb.position + (lookDirection.normalized * jumpDistance);//point in space where the jump should end
-        startJumpDist = jumpLocation - rb.position;
+        startJumpDist = jumpLocation - rb.position;*/
 
         yield return new WaitForSeconds(0.5f);
 
