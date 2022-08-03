@@ -11,6 +11,7 @@ public class BossState : MonoBehaviour
     public int p2AttackDamage = 2;
     public float minRangedAttackRange = 2f;
     public bool phase2 = false;
+    public bool isWaiting = false;
 
     /// Temp Jump Vars*************************************************************************************
     public float jumpCooldown = 5f;
@@ -18,7 +19,7 @@ public class BossState : MonoBehaviour
     public float jumpDistance = 10f;
     public float jumpRange = 5f;
     public Vector2 movement;
-    [SerializeField] public bool isJumping = false;
+    //[SerializeField] public bool isJumping = false;
 
     public Vector2 jumpLocation = new Vector2();
     public Collider2D col;
@@ -111,55 +112,42 @@ public class BossState : MonoBehaviour
 
 
 
-    /*******************************************
-     * 
-     * Temp Jump State Code
-     * 
-     * ****************************************
-     */
+
+
+
+    /*****************************************************************
+     * wait functionality bellow
+     ******************************************************************/
 
     /*
-     * Sets up variables for the jump attack
-     * waits to add a delay before the jump happens
+     * a wait function to be used on some attacks
      */
-    IEnumerator Jump()
+    IEnumerator Wait()
     {
-        //play pre-jump animation here
+        //play Wait animation here
 
-        /*col.isTrigger = true;//no collision while jumping  
-
-        Vector2 lookDirection = (Vector2)player.position - rb.position;
-        jumpLocation = rb.position + (lookDirection.normalized * jumpDistance);//point in space where the jump should end
-        startJumpDist = jumpLocation - rb.position;*/
+        isWaiting = true;
 
         yield return new WaitForSeconds(0.5f);
 
-        isJumping = true;
+        isWaiting = false;
     }
 
     //starts Jump corutine
-    public void EnemyJump()
+    public void EnemyWait()
     {
-        StartCoroutine(Jump());
+        StartCoroutine(Wait());
     }
 
-
-    //stop jump state if wall is hit
+    //stop any state if wall is hit
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayBounds"))
         {
-            isJumping = false;
+            isWaiting = false;
             col.isTrigger = false;
             SwitchState(chaseState);
         }
     }
 
-
-    /*******************************************
-     * 
-     * Temp Jump State Code End
-     * 
-     * ****************************************
-     */
 }

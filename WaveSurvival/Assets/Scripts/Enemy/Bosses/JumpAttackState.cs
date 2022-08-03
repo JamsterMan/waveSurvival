@@ -13,7 +13,7 @@ public class JumpAttackState : State
         Vector2 lookDirection = (Vector2)boss.player.position - boss.rb.position;
         boss.jumpLocation = boss.rb.position + (lookDirection.normalized * boss.jumpDistance);//point in space where the jump should end
         boss.startJumpDist = boss.jumpLocation - boss.rb.position;
-        boss.EnemyJump();//corutine outside of state
+        boss.EnemyWait();//corutine outside of state
     }
 
     public override void UpdateState(BossState boss)
@@ -23,7 +23,7 @@ public class JumpAttackState : State
 
     public override void FixedUpdateState(BossState boss)
     {
-        if (boss.isJumping)
+        if (!boss.isWaiting)
         {
             lookDirection = boss.jumpLocation - boss.rb.position;
 
@@ -42,7 +42,7 @@ public class JumpAttackState : State
     {
         if (IsJumpDone(lookDirection, boss) )// && boss.isJumping)
         {
-            boss.isJumping = false;
+            boss.isWaiting = false;
             boss.col.isTrigger = false;
             boss.SwitchState(boss.chaseState);
         }
