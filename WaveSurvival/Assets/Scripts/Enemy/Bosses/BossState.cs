@@ -73,6 +73,9 @@ public class BossState : MonoBehaviour
         _currState.FixedUpdateState(this);
     }
 
+    /*
+     * swtichs current state to given state
+     */
     public void SwitchState(State state)
     {
         animator.SetBool("EnemyMove", false);
@@ -80,11 +83,17 @@ public class BossState : MonoBehaviour
         _currState.EnterState(this);
     }
 
+    /*
+     * starts phase 2 of a boss (if it exists)
+     */
     public void SetPhase2()
     {
         phase2 = true;
     }
 
+    /*
+     * makes boss always face the player
+     */
     public void LookAtPlayer(float xdir)
     {
         if (xdir >= 0)//face to the right
