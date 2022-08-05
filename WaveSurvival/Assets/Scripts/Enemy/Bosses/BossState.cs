@@ -48,6 +48,8 @@ public class BossState : MonoBehaviour
     public AttackState attackState = new AttackState();
     public RangedAttackState rangedAttackState = new RangedAttackState();
 
+    public RangedAttack2State rangedAttack2State = new RangedAttack2State();
+
     private void Start()
     {
         _currState = chaseState;
