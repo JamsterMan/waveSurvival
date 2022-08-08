@@ -14,6 +14,8 @@ public class RangedAttack2State : State
     private float _nextShootTime = 0f;
     private float _timeBetweenShots = 0.3f;
 
+    float angle = 0f;
+
 
     public override void EnterState(BossState boss)
     {
@@ -55,16 +57,16 @@ public class RangedAttack2State : State
     {
         //play animations
 
-        float angle = 0f;
-        if (_shotCount % 2 == 1)
-            angle = 45f;
+        //float angle = 0f;
+        //if (_shotCount % 2 == 1)
+            //angle = 45f;
 
         for (int i = 0; i < 4; i++)
         {
             Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
             Object.Instantiate(boss.rangedShot, boss.attackPoint.position, rot, boss.transform).transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            angle += 90f;
+            angle += 15f;//90f;
         }
 
         _shotCount++;
