@@ -37,6 +37,7 @@ public class ChaseState : State
             //boss.SwitchState(boss.rangedAttackState);
             //boss.SwitchState(boss.jumpAttackState);
             boss.SwitchState(boss.rangedAttack2State);
+            //boss.SwitchState(boss.rangedAttack3State);
         }
 
         if (_lookDirection.magnitude <= boss.attackRange)
