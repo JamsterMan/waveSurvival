@@ -2,15 +2,15 @@
 
 public class RangedAttackState : State
 {
-    private int _shotCount = 0;
-    private int _shots = 0;
+    protected int _shotCount = 0;
+    protected int _shots = 0;
+    protected bool _canShoot = true;
+    protected float _nextShootTime = 0f;
+    protected float _timeBetweenShots = 0.3f;
     private readonly int _maxShots = 5;
     private readonly int _minShots = 2;
     private readonly int _p2MaxShots = 7;
     private readonly int _p2MinShots = 3;
-    private bool _canShoot = true;
-    private float _nextShootTime = 0f;
-    private float _timeBetweenShots = 0.3f;
 
 
     public override void EnterState(BossState boss)
@@ -42,12 +42,14 @@ public class RangedAttackState : State
 
     public override void FixedUpdateState(BossState boss)
     {
-        if(_canShoot)
+        Vector2 lookDirection = boss.playerPos - boss.rb.position;
+        boss.LookAtPlayer(lookDirection.x);
+        if (_canShoot)
             Shoot(boss);
 
     }
 
-    private void Shoot(BossState boss)
+    protected virtual void Shoot(BossState boss)
     {
         //play animations
 
