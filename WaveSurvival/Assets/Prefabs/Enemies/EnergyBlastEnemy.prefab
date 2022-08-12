@@ -157,5 +157,5 @@ MonoBehaviour:
   rb: {fileID: 1590105081076686565}
   projectileSpeed: 10
   blastDamage: 1
-  attackRange: 10
+  attackRange: 30
   animator: {fileID: 3094962935383270404}
