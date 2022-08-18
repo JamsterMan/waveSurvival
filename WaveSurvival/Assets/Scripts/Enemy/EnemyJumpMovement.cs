@@ -144,7 +144,16 @@ public class EnemyJumpMovement : EnemyMovement
     }
 
     //stop jump state if wall is hit
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayBounds"))
+        {
+            _state = JumpEnemyState.chase;
+            _col.isTrigger = false;
+        }
+    }*/
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("PlayBounds"))
         {

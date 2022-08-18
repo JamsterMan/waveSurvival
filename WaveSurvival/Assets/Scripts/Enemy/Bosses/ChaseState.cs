@@ -32,7 +32,7 @@ public class ChaseState : State
 
     public override void CheckStateSwitch(BossState boss)
     {
-        if (_lookDirection.magnitude > boss.minRangedAttackRange && Random.Range(0, 301) == 1)
+        if (_lookDirection.magnitude > boss.minRangedAttackRange && Random.Range(0, 401) == 1)
         {
             //boss.SwitchState(boss.rangedAttackState);
             //boss.SwitchState(boss.jumpAttackState);
