@@ -1421,7 +1421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &666015679
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9448,7 +9448,7 @@ MonoBehaviour:
   waveBreakTime: 0.5
   goldPerWave: 5
   shopWaves: 5
-  bossWaves: 20
+  bossWaves: 2
   enemyDropRate: 0.05
 --- !u!1 &1738427428
 GameObject:
@@ -9465,7 +9465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1738427429
 RectTransform:
   m_ObjectHideFlags: 0

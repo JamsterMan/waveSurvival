@@ -44,6 +44,11 @@ public class Boss : Enemy
         pGold.AddGold(bossCoinValue);
         EnemyDrop();
 
+        ///// main menu gold
+        PlayerGameData mGold = GameObject.Find("PlayerDataObject").GetComponent<PlayerGameData>();
+        mGold.IncreaseMenuGold(bossCoinValue);
+        ////
+
         _waveControl.BossDied();
 
         healthSlider.gameObject.SetActive(false);
