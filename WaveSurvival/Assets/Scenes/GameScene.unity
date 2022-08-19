@@ -121,6 +121,49 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &68002704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68002706}
+  - component: {fileID: 68002705}
+  m_Layer: 0
+  m_Name: PlayerDataObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &68002705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68002704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5346351326a36864eaf503567d6ae708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &68002706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68002704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3796338, y: -3.087624, z: -18.054638}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &133223872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,7 +1464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &666015679
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7564,7 +7607,7 @@ MonoBehaviour:
   health: 8
   animator: {fileID: 992184596}
   heartsUI: {fileID: 1668499762}
-  IframeRate: 1
+  IframeRate: 0.4
   _currentHealth: 0
 --- !u!95 &992184596
 Animator:
@@ -9448,7 +9491,7 @@ MonoBehaviour:
   waveBreakTime: 0.5
   goldPerWave: 5
   shopWaves: 5
-  bossWaves: 20
+  bossWaves: 2
   enemyDropRate: 0.05
 --- !u!1 &1738427428
 GameObject:
@@ -9465,7 +9508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1738427429
 RectTransform:
   m_ObjectHideFlags: 0
