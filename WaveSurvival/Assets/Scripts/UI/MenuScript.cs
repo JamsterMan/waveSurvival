@@ -5,6 +5,7 @@ public class MenuScript : MonoBehaviour
 {
     public GameObject pauseMenu;
     private bool _isPaused = false;
+    public GameObject shopMenu;
 
     private void Update()
     {
@@ -60,5 +61,15 @@ public class MenuScript : MonoBehaviour
     public void SettingsMenu()
     {
         Debug.Log("Not Implemented");
+    }
+
+    public void ShopScreen()
+    {
+        shopMenu.SetActive(true);
+    }
+
+    public void ReturnToMenuScreen()
+    {
+        shopMenu.SetActive(false);
     }
 }
