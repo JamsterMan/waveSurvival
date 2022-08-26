@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerGameData : MonoBehaviour
 {
+    private int _damagePerLevel = 5;
+    public int damageLevel = 0;
     public int MenuGold { get; private set; } = 0;
 
     public static PlayerGameData instance = null;
@@ -33,5 +35,15 @@ public class PlayerGameData : MonoBehaviour
         MenuGold -= amount;
 
         Debug.Log("gold removed, menuGold = " + MenuGold);
+    }
+
+    public void IncreaseDamageLevel()
+    {
+        damageLevel++;
+    }
+
+    public int GetBonusDamage()
+    {
+        return damageLevel * _damagePerLevel;
     }
 }

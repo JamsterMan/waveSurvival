@@ -26,8 +26,13 @@ public class PlayerAttack : MonoBehaviour
     private int _blastAmmo;
     private int _ammoCharge = 0;//when this = chargePerAmmo, increase ammo by one
 
+    private PlayerGameData _data;
+
     private void Start()
     {
+        _data = GameObject.Find("PlayerDataObject").GetComponent<PlayerGameData>();
+        attackDamage += _data.GetBonusDamage();
+
         _blastAmmo = currMaxBlastAmmo;
 
         ammoUI.SetUpAmmoUI(_blastAmmo);
